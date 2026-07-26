@@ -1,0 +1,15 @@
+# ListShippingRules200ResponseDataInnerCarrier
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** | Unique carrier identifier |
+**name** | **string** | Carrier display name |
+**carrier_slug** | **string** | Carrier slug identifier |
+**config** | [**array<string,\Zippendo\Sdk\Model\ListCarriers200ResponseDataInnerConfigValue>**](ListCarriers200ResponseDataInnerConfigValue.md) | Carrier configuration (required and optional fields) |
+**org_id** | **string** | Owning organization ID |
+**created_at** | **string** | Creation timestamp (ISO 8601) |
+**updated_at** | **string** | Last update timestamp (ISO 8601) |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

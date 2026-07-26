@@ -1,0 +1,33 @@
+# UpdateShippingRuleRequest
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **string** | Shipping rule name | [optional]
+**description** | **string** | Optional description | [optional]
+**direction** | **string** | Whether this rule is for outbound or inbound (return) shipments | [optional] [default to 'outbound']
+**carrier_id** | **string** | Carrier ID | [optional]
+**product_id** | **string** | Product ID from carrier | [optional]
+**services** | **string[]** | List of selected services | [optional]
+**additional_parameters** | [**\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParameters**](CreateShippingRuleRequestAdditionalParameters.md) |  | [optional]
+**address_id** | **string** | Sender address ID | [optional]
+**receiving_countries** | **string[]** | List of supported country codes | [optional]
+**email_notification** | **bool** | Send email notification to recipient | [optional] [default to false]
+**phone_notification** | **bool** | Send SMS notification to recipient | [optional] [default to false]
+**min_weight** | **float** | Minimum required weight in kg | [optional]
+**max_weight** | **float** | Maximum allowed weight in kg | [optional]
+**min_order_value** | **float** | Minimum required order value in currency units | [optional]
+**max_order_value** | **float** | Maximum allowed order value in currency units | [optional]
+**conditions** | [**\Zippendo\Sdk\Model\CreateShippingRuleRequestConditionsInner[]**](CreateShippingRuleRequestConditionsInner.md) | Rule conditions (weight/price/quantity) | [optional]
+**generate_proforma_invoice** | **bool** | Generate proforma invoice for shipments | [optional] [default to false]
+**generate_commercial_invoice** | **bool** | Generate commercial invoice for international shipments | [optional] [default to false]
+**generate_packing_list** | **bool** | Generate packing slip with package and item details | [optional] [default to false]
+**auto_print_labels** | **bool** | Automatically print labels when shipment is sent | [optional] [default to false]
+**auto_print_documents** | **bool** | Automatically print documents when shipment is sent | [optional] [default to false]
+**label_printer_id** | **string** | ID of the label printer | [optional]
+**document_printer_id** | **string** | ID of the document printer | [optional]
+**return_shipping_rule_id** | **string** | ID of the return shipping rule | [optional]
+**auto_create_return_shipment** | **bool** | Automatically create and send a return shipment on dispatch | [optional] [default to false]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
