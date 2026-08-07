@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -62,6 +62,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'name' => 'string',
         'token_prefix' => 'string',
         'scopes' => 'string[]',
+        'brand_id' => 'string',
         'last_used_at' => 'string',
         'expires_at' => 'string',
         'created_at' => 'string',
@@ -80,6 +81,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'name' => null,
         'token_prefix' => null,
         'scopes' => null,
+        'brand_id' => null,
         'last_used_at' => null,
         'expires_at' => null,
         'created_at' => null,
@@ -96,6 +98,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'name' => false,
         'token_prefix' => false,
         'scopes' => false,
+        'brand_id' => true,
         'last_used_at' => true,
         'expires_at' => true,
         'created_at' => false,
@@ -192,6 +195,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'name' => 'name',
         'token_prefix' => 'tokenPrefix',
         'scopes' => 'scopes',
+        'brand_id' => 'brandId',
         'last_used_at' => 'lastUsedAt',
         'expires_at' => 'expiresAt',
         'created_at' => 'createdAt',
@@ -208,6 +212,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'name' => 'setName',
         'token_prefix' => 'setTokenPrefix',
         'scopes' => 'setScopes',
+        'brand_id' => 'setBrandId',
         'last_used_at' => 'setLastUsedAt',
         'expires_at' => 'setExpiresAt',
         'created_at' => 'setCreatedAt',
@@ -224,6 +229,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'name' => 'getName',
         'token_prefix' => 'getTokenPrefix',
         'scopes' => 'getScopes',
+        'brand_id' => 'getBrandId',
         'last_used_at' => 'getLastUsedAt',
         'expires_at' => 'getExpiresAt',
         'created_at' => 'getCreatedAt',
@@ -291,6 +297,7 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('token_prefix', $data ?? [], null);
         $this->setIfExists('scopes', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('last_used_at', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
@@ -335,6 +342,9 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
         }
         if ($this->container['scopes'] === null) {
             $invalidProperties[] = "'scopes' can't be null";
+        }
+        if ($this->container['brand_id'] === null && !$this->isNullableSetToNull('brand_id')) {
+            $invalidProperties[] = "'brand_id' is required";
         }
         if ($this->container['last_used_at'] === null && !$this->isNullableSetToNull('last_used_at')) {
             $invalidProperties[] = "'last_used_at' is required";
@@ -467,6 +477,40 @@ class ListApiTokens200ResponseDataInner implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable scopes cannot be null');
         }
         $this->container['scopes'] = $scopes;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Brand this token is restricted to, or null for organization-wide access
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }

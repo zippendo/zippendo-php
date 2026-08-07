@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -60,7 +60,8 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'name' => 'string',
         'scopes' => 'string[]',
-        'expires_in_days' => 'int'
+        'expires_in_days' => 'int',
+        'brand_id' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'name' => null,
         'scopes' => null,
-        'expires_in_days' => null
+        'expires_in_days' => null,
+        'brand_id' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'name' => false,
         'scopes' => false,
-        'expires_in_days' => false
+        'expires_in_days' => false,
+        'brand_id' => true
     ];
 
     /**
@@ -175,7 +178,8 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'name' => 'name',
         'scopes' => 'scopes',
-        'expires_in_days' => 'expiresInDays'
+        'expires_in_days' => 'expiresInDays',
+        'brand_id' => 'brandId'
     ];
 
     /**
@@ -186,7 +190,8 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'name' => 'setName',
         'scopes' => 'setScopes',
-        'expires_in_days' => 'setExpiresInDays'
+        'expires_in_days' => 'setExpiresInDays',
+        'brand_id' => 'setBrandId'
     ];
 
     /**
@@ -197,7 +202,8 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'name' => 'getName',
         'scopes' => 'getScopes',
-        'expires_in_days' => 'getExpiresInDays'
+        'expires_in_days' => 'getExpiresInDays',
+        'brand_id' => 'getBrandId'
     ];
 
     /**
@@ -339,6 +345,7 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('scopes', $data ?? [], null);
         $this->setIfExists('expires_in_days', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
     }
 
     /**
@@ -513,6 +520,40 @@ class CreateApiTokenRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         }
 
         $this->container['expires_in_days'] = $expires_in_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Restrict this token to a single brand. Requests made with it can only read and write that brand's data. Omit for organization-wide access.
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }

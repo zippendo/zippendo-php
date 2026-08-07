@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -63,6 +63,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         'customer_name' => 'string',
         'customer_email' => 'string',
         'status' => 'string',
+        'brand_id' => 'string',
         'subtotal_amount' => 'float',
         'total_amount' => 'float',
         'currency' => 'string',
@@ -85,6 +86,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         'customer_name' => null,
         'customer_email' => null,
         'status' => null,
+        'brand_id' => null,
         'subtotal_amount' => null,
         'total_amount' => null,
         'currency' => null,
@@ -105,6 +107,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         'customer_name' => true,
         'customer_email' => true,
         'status' => false,
+        'brand_id' => true,
         'subtotal_amount' => true,
         'total_amount' => true,
         'currency' => true,
@@ -205,6 +208,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         'customer_name' => 'customerName',
         'customer_email' => 'customerEmail',
         'status' => 'status',
+        'brand_id' => 'brandId',
         'subtotal_amount' => 'subtotalAmount',
         'total_amount' => 'totalAmount',
         'currency' => 'currency',
@@ -225,6 +229,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         'customer_name' => 'setCustomerName',
         'customer_email' => 'setCustomerEmail',
         'status' => 'setStatus',
+        'brand_id' => 'setBrandId',
         'subtotal_amount' => 'setSubtotalAmount',
         'total_amount' => 'setTotalAmount',
         'currency' => 'setCurrency',
@@ -245,6 +250,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         'customer_name' => 'getCustomerName',
         'customer_email' => 'getCustomerEmail',
         'status' => 'getStatus',
+        'brand_id' => 'getBrandId',
         'subtotal_amount' => 'getSubtotalAmount',
         'total_amount' => 'getTotalAmount',
         'currency' => 'getCurrency',
@@ -339,6 +345,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('customer_name', $data ?? [], null);
         $this->setIfExists('customer_email', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('subtotal_amount', $data ?? [], null);
         $this->setIfExists('total_amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
@@ -393,6 +400,9 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
             );
         }
 
+        if ($this->container['brand_id'] === null && !$this->isNullableSetToNull('brand_id')) {
+            $invalidProperties[] = "'brand_id' is required";
+        }
         if ($this->container['shipment_count'] === null) {
             $invalidProperties[] = "'shipment_count' can't be null";
         }
@@ -583,6 +593,40 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Brand this record belongs to, or null when it is organization-wide
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }

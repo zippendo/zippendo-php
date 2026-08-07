@@ -465,7 +465,7 @@ void (empty response body)
 ## `listShipments()`
 
 ```php
-listShipments($org_id, $page, $limit): \Zippendo\Sdk\Model\ListShipments200Response
+listShipments($org_id, $page, $limit, $brand_id): \Zippendo\Sdk\Model\ListShipments200Response
 ```
 
 List shipments
@@ -492,9 +492,10 @@ $apiInstance = new Zippendo\Sdk\Api\ShipmentsApi(
 $org_id = org_8f3kd92ld0; // string | Organization ID
 $page = 1; // int | Page number (1-based)
 $limit = 20; // int | Items per page (max 100)
+$brand_id = brnd_8f3kd92ld0; // string | Filter by brand. Pass a brand ID, or \"none\" for records not assigned to any brand.
 
 try {
-    $result = $apiInstance->listShipments($org_id, $page, $limit);
+    $result = $apiInstance->listShipments($org_id, $page, $limit, $brand_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShipmentsApi->listShipments: ', $e->getMessage(), PHP_EOL;
@@ -508,6 +509,7 @@ try {
 | **org_id** | **string**| Organization ID | |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**| Items per page (max 100) | [optional] [default to 20] |
+| **brand_id** | **string**| Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. | [optional] |
 
 ### Return type
 

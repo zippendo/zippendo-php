@@ -12,7 +12,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -2455,15 +2455,16 @@ class ShipmentsApi
      * @param  string $org_id Organization ID (required)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
+     * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zippendo\Sdk\Model\ListShipments200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
-    public function listShipments($org_id, $page = 1, $limit = 20, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipments($org_id, $page = 1, $limit = 20, $brand_id = null, string $contentType = self::contentTypes['listShipments'][0])
     {
-        list($response) = $this->listShipmentsWithHttpInfo($org_id, $page, $limit, $contentType);
+        list($response) = $this->listShipmentsWithHttpInfo($org_id, $page, $limit, $brand_id, $contentType);
         return $response;
     }
 
@@ -2475,15 +2476,16 @@ class ShipmentsApi
      * @param  string $org_id Organization ID (required)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
+     * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zippendo\Sdk\Model\ListShipments200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listShipmentsWithHttpInfo($org_id, $page = 1, $limit = 20, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, string $contentType = self::contentTypes['listShipments'][0])
     {
-        $request = $this->listShipmentsRequest($org_id, $page, $limit, $contentType);
+        $request = $this->listShipmentsRequest($org_id, $page, $limit, $brand_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2590,14 +2592,15 @@ class ShipmentsApi
      * @param  string $org_id Organization ID (required)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
+     * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listShipmentsAsync($org_id, $page = 1, $limit = 20, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsAsync($org_id, $page = 1, $limit = 20, $brand_id = null, string $contentType = self::contentTypes['listShipments'][0])
     {
-        return $this->listShipmentsAsyncWithHttpInfo($org_id, $page, $limit, $contentType)
+        return $this->listShipmentsAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2613,15 +2616,16 @@ class ShipmentsApi
      * @param  string $org_id Organization ID (required)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
+     * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listShipmentsAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, string $contentType = self::contentTypes['listShipments'][0])
     {
         $returnType = '\Zippendo\Sdk\Model\ListShipments200Response';
-        $request = $this->listShipmentsRequest($org_id, $page, $limit, $contentType);
+        $request = $this->listShipmentsRequest($org_id, $page, $limit, $brand_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2665,12 +2669,13 @@ class ShipmentsApi
      * @param  string $org_id Organization ID (required)
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
+     * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listShipmentsRequest($org_id, $page = 1, $limit = 20, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsRequest($org_id, $page = 1, $limit = 20, $brand_id = null, string $contentType = self::contentTypes['listShipments'][0])
     {
 
         // verify the required parameter 'org_id' is set
@@ -2695,6 +2700,7 @@ class ShipmentsApi
         }
         
 
+
         $resourcePath = '/orgs/{orgId}/shipments';
         $formParams = [];
         $queryParams = [];
@@ -2716,6 +2722,15 @@ class ShipmentsApi
             $limit,
             'limit', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $brand_id,
+            'brandId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

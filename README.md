@@ -40,6 +40,37 @@ Every call takes an `org_id` (your organization ID, found in the dashboard). It 
 call by design: one API token can be granted access to multiple organizations, and `org_id` selects
 which one the request acts on.
 
+## Brands
+
+A brand is a sub-account inside an organization: one company running several consumer-facing labels
+(say Pitaya and Kiwi) keeps each label's orders and shipments separate, with its own company name,
+address and logo on the documents its shipments produce. Scope a request to one brand with the
+`X-Zippendo-Brand` header, whose value is the brand's ID or slug.
+
+The header is not a method argument — it applies uniformly to every operation, so put it on the
+Guzzle client you hand to the resource clients, and every call they make carries it:
+
+```php
+$pitaya = new GuzzleHttp\Client([
+    'headers' => ['X-Zippendo-Brand' => 'pitaya'], // brand ID or slug
+]);
+
+$shipments = new Zippendo\Sdk\Api\ShipmentsApi($pitaya, $config);
+$shipments->listShipments('org_8f3kd92ld0', 1, 50); // Pitaya's shipments only
+```
+
+To address two brands from one process, build a Guzzle client per brand and pass each to its own
+resource clients. Omit the header and the request covers the whole organization — the behaviour of
+every existing token. A header naming a brand that does not exist in the organization is rejected
+with `404 BRAND_NOT_FOUND`.
+
+An API token created with a `brand_id` is permanently confined to that brand and needs no header.
+Sending `X-Zippendo-Brand` naming a *different* brand on such a token is refused with
+`403 BRAND_ACCESS_DENIED` — the binding is never widened.
+
+Creating, updating and deleting brands is done in the Zippendo dashboard; brand management is not
+part of this SDK.
+
 ## Listing & pagination
 
 List endpoints accept `page` (1-based) and `limit`, and return a page with `getData()` plus

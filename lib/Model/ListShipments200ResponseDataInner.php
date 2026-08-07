@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -63,6 +63,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'type' => 'string',
         'carrier_settings' => '\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettings',
         'status' => 'string',
+        'brand_id' => 'string',
         'address' => '\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerAddress',
         'created_at' => 'string',
         'updated_at' => 'string'
@@ -81,6 +82,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'type' => null,
         'carrier_settings' => null,
         'status' => null,
+        'brand_id' => null,
         'address' => null,
         'created_at' => null,
         'updated_at' => null
@@ -97,6 +99,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'type' => false,
         'carrier_settings' => false,
         'status' => false,
+        'brand_id' => true,
         'address' => true,
         'created_at' => false,
         'updated_at' => false
@@ -193,6 +196,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'type' => 'type',
         'carrier_settings' => 'carrierSettings',
         'status' => 'status',
+        'brand_id' => 'brandId',
         'address' => 'address',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
@@ -209,6 +213,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'type' => 'setType',
         'carrier_settings' => 'setCarrierSettings',
         'status' => 'setStatus',
+        'brand_id' => 'setBrandId',
         'address' => 'setAddress',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
@@ -225,6 +230,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         'type' => 'getType',
         'carrier_settings' => 'getCarrierSettings',
         'status' => 'getStatus',
+        'brand_id' => 'getBrandId',
         'address' => 'getAddress',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
@@ -334,6 +340,7 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('carrier_settings', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -399,6 +406,9 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
             );
         }
 
+        if ($this->container['brand_id'] === null && !$this->isNullableSetToNull('brand_id')) {
+            $invalidProperties[] = "'brand_id' is required";
+        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
@@ -571,6 +581,40 @@ class ListShipments200ResponseDataInner implements ModelInterface, ArrayAccess, 
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Brand this record belongs to, or null when it is organization-wide
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }

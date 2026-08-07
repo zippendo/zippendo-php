@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** | Token name for identification |
 **token_prefix** | **string** | First 12 chars of the token for identification |
 **scopes** | **string[]** | Permission scopes granted by the token |
+**brand_id** | **string** | Brand this token is restricted to, or null for organization-wide access |
 **last_used_at** | **string** | Timestamp the token was last used (ISO 8601), null if never used |
 **expires_at** | **string** | Expiry timestamp (ISO 8601), null if it never expires |
 **created_at** | **string** | Creation timestamp (ISO 8601) |

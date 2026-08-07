@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -270,15 +270,21 @@ class ListApiTokens401Response implements ModelInterface, ArrayAccess, \JsonSeri
     public const CODE_ORG_ACCESS_DENIED = 'ORG_ACCESS_DENIED';
     public const CODE_ORG_DISABLED = 'ORG_DISABLED';
     public const CODE_ORG_SLUG_EXISTS = 'ORG_SLUG_EXISTS';
+    public const CODE_BRAND_NOT_FOUND = 'BRAND_NOT_FOUND';
+    public const CODE_BRAND_ACCESS_DENIED = 'BRAND_ACCESS_DENIED';
+    public const CODE_BRAND_SLUG_EXISTS = 'BRAND_SLUG_EXISTS';
+    public const CODE_BRAND_HAS_RECORDS = 'BRAND_HAS_RECORDS';
     public const CODE_USER_NOT_FOUND = 'USER_NOT_FOUND';
     public const CODE_USER_EXISTS = 'USER_EXISTS';
     public const CODE_MEMBER_NOT_FOUND = 'MEMBER_NOT_FOUND';
+    public const CODE_MEMBER_SELF_BRAND_RESTRICTION = 'MEMBER_SELF_BRAND_RESTRICTION';
     public const CODE_ROLE_NOT_FOUND = 'ROLE_NOT_FOUND';
     public const CODE_ROLE_NAME_EXISTS = 'ROLE_NAME_EXISTS';
     public const CODE_ROLE_IN_USE = 'ROLE_IN_USE';
     public const CODE_MEMBER_EXISTS = 'MEMBER_EXISTS';
     public const CODE_INVITATION_NOT_FOUND = 'INVITATION_NOT_FOUND';
     public const CODE_INVITATION_EXPIRED = 'INVITATION_EXPIRED';
+    public const CODE_INVITATION_ALREADY_SENT = 'INVITATION_ALREADY_SENT';
     public const CODE_INVITATION_EMAIL_FAILED = 'INVITATION_EMAIL_FAILED';
     public const CODE_TOKEN_NOT_FOUND = 'TOKEN_NOT_FOUND';
     public const CODE_BILLING_PAYMENT_FAILED = 'BILLING_PAYMENT_FAILED';
@@ -402,15 +408,21 @@ class ListApiTokens401Response implements ModelInterface, ArrayAccess, \JsonSeri
             self::CODE_ORG_ACCESS_DENIED,
             self::CODE_ORG_DISABLED,
             self::CODE_ORG_SLUG_EXISTS,
+            self::CODE_BRAND_NOT_FOUND,
+            self::CODE_BRAND_ACCESS_DENIED,
+            self::CODE_BRAND_SLUG_EXISTS,
+            self::CODE_BRAND_HAS_RECORDS,
             self::CODE_USER_NOT_FOUND,
             self::CODE_USER_EXISTS,
             self::CODE_MEMBER_NOT_FOUND,
+            self::CODE_MEMBER_SELF_BRAND_RESTRICTION,
             self::CODE_ROLE_NOT_FOUND,
             self::CODE_ROLE_NAME_EXISTS,
             self::CODE_ROLE_IN_USE,
             self::CODE_MEMBER_EXISTS,
             self::CODE_INVITATION_NOT_FOUND,
             self::CODE_INVITATION_EXPIRED,
+            self::CODE_INVITATION_ALREADY_SENT,
             self::CODE_INVITATION_EMAIL_FAILED,
             self::CODE_TOKEN_NOT_FOUND,
             self::CODE_BILLING_PAYMENT_FAILED,
