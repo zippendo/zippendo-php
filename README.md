@@ -43,7 +43,7 @@ which one the request acts on.
 ## Brands
 
 A brand is a sub-account inside an organization: one company running several consumer-facing labels
-(say Pitaya and Kiwi) keeps each label's orders and shipments separate, with its own company name,
+(say Acme and Globex) keeps each label's orders and shipments separate, with its own company name,
 address and logo on the documents its shipments produce. Scope a request to one brand with the
 `X-Zippendo-Brand` header, whose value is the brand's ID or slug.
 
@@ -51,12 +51,12 @@ The header is not a method argument — it applies uniformly to every operation,
 Guzzle client you hand to the resource clients, and every call they make carries it:
 
 ```php
-$pitaya = new GuzzleHttp\Client([
-    'headers' => ['X-Zippendo-Brand' => 'pitaya'], // brand ID or slug
+$acme = new GuzzleHttp\Client([
+    'headers' => ['X-Zippendo-Brand' => 'acme'], // brand ID or slug
 ]);
 
-$shipments = new Zippendo\Sdk\Api\ShipmentsApi($pitaya, $config);
-$shipments->listShipments('org_8f3kd92ld0', 1, 50); // Pitaya's shipments only
+$shipments = new Zippendo\Sdk\Api\ShipmentsApi($acme, $config);
+$shipments->listShipments('org_8f3kd92ld0', 1, 50); // Acme's shipments only
 ```
 
 To address two brands from one process, build a Guzzle client per brand and pass each to its own
@@ -68,8 +68,30 @@ An API token created with a `brand_id` is permanently confined to that brand and
 Sending `X-Zippendo-Brand` naming a *different* brand on such a token is refused with
 `403 BRAND_ACCESS_DENIED` — the binding is never widened.
 
-Creating, updating and deleting brands is done in the Zippendo dashboard; brand management is not
-part of this SDK.
+### Managing brands
+
+Brands are managed with `BrandsApi`. Build it from a plain Guzzle client without the brand header —
+you are administering brands, not acting inside one:
+
+```php
+$brands = new Zippendo\Sdk\Api\BrandsApi(new GuzzleHttp\Client(), $config);
+
+$created = $brands->createOrgBrand('org_8f3kd92ld0', new Zippendo\Sdk\Model\CreateOrgBrandRequest([
+    'name' => 'Acme',
+    'company_name' => 'Acme ApS',
+]));
+
+$page = $brands->listOrgBrands('org_8f3kd92ld0');
+$brands->updateOrgBrand('org_8f3kd92ld0', $created->getId(), new Zippendo\Sdk\Model\UpdateOrgBrandRequest([
+    'vat_number' => 'DK12345678',
+]));
+$brands->archiveOrgBrand('org_8f3kd92ld0', $created->getId());
+```
+
+Retire a brand with `archiveOrgBrand` — archived brands keep their slug and can be restored with
+`unarchiveOrgBrand`. Permanent deletion is dashboard-only: it is refused while any order, shipment,
+member or token still references the brand. Brands require a plan that includes them; creating one
+past your plan's limit returns `403`.
 
 ## Listing & pagination
 
