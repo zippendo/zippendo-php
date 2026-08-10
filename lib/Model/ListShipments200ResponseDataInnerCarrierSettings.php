@@ -61,7 +61,7 @@ class ListShipments200ResponseDataInnerCarrierSettings implements ModelInterface
         'carrier_id' => 'string',
         'product_id' => 'string',
         'services' => 'string[]',
-        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue>'
+        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValue>'
     ];
 
     /**
@@ -407,7 +407,7 @@ class ListShipments200ResponseDataInnerCarrierSettings implements ModelInterface
     /**
      * Gets additional_parameters
      *
-     * @return array<string,\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue>
+     * @return array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValue>
      */
     public function getAdditionalParameters()
     {
@@ -417,7 +417,7 @@ class ListShipments200ResponseDataInnerCarrierSettings implements ModelInterface
     /**
      * Sets additional_parameters
      *
-     * @param array<string,\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue> $additional_parameters Carrier-specific extra parameters as key/value pairs.
+     * @param array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValue> $additional_parameters Carrier-specific extra parameters as key/value pairs.
      *
      * @return self
      */

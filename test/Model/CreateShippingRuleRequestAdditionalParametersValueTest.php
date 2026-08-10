@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateShippingRuleRequestAdditionalParametersAnyOfValueTest
+ * CreateShippingRuleRequestAdditionalParametersValueTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateShippingRuleRequestAdditionalParametersAnyOfValueTest Class Doc Comment
+ * CreateShippingRuleRequestAdditionalParametersValueTest Class Doc Comment
  *
  * @category    Class
- * @description CreateShippingRuleRequestAdditionalParametersAnyOfValue
+ * @description CreateShippingRuleRequestAdditionalParametersValue
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateShippingRuleRequestAdditionalParametersAnyOfValueTest extends TestCase
+class CreateShippingRuleRequestAdditionalParametersValueTest extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class CreateShippingRuleRequestAdditionalParametersAnyOfValueTest extends TestCa
     }
 
     /**
-     * Test "CreateShippingRuleRequestAdditionalParametersAnyOfValue"
+     * Test "CreateShippingRuleRequestAdditionalParametersValue"
      */
-    public function testCreateShippingRuleRequestAdditionalParametersAnyOfValue()
+    public function testCreateShippingRuleRequestAdditionalParametersValue()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

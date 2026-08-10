@@ -65,7 +65,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'carrier_id' => 'string',
         'product_id' => 'string',
         'services' => 'string[]',
-        'additional_parameters' => '\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersInner[]',
+        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValue>',
         'address_id' => 'string',
         'receiving_countries' => 'string[]',
         'email_notification' => 'bool',
@@ -831,7 +831,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets additional_parameters
      *
-     * @return \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersInner[]
+     * @return array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValue>
      */
     public function getAdditionalParameters()
     {
@@ -841,7 +841,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets additional_parameters
      *
-     * @param \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersInner[] $additional_parameters Carrier-specific extra parameters. DEPRECATED array form `[{ name, val }]` where `name` is the carrier parameter `key` (from the product's `additionalParameters[].key`, e.g. `returnFunctionality`) and `val` is the stringified value. This will change to a `{ key: value }` object in a future version — writes already accept either shape.
+     * @param array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValue> $additional_parameters Carrier-specific extra parameters, keyed by the carrier parameter `key` from the product's `additionalParameters[].key`.
      *
      * @return self
      */

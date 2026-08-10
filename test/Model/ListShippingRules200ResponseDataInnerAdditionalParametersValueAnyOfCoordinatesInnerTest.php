@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateShippingRuleRequestAdditionalParametersAnyOfInnerTest
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInnerTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateShippingRuleRequestAdditionalParametersAnyOfInnerTest Class Doc Comment
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInnerTest Class Doc Comment
  *
  * @category    Class
- * @description CreateShippingRuleRequestAdditionalParametersAnyOfInner
+ * @description ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateShippingRuleRequestAdditionalParametersAnyOfInnerTest extends TestCase
+class ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInnerTest extends TestCase
 {
 
     /**
@@ -72,27 +72,9 @@ class CreateShippingRuleRequestAdditionalParametersAnyOfInnerTest extends TestCa
     }
 
     /**
-     * Test "CreateShippingRuleRequestAdditionalParametersAnyOfInner"
+     * Test "ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner"
      */
-    public function testCreateShippingRuleRequestAdditionalParametersAnyOfInner()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "val"
-     */
-    public function testPropertyVal()
+    public function testListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInnerTest
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInnerTest Class Doc Comment
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfTest Class Doc Comment
  *
  * @category    Class
- * @description CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInner
+ * @description ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInnerTest extends TestCase
+class ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfTest extends TestCase
 {
 
     /**
@@ -72,9 +72,45 @@ class CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInn
     }
 
     /**
-     * Test "CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInner"
+     * Test "ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf"
      */
-    public function testCreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInner()
+    public function testListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "address"
+     */
+    public function testPropertyAddress()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "coordinates"
+     */
+    public function testPropertyCoordinates()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

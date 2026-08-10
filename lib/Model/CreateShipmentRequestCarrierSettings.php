@@ -61,7 +61,7 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
         'carrier_id' => 'string',
         'product_id' => 'string',
         'services' => 'string[]',
-        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersAnyOfValue>'
+        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>'
     ];
 
     /**
@@ -407,7 +407,7 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
     /**
      * Gets additional_parameters
      *
-     * @return array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersAnyOfValue>
+     * @return array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>
      */
     public function getAdditionalParameters()
     {
@@ -417,7 +417,7 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
     /**
      * Sets additional_parameters
      *
-     * @param array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersAnyOfValue> $additional_parameters Carrier-specific extra parameters as key/value pairs.
+     * @param array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue> $additional_parameters Carrier-specific extra parameters as key/value pairs.
      *
      * @return self
      */

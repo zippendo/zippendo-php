@@ -1,6 +1,6 @@
 <?php
 /**
- * ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue
+ * CreateShippingRuleRequestAdditionalParametersValue
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue Class Doc Comment
+ * CreateShippingRuleRequestAdditionalParametersValue Class Doc Comment
  *
  * @category Class
  * @package  Zippendo\Sdk
@@ -41,7 +41,7 @@ use \Zippendo\Sdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateShippingRuleRequestAdditionalParametersValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listShipments_200_response_data_inner_carrierSettings_additionalParameters_value';
+    protected static $openAPIModelName = 'createShippingRule_request_additionalParameters_value';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,7 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue 
         'id' => 'string',
         'name' => 'string',
         'address' => 'string',
-        'coordinates' => '\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInner[]'
+        'coordinates' => '\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]'
     ];
 
     /**
@@ -412,7 +412,7 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue 
     /**
      * Gets coordinates
      *
-     * @return \Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInner[]|null
+     * @return \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null
      */
     public function getCoordinates()
     {
@@ -422,7 +422,7 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue 
     /**
      * Sets coordinates
      *
-     * @param \Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersAnyOfValueAnyOfCoordinatesInner[]|null $coordinates Latitude/longitude of the service point.
+     * @param \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null $coordinates Latitude/longitude of the service point.
      *
      * @return self
      */
@@ -432,10 +432,10 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue 
             throw new \InvalidArgumentException('non-nullable coordinates cannot be null');
         }
         if ((count($coordinates) > 2)) {
-            throw new \InvalidArgumentException('invalid value for $coordinates when calling ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue., number of items must be less than or equal to 2.');
+            throw new \InvalidArgumentException('invalid value for $coordinates when calling CreateShippingRuleRequestAdditionalParametersValue., number of items must be less than or equal to 2.');
         }
         if ((count($coordinates) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $coordinates when calling ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue., number of items must be greater than or equal to 2.');
+            throw new \InvalidArgumentException('invalid length for $coordinates when calling CreateShippingRuleRequestAdditionalParametersValue., number of items must be greater than or equal to 2.');
         }
         $this->container['coordinates'] = $coordinates;
 

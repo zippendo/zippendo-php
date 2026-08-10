@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **carrier_id** | **string** | Carrier ID | [optional]
 **product_id** | **string** | Product ID from carrier | [optional]
 **services** | **string[]** | List of selected services | [optional]
-**additional_parameters** | [**\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParameters**](CreateShippingRuleRequestAdditionalParameters.md) |  | [optional]
+**additional_parameters** | [**array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>**](CreateShippingRuleRequestAdditionalParametersValue.md) | Carrier-specific extra parameters, keyed by the carrier parameter &#x60;key&#x60; from the product&#39;s &#x60;additionalParameters[].key&#x60;. Omit to leave the rule&#39;s parameters unchanged. | [optional]
 **address_id** | **string** | Sender address ID | [optional]
 **receiving_countries** | **string[]** | List of supported country codes | [optional]
 **email_notification** | **bool** | Send email notification to recipient | [optional] [default to false]

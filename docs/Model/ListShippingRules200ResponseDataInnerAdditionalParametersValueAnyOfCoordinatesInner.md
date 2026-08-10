@@ -1,4 +1,4 @@
-# CreateShippingRuleRequestAdditionalParameters
+# ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner
 
 ## Properties
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueTest
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueTest Class Doc Comment
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueTest Class Doc Comment
  *
  * @category    Class
- * @description ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue
+ * @description ListShippingRules200ResponseDataInnerAdditionalParametersValue
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueTest extends TestCase
+class ListShippingRules200ResponseDataInnerAdditionalParametersValueTest extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueT
     }
 
     /**
-     * Test "ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue"
+     * Test "ListShippingRules200ResponseDataInnerAdditionalParametersValue"
      */
-    public function testListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValue()
+    public function testListShippingRules200ResponseDataInnerAdditionalParametersValue()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

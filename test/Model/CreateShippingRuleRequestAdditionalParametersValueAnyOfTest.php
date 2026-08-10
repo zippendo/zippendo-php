@@ -1,6 +1,6 @@
 <?php
 /**
- * ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueAnyOfTest
+ * CreateShippingRuleRequestAdditionalParametersValueAnyOfTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueAnyOfTest Class Doc Comment
+ * CreateShippingRuleRequestAdditionalParametersValueAnyOfTest Class Doc Comment
  *
  * @category    Class
- * @description ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueAnyOf
+ * @description CreateShippingRuleRequestAdditionalParametersValueAnyOf
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueAnyOfTest extends TestCase
+class CreateShippingRuleRequestAdditionalParametersValueAnyOfTest extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueA
     }
 
     /**
-     * Test "ListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueAnyOf"
+     * Test "CreateShippingRuleRequestAdditionalParametersValueAnyOf"
      */
-    public function testListShipments200ResponseDataInnerCarrierSettingsAdditionalParametersValueAnyOf()
+    public function testCreateShippingRuleRequestAdditionalParametersValueAnyOf()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

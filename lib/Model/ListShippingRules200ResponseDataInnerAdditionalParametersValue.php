@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateShippingRuleRequestAdditionalParameters
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValue
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * CreateShippingRuleRequestAdditionalParameters Class Doc Comment
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValue Class Doc Comment
  *
  * @category Class
- * @description Carrier-specific extra parameters. Accepts EITHER the &#x60;{ key: value }&#x60; object (preferred) OR the legacy &#x60;[{ name, val }]&#x60; array, so you can migrate on your own schedule. Each key / &#x60;name&#x60; is the carrier parameter &#x60;key&#x60; from the product&#39;s &#x60;additionalParameters[].key&#x60; (e.g. &#x60;returnFunctionality&#x60;).
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListShippingRules200ResponseDataInnerAdditionalParametersValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      *
      * @var string
      */
-    protected static $openAPIModelName = 'createShippingRule_request_additionalParameters';
+    protected static $openAPIModelName = 'listShippingRules_200_response_data_inner_additionalParameters_value';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +58,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      * @var string[]
      */
     protected static $openAPITypes = [
-        
+        'id' => 'string',
+        'name' => 'string',
+        'address' => 'string',
+        'coordinates' => '\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]'
     ];
 
     /**
@@ -70,7 +72,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        
+        'id' => null,
+        'name' => null,
+        'address' => null,
+        'coordinates' => null
     ];
 
     /**
@@ -79,7 +84,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        
+        'id' => false,
+        'name' => false,
+        'address' => false,
+        'coordinates' => false
     ];
 
     /**
@@ -168,7 +176,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'id' => 'id',
+        'name' => 'name',
+        'address' => 'address',
+        'coordinates' => 'coordinates'
     ];
 
     /**
@@ -177,7 +188,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
-        
+        'id' => 'setId',
+        'name' => 'setName',
+        'address' => 'setAddress',
+        'coordinates' => 'setCoordinates'
     ];
 
     /**
@@ -186,7 +200,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
-        
+        'id' => 'getId',
+        'name' => 'getName',
+        'address' => 'getAddress',
+        'coordinates' => 'getCoordinates'
     ];
 
     /**
@@ -246,6 +263,10 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('coordinates', $data ?? [], null);
     }
 
     /**
@@ -275,6 +296,23 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if (!is_null($this->container['coordinates']) && (count($this->container['coordinates']) > 2)) {
+            $invalidProperties[] = "invalid value for 'coordinates', number of items must be less than or equal to 2.";
+        }
+
+        if (!is_null($this->container['coordinates']) && (count($this->container['coordinates']) < 2)) {
+            $invalidProperties[] = "invalid value for 'coordinates', number of items must be greater than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -289,6 +327,120 @@ class CreateShippingRuleRequestAdditionalParameters implements ModelInterface, A
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Identifier of the selected service point.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Display name of the service point.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param string $address Formatted address of the service point.
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets coordinates
+     *
+     * @return \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null
+     */
+    public function getCoordinates()
+    {
+        return $this->container['coordinates'];
+    }
+
+    /**
+     * Sets coordinates
+     *
+     * @param \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null $coordinates Latitude/longitude of the service point.
+     *
+     * @return self
+     */
+    public function setCoordinates($coordinates)
+    {
+        if (is_null($coordinates)) {
+            throw new \InvalidArgumentException('non-nullable coordinates cannot be null');
+        }
+        if ((count($coordinates) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $coordinates when calling ListShippingRules200ResponseDataInnerAdditionalParametersValue., number of items must be less than or equal to 2.');
+        }
+        if ((count($coordinates) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $coordinates when calling ListShippingRules200ResponseDataInnerAdditionalParametersValue., number of items must be greater than or equal to 2.');
+        }
+        $this->container['coordinates'] = $coordinates;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

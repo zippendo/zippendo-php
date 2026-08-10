@@ -1,6 +1,6 @@
 <?php
 /**
- * ListShippingRules200ResponseDataInnerAdditionalParametersInner
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListShippingRules200ResponseDataInnerAdditionalParametersInner Class Doc Comment
+ * ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf Class Doc Comment
  *
  * @category Class
  * @package  Zippendo\Sdk
@@ -41,7 +41,7 @@ use \Zippendo\Sdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listShippingRules_200_response_data_inner_additionalParameters_inner';
+    protected static $openAPIModelName = 'listShippingRules_200_response_data_inner_additionalParameters_value_anyOf';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      * @var string[]
      */
     protected static $openAPITypes = [
+        'id' => 'string',
         'name' => 'string',
-        'val' => 'string'
+        'address' => 'string',
+        'coordinates' => '\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'id' => null,
         'name' => null,
-        'val' => null
+        'address' => null,
+        'coordinates' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      * @var boolean[]
      */
     protected static array $openAPINullables = [
+        'id' => false,
         'name' => false,
-        'val' => false
+        'address' => false,
+        'coordinates' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'name' => 'name',
-        'val' => 'val'
+        'address' => 'address',
+        'coordinates' => 'coordinates'
     ];
 
     /**
@@ -180,8 +188,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'name' => 'setName',
-        'val' => 'setVal'
+        'address' => 'setAddress',
+        'coordinates' => 'setCoordinates'
     ];
 
     /**
@@ -190,8 +200,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'name' => 'getName',
-        'val' => 'getVal'
+        'address' => 'getAddress',
+        'coordinates' => 'getCoordinates'
     ];
 
     /**
@@ -251,8 +263,10 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('val', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('coordinates', $data ?? [], null);
     }
 
     /**
@@ -282,16 +296,23 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if (!is_null($this->container['coordinates']) && (count($this->container['coordinates']) > 2)) {
+            $invalidProperties[] = "invalid value for 'coordinates', number of items must be less than or equal to 2.";
         }
 
-        if ($this->container['val'] === null) {
-            $invalidProperties[] = "'val' can't be null";
+        if (!is_null($this->container['coordinates']) && (count($this->container['coordinates']) < 2)) {
+            $invalidProperties[] = "invalid value for 'coordinates', number of items must be greater than or equal to 2.";
         }
+
         return $invalidProperties;
     }
 
@@ -308,6 +329,33 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Identifier of the selected service point.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -320,7 +368,7 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
     /**
      * Sets name
      *
-     * @param string $name Carrier parameter key
+     * @param string $name Display name of the service point.
      *
      * @return self
      */
@@ -329,39 +377,67 @@ class ListShippingRules200ResponseDataInnerAdditionalParametersInner implements 
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ListShippingRules200ResponseDataInnerAdditionalParametersInner., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets val
+     * Gets address
      *
      * @return string
      */
-    public function getVal()
+    public function getAddress()
     {
-        return $this->container['val'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets val
+     * Sets address
      *
-     * @param string $val Parameter value (stringified)
+     * @param string $address Formatted address of the service point.
      *
      * @return self
      */
-    public function setVal($val)
+    public function setAddress($address)
     {
-        if (is_null($val)) {
-            throw new \InvalidArgumentException('non-nullable val cannot be null');
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
-        $this->container['val'] = $val;
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets coordinates
+     *
+     * @return \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null
+     */
+    public function getCoordinates()
+    {
+        return $this->container['coordinates'];
+    }
+
+    /**
+     * Sets coordinates
+     *
+     * @param \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null $coordinates Latitude/longitude of the service point.
+     *
+     * @return self
+     */
+    public function setCoordinates($coordinates)
+    {
+        if (is_null($coordinates)) {
+            throw new \InvalidArgumentException('non-nullable coordinates cannot be null');
+        }
+        if ((count($coordinates) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $coordinates when calling ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf., number of items must be less than or equal to 2.');
+        }
+        if ((count($coordinates) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $coordinates when calling ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOf., number of items must be greater than or equal to 2.');
+        }
+        $this->container['coordinates'] = $coordinates;
 
         return $this;
     }

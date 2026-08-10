@@ -63,7 +63,7 @@ class SplitShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'carrier_id' => 'string',
         'product_id' => 'string',
         'services' => 'string[]',
-        'additional_parameters' => 'array<string,mixed>',
+        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>',
         'reference' => 'string'
     ];
 
@@ -473,7 +473,7 @@ class SplitShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets additional_parameters
      *
-     * @return array<string,mixed>|null
+     * @return array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>|null
      */
     public function getAdditionalParameters()
     {
@@ -483,7 +483,7 @@ class SplitShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets additional_parameters
      *
-     * @param array<string,mixed>|null $additional_parameters Carrier-specific parameters for the new shipment.
+     * @param array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>|null $additional_parameters Carrier-specific parameters for the new shipment. Copied from the original if omitted.
      *
      * @return self
      */
