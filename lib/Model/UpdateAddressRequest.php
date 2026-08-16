@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.  Brands themselves are managed under the **Brands** tag. Retiring a brand is done with `POST /orgs/{orgId}/brands/{brandId}/archive` — permanent deletion is a dashboard-only action, since it is refused while any order, shipment, member or token still references the brand. Brands require a plan that includes them; creating one beyond your plan's limit returns `403`.
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.  List endpoints additionally take a `?brandScope=own|shared|both` parameter to narrow further within whichever brand context already applies. `own` returns only rows assigned to that brand, and requires a brand context — a brand-bound token, a resolved brand session, or the `X-Zippendo-Brand` header above — otherwise `400`. `shared` returns only the organization-wide rows (equivalent to filtering `brandId=none`). The default, `both`, keeps the existing behaviour: a brand context sees its own rows plus the organization-wide ones. Set `X-Zippendo-Brand-Scope` as a client default to apply the same choice to every request instead of repeating the query parameter on each call — an explicit `brandScope` query parameter always wins over the header, and a blank header value is ignored.  Brands themselves are managed under the **Brands** tag. Retiring a brand is done with `POST /orgs/{orgId}/brands/{brandId}/archive` — permanent deletion is a dashboard-only action, since it is refused while any order, shipment, member or token still references the brand. Brands require a plan that includes them; creating one beyond your plan's limit returns `403`.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -69,7 +69,8 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'string',
         'email' => 'string',
         'customs' => 'array<string,string>',
-        'address_types' => 'string[]'
+        'address_types' => 'string[]',
+        'brand_id' => 'string'
     ];
 
     /**
@@ -91,7 +92,8 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => null,
         'email' => 'email',
         'customs' => null,
-        'address_types' => null
+        'address_types' => null,
+        'brand_id' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => false,
         'email' => false,
         'customs' => false,
-        'address_types' => false
+        'address_types' => false,
+        'brand_id' => true
     ];
 
     /**
@@ -211,7 +214,8 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'state',
         'email' => 'email',
         'customs' => 'customs',
-        'address_types' => 'addressTypes'
+        'address_types' => 'addressTypes',
+        'brand_id' => 'brandId'
     ];
 
     /**
@@ -231,7 +235,8 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'setState',
         'email' => 'setEmail',
         'customs' => 'setCustoms',
-        'address_types' => 'setAddressTypes'
+        'address_types' => 'setAddressTypes',
+        'brand_id' => 'setBrandId'
     ];
 
     /**
@@ -251,7 +256,8 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'state' => 'getState',
         'email' => 'getEmail',
         'customs' => 'getCustoms',
-        'address_types' => 'getAddressTypes'
+        'address_types' => 'getAddressTypes',
+        'brand_id' => 'getBrandId'
     ];
 
     /**
@@ -340,6 +346,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('customs', $data ?? [], null);
         $this->setIfExists('address_types', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
     }
 
     /**
@@ -411,6 +418,10 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['address_types']) && (count($this->container['address_types']) < 1)) {
             $invalidProperties[] = "invalid value for 'address_types', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['brand_id']) && (mb_strlen($this->container['brand_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'brand_id', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -808,6 +819,45 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('invalid length for $address_types when calling UpdateAddressRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['address_types'] = $address_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Brand this record is assigned to; null (or omitted outside a brand session) keeps it organization-wide
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($brand_id) && (mb_strlen($brand_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $brand_id when calling UpdateAddressRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }

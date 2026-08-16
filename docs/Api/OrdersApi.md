@@ -202,7 +202,7 @@ try {
 ## `listOrders()`
 
 ```php
-listOrders($org_id, $page, $limit, $brand_id, $status, $order_channel_id, $search): \Zippendo\Sdk\Model\ListOrders200Response
+listOrders($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search): \Zippendo\Sdk\Model\ListOrders200Response
 ```
 
 List orders
@@ -230,12 +230,13 @@ $org_id = org_8f3kd92ld0; // string | Organization ID
 $page = 1; // int | Page number (1-based)
 $limit = 20; // int | Items per page (max 100)
 $brand_id = brnd_8f3kd92ld0; // string | Filter by brand. Pass a brand ID, or \"none\" for records not assigned to any brand.
+$brand_scope = own; // string | How the brand context narrows this list: \"own\" returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \"shared\" returns only unassigned organization-wide rows, \"both\" (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \"shared\" returns no rows, since those records are never visible organization-wide from within a brand context.
 $status = processing; // string | Order fulfilment status derived from its shipments.
 $order_channel_id = clz9k2f0a0001abcd1234efgh; // string | Filter by order channel ID.
 $search = Anna; // string | Search by order number or customer name/email.
 
 try {
-    $result = $apiInstance->listOrders($org_id, $page, $limit, $brand_id, $status, $order_channel_id, $search);
+    $result = $apiInstance->listOrders($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->listOrders: ', $e->getMessage(), PHP_EOL;
@@ -250,6 +251,7 @@ try {
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**| Items per page (max 100) | [optional] [default to 20] |
 | **brand_id** | **string**| Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. | [optional] |
+| **brand_scope** | **string**| How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. | [optional] |
 | **status** | **string**| Order fulfilment status derived from its shipments. | [optional] |
 | **order_channel_id** | **string**| Filter by order channel ID. | [optional] |
 | **search** | **string**| Search by order number or customer name/email. | [optional] |

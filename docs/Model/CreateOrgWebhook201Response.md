@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **secret** | **string** | Signing secret used to verify webhook payloads |
 **events** | **string[]** | Events the webhook is subscribed to |
 **is_active** | **bool** | Whether the webhook is active |
+**brand_id** | **string** | Brand this record belongs to, or null when it is organization-wide |
 **created_at** | **string** | Creation timestamp (ISO 8601) |
 **updated_at** | **string** | Last update timestamp (ISO 8601) |
 

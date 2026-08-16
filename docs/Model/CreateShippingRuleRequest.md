@@ -29,5 +29,6 @@ Name | Type | Description | Notes
 **document_printer_id** | **string** | ID of the document printer | [optional]
 **return_shipping_rule_id** | **string** | ID of the return shipping rule | [optional]
 **auto_create_return_shipment** | **bool** | Automatically create and send a return shipment on dispatch | [optional] [default to false]
+**brand_id** | **string** | Brand this record is assigned to; null (or omitted outside a brand session) keeps it organization-wide | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

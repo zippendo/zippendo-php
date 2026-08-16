@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.  Brands themselves are managed under the **Brands** tag. Retiring a brand is done with `POST /orgs/{orgId}/brands/{brandId}/archive` — permanent deletion is a dashboard-only action, since it is refused while any order, shipment, member or token still references the brand. Brands require a plan that includes them; creating one beyond your plan's limit returns `403`.
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.  List endpoints additionally take a `?brandScope=own|shared|both` parameter to narrow further within whichever brand context already applies. `own` returns only rows assigned to that brand, and requires a brand context — a brand-bound token, a resolved brand session, or the `X-Zippendo-Brand` header above — otherwise `400`. `shared` returns only the organization-wide rows (equivalent to filtering `brandId=none`). The default, `both`, keeps the existing behaviour: a brand context sees its own rows plus the organization-wide ones. Set `X-Zippendo-Brand-Scope` as a client default to apply the same choice to every request instead of repeating the query parameter on each call — an explicit `brandScope` query parameter always wins over the header, and a blank header value is ignored.  Brands themselves are managed under the **Brands** tag. Retiring a brand is done with `POST /orgs/{orgId}/brands/{brandId}/archive` — permanent deletion is a dashboard-only action, since it is refused while any order, shipment, member or token still references the brand. Brands require a plan that includes them; creating one beyond your plan's limit returns `403`.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -61,7 +61,8 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'current_period' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseCurrentPeriod',
         'shipments' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseShipments',
         'limits' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseLimits',
-        'add_ons' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseAddOnsInner[]'
+        'add_ons' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseAddOnsInner[]',
+        'zippy_messages' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyMessages'
     ];
 
     /**
@@ -75,7 +76,8 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'current_period' => null,
         'shipments' => null,
         'limits' => null,
-        'add_ons' => null
+        'add_ons' => null,
+        'zippy_messages' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'current_period' => false,
         'shipments' => false,
         'limits' => false,
-        'add_ons' => false
+        'add_ons' => false,
+        'zippy_messages' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'current_period' => 'currentPeriod',
         'shipments' => 'shipments',
         'limits' => 'limits',
-        'add_ons' => 'addOns'
+        'add_ons' => 'addOns',
+        'zippy_messages' => 'zippyMessages'
     ];
 
     /**
@@ -191,7 +195,8 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'current_period' => 'setCurrentPeriod',
         'shipments' => 'setShipments',
         'limits' => 'setLimits',
-        'add_ons' => 'setAddOns'
+        'add_ons' => 'setAddOns',
+        'zippy_messages' => 'setZippyMessages'
     ];
 
     /**
@@ -203,7 +208,8 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'current_period' => 'getCurrentPeriod',
         'shipments' => 'getShipments',
         'limits' => 'getLimits',
-        'add_ons' => 'getAddOns'
+        'add_ons' => 'getAddOns',
+        'zippy_messages' => 'getZippyMessages'
     ];
 
     /**
@@ -267,6 +273,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('shipments', $data ?? [], null);
         $this->setIfExists('limits', $data ?? [], null);
         $this->setIfExists('add_ons', $data ?? [], null);
+        $this->setIfExists('zippy_messages', $data ?? [], null);
     }
 
     /**
@@ -427,6 +434,33 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable add_ons cannot be null');
         }
         $this->container['add_ons'] = $add_ons;
+
+        return $this;
+    }
+
+    /**
+     * Gets zippy_messages
+     *
+     * @return \Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyMessages|null
+     */
+    public function getZippyMessages()
+    {
+        return $this->container['zippy_messages'];
+    }
+
+    /**
+     * Sets zippy_messages
+     *
+     * @param \Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyMessages|null $zippy_messages zippy_messages
+     *
+     * @return self
+     */
+    public function setZippyMessages($zippy_messages)
+    {
+        if (is_null($zippy_messages)) {
+            throw new \InvalidArgumentException('non-nullable zippy_messages cannot be null');
+        }
+        $this->container['zippy_messages'] = $zippy_messages;
 
         return $this;
     }

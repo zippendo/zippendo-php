@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **return_shipping_rule_id** | **string** | ID of the return shipping rule |
 **auto_create_return_shipment** | **bool** | Automatically create and send a return shipment on dispatch | [default to false]
 **org_id** | **string** | Owning organization ID |
+**brand_id** | **string** | Brand this record belongs to, or null when it is organization-wide |
 **created_at** | **string** | Creation timestamp (ISO 8601) |
 **updated_at** | **string** | Last update timestamp (ISO 8601) |
 **carrier** | [**\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerCarrier**](ListShippingRules200ResponseDataInnerCarrier.md) |  |

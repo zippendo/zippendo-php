@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **carrier_slug** | **string** | Carrier slug identifier |
 **config** | [**array<string,\Zippendo\Sdk\Model\ListCarriers200ResponseDataInnerConfigValue>**](ListCarriers200ResponseDataInnerConfigValue.md) | Carrier configuration (required and optional fields) |
 **org_id** | **string** | Owning organization ID |
+**brand_id** | **string** | Brand this record belongs to, or null when it is organization-wide |
 **created_at** | **string** | Creation timestamp (ISO 8601) |
 **updated_at** | **string** | Last update timestamp (ISO 8601) |
 

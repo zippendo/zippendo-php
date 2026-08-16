@@ -13,7 +13,7 @@
 /**
  * Zippendo Public API
  *
- * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.  Brands themselves are managed under the **Brands** tag. Retiring a brand is done with `POST /orgs/{orgId}/brands/{brandId}/archive` — permanent deletion is a dashboard-only action, since it is refused while any order, shipment, member or token still references the brand. Brands require a plan that includes them; creating one beyond your plan's limit returns `403`.
+ * Public API documentation for Zippendo. Authenticate using your API token (Bearer token prefixed with zipp_).  **Brands (sub-accounts).** An organization can be split into brands, each keeping its own orders, shipments and configuration separate. There are two ways to scope requests to one brand, and NEITHER changes any request body:  1. **Bind the token.** Create an API token with a `brandId` and every request it makes is confined    to that brand — reads filtered, writes stamped. This is the recommended way to give a single    brand's team its own credential. 2. **Send the `X-Zippendo-Brand` header.** An organization-wide token can scope an individual    request by sending the brand's id or slug in this header. Most SDKs let you set it once on the    client so every call inherits it.  A brand-bound token that receives an `X-Zippendo-Brand` header naming a different brand is rejected with `403 BRAND_ACCESS_DENIED` — the binding is never widened. Omit both and requests cover the whole organization, which is the behaviour of every existing token.  Records that belong to no brand carry `brandId: null`. Configuration (carriers, shipping rules, addresses) with a null brand is organization-wide and remains visible inside every brand; orders and shipments with a null brand are only visible organization-wide.  List endpoints additionally take a `?brandScope=own|shared|both` parameter to narrow further within whichever brand context already applies. `own` returns only rows assigned to that brand, and requires a brand context — a brand-bound token, a resolved brand session, or the `X-Zippendo-Brand` header above — otherwise `400`. `shared` returns only the organization-wide rows (equivalent to filtering `brandId=none`). The default, `both`, keeps the existing behaviour: a brand context sees its own rows plus the organization-wide ones. Set `X-Zippendo-Brand-Scope` as a client default to apply the same choice to every request instead of repeating the query parameter on each call — an explicit `brandScope` query parameter always wins over the header, and a blank header value is ignored.  Brands themselves are managed under the **Brands** tag. Retiring a brand is done with `POST /orgs/{orgId}/brands/{brandId}/archive` — permanent deletion is a dashboard-only action, since it is refused while any order, shipment, member or token still references the brand. Brands require a plan that includes them; creating one beyond your plan's limit returns `403`.
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@zippendo.com
@@ -63,6 +63,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'carrier_slug' => 'string',
         'config' => 'array<string,\Zippendo\Sdk\Model\ListCarriers200ResponseDataInnerConfigValue>',
         'org_id' => 'string',
+        'brand_id' => 'string',
         'created_at' => 'string',
         'updated_at' => 'string',
         'logo' => 'string',
@@ -84,6 +85,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'carrier_slug' => null,
         'config' => null,
         'org_id' => null,
+        'brand_id' => null,
         'created_at' => null,
         'updated_at' => null,
         'logo' => null,
@@ -103,6 +105,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'carrier_slug' => false,
         'config' => false,
         'org_id' => false,
+        'brand_id' => true,
         'created_at' => false,
         'updated_at' => false,
         'logo' => false,
@@ -202,6 +205,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'carrier_slug' => 'carrierSlug',
         'config' => 'config',
         'org_id' => 'orgId',
+        'brand_id' => 'brandId',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'logo' => 'logo',
@@ -221,6 +225,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'carrier_slug' => 'setCarrierSlug',
         'config' => 'setConfig',
         'org_id' => 'setOrgId',
+        'brand_id' => 'setBrandId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'logo' => 'setLogo',
@@ -240,6 +245,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'carrier_slug' => 'getCarrierSlug',
         'config' => 'getConfig',
         'org_id' => 'getOrgId',
+        'brand_id' => 'getBrandId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'logo' => 'getLogo',
@@ -310,6 +316,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         $this->setIfExists('carrier_slug', $data ?? [], null);
         $this->setIfExists('config', $data ?? [], null);
         $this->setIfExists('org_id', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('logo', $data ?? [], null);
@@ -359,6 +366,9 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         }
         if ($this->container['org_id'] === null) {
             $invalidProperties[] = "'org_id' can't be null";
+        }
+        if ($this->container['brand_id'] === null && !$this->isNullableSetToNull('brand_id')) {
+            $invalidProperties[] = "'brand_id' is required";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -512,6 +522,40 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable org_id cannot be null');
         }
         $this->container['org_id'] = $org_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Brand this record belongs to, or null when it is organization-wide
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }
