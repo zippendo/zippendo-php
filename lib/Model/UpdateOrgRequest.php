@@ -64,6 +64,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'vat_number' => 'string',
         'overage_enabled' => 'bool',
+        'phone' => 'string',
         'billing_email' => 'string',
         'company_name' => 'string',
         'address_line1' => 'string',
@@ -88,6 +89,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'vat_number' => null,
         'overage_enabled' => null,
+        'phone' => null,
         'billing_email' => 'email',
         'company_name' => null,
         'address_line1' => null,
@@ -110,6 +112,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => false,
         'vat_number' => true,
         'overage_enabled' => false,
+        'phone' => true,
         'billing_email' => true,
         'company_name' => true,
         'address_line1' => true,
@@ -212,6 +215,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'vat_number' => 'vatNumber',
         'overage_enabled' => 'overageEnabled',
+        'phone' => 'phone',
         'billing_email' => 'billingEmail',
         'company_name' => 'companyName',
         'address_line1' => 'addressLine1',
@@ -234,6 +238,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'vat_number' => 'setVatNumber',
         'overage_enabled' => 'setOverageEnabled',
+        'phone' => 'setPhone',
         'billing_email' => 'setBillingEmail',
         'company_name' => 'setCompanyName',
         'address_line1' => 'setAddressLine1',
@@ -256,6 +261,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'vat_number' => 'getVatNumber',
         'overage_enabled' => 'getOverageEnabled',
+        'phone' => 'getPhone',
         'billing_email' => 'getBillingEmail',
         'company_name' => 'getCompanyName',
         'address_line1' => 'getAddressLine1',
@@ -352,6 +358,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('vat_number', $data ?? [], null);
         $this->setIfExists('overage_enabled', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('billing_email', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('address_line1', $data ?? [], null);
@@ -408,6 +415,14 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->container['currency'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['phone']) && (mb_strlen($this->container['phone']) > 32)) {
+            $invalidProperties[] = "invalid value for 'phone', the character length must be smaller than or equal to 32.";
+        }
+
+        if (!is_null($this->container['phone']) && !preg_match("/^\\+?[\\d\\s()-]{4,31}$/", $this->container['phone'])) {
+            $invalidProperties[] = "invalid value for 'phone', must be conform to the pattern /^\\+?[\\d\\s()-]{4,31}$/.";
         }
 
         if (!is_null($this->container['billing_email']) && !preg_match("/^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/", $this->container['billing_email'])) {
@@ -617,6 +632,47 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable overage_enabled cannot be null');
         }
         $this->container['overage_enabled'] = $overage_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string|null $phone Billing/contact phone number
+     *
+     * @return self
+     */
+    public function setPhone($phone)
+    {
+        if (is_null($phone)) {
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($phone) && (mb_strlen($phone) > 32)) {
+            throw new \InvalidArgumentException('invalid length for $phone when calling UpdateOrgRequest., must be smaller than or equal to 32.');
+        }
+        if (!is_null($phone) && (!preg_match("/^\\+?[\\d\\s()-]{4,31}$/", ObjectSerializer::toString($phone)))) {
+            throw new \InvalidArgumentException("invalid value for \$phone when calling UpdateOrgRequest., must conform to the pattern /^\\+?[\\d\\s()-]{4,31}$/.");
+        }
+
+        $this->container['phone'] = $phone;
 
         return $this;
     }

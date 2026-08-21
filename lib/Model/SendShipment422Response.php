@@ -282,6 +282,7 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
     public const CODE_BRAND_HAS_RECORDS = 'BRAND_HAS_RECORDS';
     public const CODE_USER_NOT_FOUND = 'USER_NOT_FOUND';
     public const CODE_USER_EXISTS = 'USER_EXISTS';
+    public const CODE_TERMS_NOT_ACCEPTED = 'TERMS_NOT_ACCEPTED';
     public const CODE_MEMBER_NOT_FOUND = 'MEMBER_NOT_FOUND';
     public const CODE_MEMBER_SELF_BRAND_RESTRICTION = 'MEMBER_SELF_BRAND_RESTRICTION';
     public const CODE_ROLE_NOT_FOUND = 'ROLE_NOT_FOUND';
@@ -426,6 +427,7 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
             self::CODE_BRAND_HAS_RECORDS,
             self::CODE_USER_NOT_FOUND,
             self::CODE_USER_EXISTS,
+            self::CODE_TERMS_NOT_ACCEPTED,
             self::CODE_MEMBER_NOT_FOUND,
             self::CODE_MEMBER_SELF_BRAND_RESTRICTION,
             self::CODE_ROLE_NOT_FOUND,

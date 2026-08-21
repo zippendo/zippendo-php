@@ -135,6 +135,15 @@ class UpdateOrgRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "phone"
+     */
+    public function testPropertyPhone()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "billing_email"
      */
     public function testPropertyBillingEmail()
