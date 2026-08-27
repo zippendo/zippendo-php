@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateShipmentRequestCarrierSettings
+ * UpdateShipmentRequestDroppoint
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * CreateShipmentRequestCarrierSettings Class Doc Comment
+ * UpdateShipmentRequestDroppoint Class Doc Comment
  *
  * @category Class
- * @description Carrier configuration for the shipment. Optional when shippingRuleId is provided.
+ * @description Display details of the selected service point, stored alongside &#x60;servicePointId&#x60;. Used when applying a service-point shipping rule (whose parameters otherwise replace the stored droppoint).
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateShipmentRequestDroppoint implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      *
      * @var string
      */
-    protected static $openAPIModelName = 'createShipment_request_carrierSettings';
+    protected static $openAPIModelName = 'updateShipment_request_droppoint';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $openAPITypes = [
-        'carrier_id' => 'string',
-        'product_id' => 'string',
-        'services' => 'string[]',
-        'additional_parameters' => 'array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>'
+        'id' => 'string',
+        'name' => 'string',
+        'address' => 'string',
+        'coordinates' => '\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]'
     ];
 
     /**
@@ -73,10 +73,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'carrier_id' => null,
-        'product_id' => null,
-        'services' => null,
-        'additional_parameters' => null
+        'id' => null,
+        'name' => null,
+        'address' => null,
+        'coordinates' => null
     ];
 
     /**
@@ -85,10 +85,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'carrier_id' => false,
-        'product_id' => false,
-        'services' => false,
-        'additional_parameters' => false
+        'id' => false,
+        'name' => false,
+        'address' => false,
+        'coordinates' => false
     ];
 
     /**
@@ -177,10 +177,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'carrier_id' => 'carrierId',
-        'product_id' => 'productId',
-        'services' => 'services',
-        'additional_parameters' => 'additionalParameters'
+        'id' => 'id',
+        'name' => 'name',
+        'address' => 'address',
+        'coordinates' => 'coordinates'
     ];
 
     /**
@@ -189,10 +189,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'carrier_id' => 'setCarrierId',
-        'product_id' => 'setProductId',
-        'services' => 'setServices',
-        'additional_parameters' => 'setAdditionalParameters'
+        'id' => 'setId',
+        'name' => 'setName',
+        'address' => 'setAddress',
+        'coordinates' => 'setCoordinates'
     ];
 
     /**
@@ -201,10 +201,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'carrier_id' => 'getCarrierId',
-        'product_id' => 'getProductId',
-        'services' => 'getServices',
-        'additional_parameters' => 'getAdditionalParameters'
+        'id' => 'getId',
+        'name' => 'getName',
+        'address' => 'getAddress',
+        'coordinates' => 'getCoordinates'
     ];
 
     /**
@@ -264,10 +264,10 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('carrier_id', $data ?? [], null);
-        $this->setIfExists('product_id', $data ?? [], null);
-        $this->setIfExists('services', $data ?? [], null);
-        $this->setIfExists('additional_parameters', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('coordinates', $data ?? [], null);
     }
 
     /**
@@ -297,18 +297,23 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['carrier_id'] === null) {
-            $invalidProperties[] = "'carrier_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['product_id'] === null) {
-            $invalidProperties[] = "'product_id' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['services'] === null) {
-            $invalidProperties[] = "'services' can't be null";
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
         }
-        if ($this->container['additional_parameters'] === null) {
-            $invalidProperties[] = "'additional_parameters' can't be null";
+        if (!is_null($this->container['coordinates']) && (count($this->container['coordinates']) > 2)) {
+            $invalidProperties[] = "invalid value for 'coordinates', number of items must be less than or equal to 2.";
         }
+
+        if (!is_null($this->container['coordinates']) && (count($this->container['coordinates']) < 2)) {
+            $invalidProperties[] = "invalid value for 'coordinates', number of items must be greater than or equal to 2.";
+        }
+
         return $invalidProperties;
     }
 
@@ -325,109 +330,115 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets carrier_id
+     * Gets id
      *
      * @return string
      */
-    public function getCarrierId()
+    public function getId()
     {
-        return $this->container['carrier_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets carrier_id
+     * Sets id
      *
-     * @param string $carrier_id Identifier of the carrier to use.
+     * @param string $id Identifier of the selected service point.
      *
      * @return self
      */
-    public function setCarrierId($carrier_id)
+    public function setId($id)
     {
-        if (is_null($carrier_id)) {
-            throw new \InvalidArgumentException('non-nullable carrier_id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['carrier_id'] = $carrier_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets product_id
+     * Gets name
      *
      * @return string
      */
-    public function getProductId()
+    public function getName()
     {
-        return $this->container['product_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets product_id
+     * Sets name
      *
-     * @param string $product_id Identifier of the carrier product/service.
+     * @param string $name Display name of the service point.
      *
      * @return self
      */
-    public function setProductId($product_id)
+    public function setName($name)
     {
-        if (is_null($product_id)) {
-            throw new \InvalidArgumentException('non-nullable product_id cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['product_id'] = $product_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets services
+     * Gets address
      *
-     * @return string[]
+     * @return string
      */
-    public function getServices()
+    public function getAddress()
     {
-        return $this->container['services'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets services
+     * Sets address
      *
-     * @param string[] $services Additional service codes requested from the carrier.
+     * @param string $address Formatted address of the service point.
      *
      * @return self
      */
-    public function setServices($services)
+    public function setAddress($address)
     {
-        if (is_null($services)) {
-            throw new \InvalidArgumentException('non-nullable services cannot be null');
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
-        $this->container['services'] = $services;
+        $this->container['address'] = $address;
 
         return $this;
     }
 
     /**
-     * Gets additional_parameters
+     * Gets coordinates
      *
-     * @return array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>
+     * @return \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null
      */
-    public function getAdditionalParameters()
+    public function getCoordinates()
     {
-        return $this->container['additional_parameters'];
+        return $this->container['coordinates'];
     }
 
     /**
-     * Sets additional_parameters
+     * Sets coordinates
      *
-     * @param array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue> $additional_parameters Carrier-specific extra parameters as key/value pairs.
+     * @param \Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerAdditionalParametersValueAnyOfCoordinatesInner[]|null $coordinates Latitude/longitude of the service point.
      *
      * @return self
      */
-    public function setAdditionalParameters($additional_parameters)
+    public function setCoordinates($coordinates)
     {
-        if (is_null($additional_parameters)) {
-            throw new \InvalidArgumentException('non-nullable additional_parameters cannot be null');
+        if (is_null($coordinates)) {
+            throw new \InvalidArgumentException('non-nullable coordinates cannot be null');
         }
-        $this->container['additional_parameters'] = $additional_parameters;
+        if ((count($coordinates) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $coordinates when calling UpdateShipmentRequestDroppoint., number of items must be less than or equal to 2.');
+        }
+        if ((count($coordinates) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $coordinates when calling UpdateShipmentRequestDroppoint., number of items must be greater than or equal to 2.');
+        }
+        $this->container['coordinates'] = $coordinates;
 
         return $this;
     }

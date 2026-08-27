@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **type** | **string** | Direction of the shipment relative to the organization. |
 **tracking** | [**\Zippendo\Sdk\Model\CreateShipment201ResponseTracking**](CreateShipment201ResponseTracking.md) |  | [optional]
 **carrier_settings** | [**\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettings**](ListShipments200ResponseDataInnerCarrierSettings.md) |  |
+**service_point_id** | **string** | Selected carrier service point identifier. | [optional]
 **created_at** | **string** | Timestamp when the shipment was created. |
 **updated_at** | **string** | Timestamp when the shipment was last updated. |
 **shipping_rule_id** | **string** | ID of the shipping rule used for this shipment. | [optional]

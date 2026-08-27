@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  * CreateShipmentRequestCarrierSettingsTest Class Doc Comment
  *
  * @category    Class
- * @description CreateShipmentRequestCarrierSettings
+ * @description Carrier configuration for the shipment. Optional when shippingRuleId is provided.
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

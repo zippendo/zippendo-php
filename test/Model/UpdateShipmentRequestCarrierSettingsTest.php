@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateShipmentRequestTest
+ * UpdateShipmentRequestCarrierSettingsTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UpdateShipmentRequestTest Class Doc Comment
+ * UpdateShipmentRequestCarrierSettingsTest Class Doc Comment
  *
  * @category    Class
- * @description UpdateShipmentRequest
+ * @description UpdateShipmentRequestCarrierSettings
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UpdateShipmentRequestTest extends TestCase
+class UpdateShipmentRequestCarrierSettingsTest extends TestCase
 {
 
     /**
@@ -72,144 +72,45 @@ class UpdateShipmentRequestTest extends TestCase
     }
 
     /**
-     * Test "UpdateShipmentRequest"
+     * Test "UpdateShipmentRequestCarrierSettings"
      */
-    public function testUpdateShipmentRequest()
+    public function testUpdateShipmentRequestCarrierSettings()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "reference"
+     * Test attribute "carrier_id"
      */
-    public function testPropertyReference()
+    public function testPropertyCarrierId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "address_id"
+     * Test attribute "product_id"
      */
-    public function testPropertyAddressId()
+    public function testPropertyProductId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "service_point_id"
+     * Test attribute "services"
      */
-    public function testPropertyServicePointId()
+    public function testPropertyServices()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "parties"
+     * Test attribute "additional_parameters"
      */
-    public function testPropertyParties()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "carrier_settings"
-     */
-    public function testPropertyCarrierSettings()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "parcels"
-     */
-    public function testPropertyParcels()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "pickup_details"
-     */
-    public function testPropertyPickupDetails()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "term_of_trade"
-     */
-    public function testPropertyTermOfTrade()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "status"
-     */
-    public function testPropertyStatus()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "order_id"
-     */
-    public function testPropertyOrderId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "label_printer_id"
-     */
-    public function testPropertyLabelPrinterId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "document_printer_id"
-     */
-    public function testPropertyDocumentPrinterId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_rule_id"
-     */
-    public function testPropertyShippingRuleId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "droppoint"
-     */
-    public function testPropertyDroppoint()
+    public function testPropertyAdditionalParameters()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

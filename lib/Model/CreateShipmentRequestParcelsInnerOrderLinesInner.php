@@ -97,7 +97,7 @@ class CreateShipmentRequestParcelsInnerOrderLinesInner implements ModelInterface
      */
     protected static array $openAPINullables = [
         'id' => false,
-        'sku' => false,
+        'sku' => true,
         'quantity' => false,
         'description' => true,
         'unit_price' => true,
@@ -338,10 +338,7 @@ class CreateShipmentRequestParcelsInnerOrderLinesInner implements ModelInterface
     {
         $invalidProperties = [];
 
-        if ($this->container['sku'] === null) {
-            $invalidProperties[] = "'sku' can't be null";
-        }
-        if ((mb_strlen($this->container['sku']) < 1)) {
+        if (!is_null($this->container['sku']) && (mb_strlen($this->container['sku']) < 1)) {
             $invalidProperties[] = "invalid value for 'sku', the character length must be bigger than or equal to 1.";
         }
 
@@ -429,7 +426,7 @@ class CreateShipmentRequestParcelsInnerOrderLinesInner implements ModelInterface
     /**
      * Gets sku
      *
-     * @return string
+     * @return string|null
      */
     public function getSku()
     {
@@ -439,17 +436,24 @@ class CreateShipmentRequestParcelsInnerOrderLinesInner implements ModelInterface
     /**
      * Sets sku
      *
-     * @param string $sku Stock keeping unit of the product.
+     * @param string|null $sku Stock keeping unit of the product. Optional — not every webshop assigns SKUs.
      *
      * @return self
      */
     public function setSku($sku)
     {
         if (is_null($sku)) {
-            throw new \InvalidArgumentException('non-nullable sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((mb_strlen($sku) < 1)) {
+        if (!is_null($sku) && (mb_strlen($sku) < 1)) {
             throw new \InvalidArgumentException('invalid length for $sku when calling CreateShipmentRequestParcelsInnerOrderLinesInner., must be bigger than or equal to 1.');
         }
 

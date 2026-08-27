@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **service_point_id** | **string** | Selected carrier service point identifier. | [optional]
 **parties** | [**\Zippendo\Sdk\Model\CreateShipmentRequestPartiesInner[]**](CreateShipmentRequestPartiesInner.md) | Parties involved in the shipment. Optional when orderId is provided. | [optional]
 **type** | **string** | Direction of the shipment relative to the organization. |
-**carrier_settings** | [**\Zippendo\Sdk\Model\CreateShipmentRequestCarrierSettings**](CreateShipmentRequestCarrierSettings.md) |  |
+**carrier_settings** | [**\Zippendo\Sdk\Model\CreateShipmentRequestCarrierSettings**](CreateShipmentRequestCarrierSettings.md) |  | [optional]
 **parcels** | [**\Zippendo\Sdk\Model\CreateShipmentRequestParcelsInner[]**](CreateShipmentRequestParcelsInner.md) | Parcels to include. Optional when orderId is provided. | [optional]
 **pickup_details** | [**\Zippendo\Sdk\Model\CreateShipmentRequestPickupDetails**](CreateShipmentRequestPickupDetails.md) |  | [optional]
 **term_of_trade** | **string** | Incoterm governing the shipment. | [optional] [default to 'DAP']
@@ -17,5 +17,7 @@ Name | Type | Description | Notes
 **order_id** | **string** | Order to derive parties and parcels from. | [optional]
 **label_printer_id** | **string** | Printer to assign for labels. | [optional]
 **document_printer_id** | **string** | Printer to assign for documents. | [optional]
+**shipping_rule_id** | **string** | Create the shipment from this shipping rule: carrier settings and the sender address derive from the rule (explicit carrierSettings and addressId are then ignored). | [optional]
+**droppoint** | [**\Zippendo\Sdk\Model\CreateShipmentRequestDroppoint**](CreateShipmentRequestDroppoint.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -64,6 +64,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'type' => 'string',
         'tracking' => '\Zippendo\Sdk\Model\CreateShipment201ResponseTracking',
         'carrier_settings' => '\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettings',
+        'service_point_id' => 'string',
         'created_at' => 'string',
         'updated_at' => 'string',
         'shipping_rule_id' => 'string',
@@ -84,6 +85,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'type' => null,
         'tracking' => null,
         'carrier_settings' => null,
+        'service_point_id' => null,
         'created_at' => null,
         'updated_at' => null,
         'shipping_rule_id' => null,
@@ -102,6 +104,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'type' => false,
         'tracking' => true,
         'carrier_settings' => false,
+        'service_point_id' => true,
         'created_at' => false,
         'updated_at' => false,
         'shipping_rule_id' => true,
@@ -200,6 +203,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'type' => 'type',
         'tracking' => 'tracking',
         'carrier_settings' => 'carrierSettings',
+        'service_point_id' => 'servicePointId',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'shipping_rule_id' => 'shippingRuleId',
@@ -218,6 +222,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'type' => 'setType',
         'tracking' => 'setTracking',
         'carrier_settings' => 'setCarrierSettings',
+        'service_point_id' => 'setServicePointId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'shipping_rule_id' => 'setShippingRuleId',
@@ -236,6 +241,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'type' => 'getType',
         'tracking' => 'getTracking',
         'carrier_settings' => 'getCarrierSettings',
+        'service_point_id' => 'getServicePointId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'shipping_rule_id' => 'getShippingRuleId',
@@ -347,6 +353,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('carrier_settings', $data ?? [], null);
+        $this->setIfExists('service_point_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('shipping_rule_id', $data ?? [], null);
@@ -619,6 +626,40 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable carrier_settings cannot be null');
         }
         $this->container['carrier_settings'] = $carrier_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_point_id
+     *
+     * @return string|null
+     */
+    public function getServicePointId()
+    {
+        return $this->container['service_point_id'];
+    }
+
+    /**
+     * Sets service_point_id
+     *
+     * @param string|null $service_point_id Selected carrier service point identifier.
+     *
+     * @return self
+     */
+    public function setServicePointId($service_point_id)
+    {
+        if (is_null($service_point_id)) {
+            array_push($this->openAPINullablesSetToNull, 'service_point_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_point_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['service_point_id'] = $service_point_id;
 
         return $this;
     }

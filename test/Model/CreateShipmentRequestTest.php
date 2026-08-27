@@ -196,4 +196,22 @@ class CreateShipmentRequestTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "shipping_rule_id"
+     */
+    public function testPropertyShippingRuleId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "droppoint"
+     */
+    public function testPropertyDroppoint()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

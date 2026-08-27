@@ -319,6 +319,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     public const CODE_SHIPMENT_DOCUMENT_NOT_FOUND = 'SHIPMENT_DOCUMENT_NOT_FOUND';
     public const CODE_SHIPMENT_ALREADY_SENT = 'SHIPMENT_ALREADY_SENT';
     public const CODE_SHIPMENT_INVALID_STATE = 'SHIPMENT_INVALID_STATE';
+    public const CODE_SHIPMENT_SERVICE_POINT_REQUIRED = 'SHIPMENT_SERVICE_POINT_REQUIRED';
     public const CODE_PARCEL_NOT_FOUND = 'PARCEL_NOT_FOUND';
     public const CODE_PARCEL_INVALID_SPLIT = 'PARCEL_INVALID_SPLIT';
     public const CODE_PICKUP_NOT_FOUND = 'PICKUP_NOT_FOUND';
@@ -477,6 +478,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
             self::CODE_SHIPMENT_DOCUMENT_NOT_FOUND,
             self::CODE_SHIPMENT_ALREADY_SENT,
             self::CODE_SHIPMENT_INVALID_STATE,
+            self::CODE_SHIPMENT_SERVICE_POINT_REQUIRED,
             self::CODE_PARCEL_NOT_FOUND,
             self::CODE_PARCEL_INVALID_SPLIT,
             self::CODE_PICKUP_NOT_FOUND,

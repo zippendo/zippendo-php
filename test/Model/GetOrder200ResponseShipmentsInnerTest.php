@@ -135,6 +135,15 @@ class GetOrder200ResponseShipmentsInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "service_point_id"
+     */
+    public function testPropertyServicePointId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "created_at"
      */
     public function testPropertyCreatedAt()

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateShipmentRequestCarrierSettings
+ * UpdateShipmentRequestCarrierSettings
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * CreateShipmentRequestCarrierSettings Class Doc Comment
+ * UpdateShipmentRequestCarrierSettings Class Doc Comment
  *
  * @category Class
- * @description Carrier configuration for the shipment. Optional when shippingRuleId is provided.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateShipmentRequestCarrierSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CreateShipmentRequestCarrierSettings implements ModelInterface, ArrayAcces
      *
      * @var string
      */
-    protected static $openAPIModelName = 'createShipment_request_carrierSettings';
+    protected static $openAPIModelName = 'updateShipment_request_carrierSettings';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

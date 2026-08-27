@@ -63,7 +63,7 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'service_point_id' => 'string',
         'parties' => '\Zippendo\Sdk\Model\CreateShipmentRequestPartiesInner[]',
         'type' => 'string',
-        'carrier_settings' => '\Zippendo\Sdk\Model\CreateShipmentRequestCarrierSettings',
+        'carrier_settings' => '\Zippendo\Sdk\Model\UpdateShipmentRequestCarrierSettings',
         'parcels' => '\Zippendo\Sdk\Model\CreateShipmentRequestParcelsInner[]',
         'pickup_details' => '\Zippendo\Sdk\Model\CreateShipmentRequestPickupDetails',
         'term_of_trade' => 'string',
@@ -71,7 +71,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_id' => 'string',
         'label_printer_id' => 'string',
         'document_printer_id' => 'string',
-        'shipping_rule_id' => 'string'
+        'shipping_rule_id' => 'string',
+        'droppoint' => '\Zippendo\Sdk\Model\UpdateShipmentRequestDroppoint'
     ];
 
     /**
@@ -95,7 +96,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_id' => null,
         'label_printer_id' => null,
         'document_printer_id' => null,
-        'shipping_rule_id' => null
+        'shipping_rule_id' => null,
+        'droppoint' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_id' => true,
         'label_printer_id' => true,
         'document_printer_id' => true,
-        'shipping_rule_id' => true
+        'shipping_rule_id' => true,
+        'droppoint' => false
     ];
 
     /**
@@ -219,7 +222,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_id' => 'orderId',
         'label_printer_id' => 'labelPrinterId',
         'document_printer_id' => 'documentPrinterId',
-        'shipping_rule_id' => 'shippingRuleId'
+        'shipping_rule_id' => 'shippingRuleId',
+        'droppoint' => 'droppoint'
     ];
 
     /**
@@ -241,7 +245,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_id' => 'setOrderId',
         'label_printer_id' => 'setLabelPrinterId',
         'document_printer_id' => 'setDocumentPrinterId',
-        'shipping_rule_id' => 'setShippingRuleId'
+        'shipping_rule_id' => 'setShippingRuleId',
+        'droppoint' => 'setDroppoint'
     ];
 
     /**
@@ -263,7 +268,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'order_id' => 'getOrderId',
         'label_printer_id' => 'getLabelPrinterId',
         'document_printer_id' => 'getDocumentPrinterId',
-        'shipping_rule_id' => 'getShippingRuleId'
+        'shipping_rule_id' => 'getShippingRuleId',
+        'droppoint' => 'getDroppoint'
     ];
 
     /**
@@ -379,6 +385,7 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('label_printer_id', $data ?? [], null);
         $this->setIfExists('document_printer_id', $data ?? [], null);
         $this->setIfExists('shipping_rule_id', $data ?? [], null);
+        $this->setIfExists('droppoint', $data ?? [], null);
     }
 
     /**
@@ -624,7 +631,7 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets carrier_settings
      *
-     * @return \Zippendo\Sdk\Model\CreateShipmentRequestCarrierSettings|null
+     * @return \Zippendo\Sdk\Model\UpdateShipmentRequestCarrierSettings|null
      */
     public function getCarrierSettings()
     {
@@ -634,7 +641,7 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets carrier_settings
      *
-     * @param \Zippendo\Sdk\Model\CreateShipmentRequestCarrierSettings|null $carrier_settings carrier_settings
+     * @param \Zippendo\Sdk\Model\UpdateShipmentRequestCarrierSettings|null $carrier_settings carrier_settings
      *
      * @return self
      */
@@ -909,6 +916,33 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['shipping_rule_id'] = $shipping_rule_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets droppoint
+     *
+     * @return \Zippendo\Sdk\Model\UpdateShipmentRequestDroppoint|null
+     */
+    public function getDroppoint()
+    {
+        return $this->container['droppoint'];
+    }
+
+    /**
+     * Sets droppoint
+     *
+     * @param \Zippendo\Sdk\Model\UpdateShipmentRequestDroppoint|null $droppoint droppoint
+     *
+     * @return self
+     */
+    public function setDroppoint($droppoint)
+    {
+        if (is_null($droppoint)) {
+            throw new \InvalidArgumentException('non-nullable droppoint cannot be null');
+        }
+        $this->container['droppoint'] = $droppoint;
 
         return $this;
     }

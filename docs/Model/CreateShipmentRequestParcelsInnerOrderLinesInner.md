@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique order line identifier. | [optional]
-**sku** | **string** | Stock keeping unit of the product. |
+**sku** | **string** | Stock keeping unit of the product. Optional — not every webshop assigns SKUs. | [optional]
 **quantity** | **int** | Number of units in this order line. |
 **description** | **string** | Human-readable product description. | [optional]
 **unit_price** | **float** | Price per unit in the order line currency. | [optional]
