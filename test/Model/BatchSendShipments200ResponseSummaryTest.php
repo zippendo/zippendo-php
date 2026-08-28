@@ -106,4 +106,13 @@ class BatchSendShipments200ResponseSummaryTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "skipped"
+     */
+    public function testPropertySkipped()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

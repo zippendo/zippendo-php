@@ -61,7 +61,8 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'total' => 'int',
         'sent' => 'int',
-        'failed' => 'int'
+        'failed' => 'int',
+        'skipped' => 'int'
     ];
 
     /**
@@ -74,7 +75,8 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'total' => null,
         'sent' => null,
-        'failed' => null
+        'failed' => null,
+        'skipped' => null
     ];
 
     /**
@@ -85,7 +87,8 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'total' => false,
         'sent' => false,
-        'failed' => false
+        'failed' => false,
+        'skipped' => false
     ];
 
     /**
@@ -176,7 +179,8 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'total' => 'total',
         'sent' => 'sent',
-        'failed' => 'failed'
+        'failed' => 'failed',
+        'skipped' => 'skipped'
     ];
 
     /**
@@ -187,7 +191,8 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     protected static $setters = [
         'total' => 'setTotal',
         'sent' => 'setSent',
-        'failed' => 'setFailed'
+        'failed' => 'setFailed',
+        'skipped' => 'setSkipped'
     ];
 
     /**
@@ -198,7 +203,8 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     protected static $getters = [
         'total' => 'getTotal',
         'sent' => 'getSent',
-        'failed' => 'getFailed'
+        'failed' => 'getFailed',
+        'skipped' => 'getSkipped'
     ];
 
     /**
@@ -261,6 +267,7 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
         $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('sent', $data ?? [], null);
         $this->setIfExists('failed', $data ?? [], null);
+        $this->setIfExists('skipped', $data ?? [], null);
     }
 
     /**
@@ -323,6 +330,17 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
             $invalidProperties[] = "invalid value for 'failed', must be bigger than or equal to -9007199254740991.";
         }
 
+        if ($this->container['skipped'] === null) {
+            $invalidProperties[] = "'skipped' can't be null";
+        }
+        if (($this->container['skipped'] > 9007199254740991)) {
+            $invalidProperties[] = "invalid value for 'skipped', must be smaller than or equal to 9007199254740991.";
+        }
+
+        if (($this->container['skipped'] < -9007199254740991)) {
+            $invalidProperties[] = "invalid value for 'skipped', must be bigger than or equal to -9007199254740991.";
+        }
+
         return $invalidProperties;
     }
 
@@ -351,7 +369,7 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     /**
      * Sets total
      *
-     * @param int $total Number of unique shipments processed.
+     * @param int $total Number of unique shipments requested.
      *
      * @return self
      */
@@ -419,7 +437,7 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     /**
      * Sets failed
      *
-     * @param int $failed How many failed.
+     * @param int $failed How many the carrier or Zippendo rejected.
      *
      * @return self
      */
@@ -436,6 +454,40 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
         }
 
         $this->container['failed'] = $failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets skipped
+     *
+     * @return int
+     */
+    public function getSkipped()
+    {
+        return $this->container['skipped'];
+    }
+
+    /**
+     * Sets skipped
+     *
+     * @param int $skipped How many the batch ran out of time to attempt. Submit these again.
+     *
+     * @return self
+     */
+    public function setSkipped($skipped)
+    {
+        if (is_null($skipped)) {
+            throw new \InvalidArgumentException('non-nullable skipped cannot be null');
+        }
+        if (($skipped > 9007199254740991)) {
+            throw new \InvalidArgumentException('invalid value for $skipped when calling BatchSendShipments200ResponseSummary., must be smaller than or equal to 9007199254740991.');
+        }
+        if (($skipped < -9007199254740991)) {
+            throw new \InvalidArgumentException('invalid value for $skipped when calling BatchSendShipments200ResponseSummary., must be bigger than or equal to -9007199254740991.');
+        }
+
+        $this->container['skipped'] = $skipped;
 
         return $this;
     }

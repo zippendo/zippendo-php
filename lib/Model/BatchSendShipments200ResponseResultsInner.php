@@ -255,6 +255,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
 
     public const STATUS_SENT = 'sent';
     public const STATUS_FAILED = 'failed';
+    public const STATUS_SKIPPED = 'skipped';
     public const CODE_INTERNAL_ERROR = 'INTERNAL_ERROR';
     public const CODE_BAD_REQUEST = 'BAD_REQUEST';
     public const CODE_VALIDATION_FAILED = 'VALIDATION_FAILED';
@@ -320,6 +321,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     public const CODE_SHIPMENT_ALREADY_SENT = 'SHIPMENT_ALREADY_SENT';
     public const CODE_SHIPMENT_INVALID_STATE = 'SHIPMENT_INVALID_STATE';
     public const CODE_SHIPMENT_SERVICE_POINT_REQUIRED = 'SHIPMENT_SERVICE_POINT_REQUIRED';
+    public const CODE_SHIPMENT_SEND_NOT_ATTEMPTED = 'SHIPMENT_SEND_NOT_ATTEMPTED';
     public const CODE_PARCEL_NOT_FOUND = 'PARCEL_NOT_FOUND';
     public const CODE_PARCEL_INVALID_SPLIT = 'PARCEL_INVALID_SPLIT';
     public const CODE_PICKUP_NOT_FOUND = 'PICKUP_NOT_FOUND';
@@ -403,6 +405,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
         return [
             self::STATUS_SENT,
             self::STATUS_FAILED,
+            self::STATUS_SKIPPED,
         ];
     }
 
@@ -479,6 +482,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
             self::CODE_SHIPMENT_ALREADY_SENT,
             self::CODE_SHIPMENT_INVALID_STATE,
             self::CODE_SHIPMENT_SERVICE_POINT_REQUIRED,
+            self::CODE_SHIPMENT_SEND_NOT_ATTEMPTED,
             self::CODE_PARCEL_NOT_FOUND,
             self::CODE_PARCEL_INVALID_SPLIT,
             self::CODE_PICKUP_NOT_FOUND,
@@ -682,7 +686,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets status
      *
-     * @param string $status Whether this shipment was successfully booked with its carrier.
+     * @param string $status `sent` when the carrier booked it, `failed` when the carrier or Zippendo rejected it, and `skipped` when the batch ran out of time before reaching it. A `skipped` shipment was never sent to the carrier and is safe to submit again.
      *
      * @return self
      */
@@ -719,7 +723,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets code
      *
-     * @param string|null $code Canonical machine-readable error code, present when `status` is `failed`.
+     * @param string|null $code Canonical machine-readable error code, present when `status` is `failed` or `skipped`.
      *
      * @return self
      */
@@ -756,7 +760,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets message
      *
-     * @param string|null $message Human-readable failure detail, present when `status` is `failed`.
+     * @param string|null $message Human-readable detail, present when `status` is `failed` or `skipped`.
      *
      * @return self
      */
