@@ -307,6 +307,7 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
     public const CODE_BILLING_MANAGED_BY_SHOPIFY = 'BILLING_MANAGED_BY_SHOPIFY';
     public const CODE_BILLING_CHECKOUT_REQUIRED = 'BILLING_CHECKOUT_REQUIRED';
     public const CODE_ZIPPY_ADDON_REQUIRED = 'ZIPPY_ADDON_REQUIRED';
+    public const CODE_ZIPPY_MESSAGE_LIMIT_REACHED = 'ZIPPY_MESSAGE_LIMIT_REACHED';
     public const CODE_SHIPMENT_NOT_FOUND = 'SHIPMENT_NOT_FOUND';
     public const CODE_SHIPMENT_DOCUMENT_NOT_FOUND = 'SHIPMENT_DOCUMENT_NOT_FOUND';
     public const CODE_SHIPMENT_ALREADY_SENT = 'SHIPMENT_ALREADY_SENT';
@@ -454,6 +455,7 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
             self::CODE_BILLING_MANAGED_BY_SHOPIFY,
             self::CODE_BILLING_CHECKOUT_REQUIRED,
             self::CODE_ZIPPY_ADDON_REQUIRED,
+            self::CODE_ZIPPY_MESSAGE_LIMIT_REACHED,
             self::CODE_SHIPMENT_NOT_FOUND,
             self::CODE_SHIPMENT_DOCUMENT_NOT_FOUND,
             self::CODE_SHIPMENT_ALREADY_SENT,

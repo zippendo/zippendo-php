@@ -60,7 +60,8 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
      */
     protected static $openAPITypes = [
         'used' => 'float',
-        'charges' => 'float'
+        'charges' => 'float',
+        'limit' => 'float'
     ];
 
     /**
@@ -72,7 +73,8 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
      */
     protected static $openAPIFormats = [
         'used' => null,
-        'charges' => null
+        'charges' => null,
+        'limit' => null
     ];
 
     /**
@@ -82,7 +84,8 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
      */
     protected static array $openAPINullables = [
         'used' => false,
-        'charges' => false
+        'charges' => false,
+        'limit' => false
     ];
 
     /**
@@ -172,7 +175,8 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
      */
     protected static $attributeMap = [
         'used' => 'used',
-        'charges' => 'charges'
+        'charges' => 'charges',
+        'limit' => 'limit'
     ];
 
     /**
@@ -182,7 +186,8 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
      */
     protected static $setters = [
         'used' => 'setUsed',
-        'charges' => 'setCharges'
+        'charges' => 'setCharges',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -192,7 +197,8 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
      */
     protected static $getters = [
         'used' => 'getUsed',
-        'charges' => 'getCharges'
+        'charges' => 'getCharges',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -254,6 +260,7 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
     {
         $this->setIfExists('used', $data ?? [], null);
         $this->setIfExists('charges', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
     }
 
     /**
@@ -288,6 +295,9 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
         }
         if ($this->container['charges'] === null) {
             $invalidProperties[] = "'charges' can't be null";
+        }
+        if ($this->container['limit'] === null) {
+            $invalidProperties[] = "'limit' can't be null";
         }
         return $invalidProperties;
     }
@@ -354,6 +364,33 @@ class GetBillingUsage200ResponseZippyMessages implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable charges cannot be null');
         }
         $this->container['charges'] = $charges;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return float
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param float $limit Maximum Zippy messages per month (-1 for unlimited)
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        }
+        $this->container['limit'] = $limit;
 
         return $this;
     }
