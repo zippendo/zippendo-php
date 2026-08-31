@@ -16,5 +16,7 @@ Name | Type | Description | Notes
 **brand_color** | **string** | Carrier brand color (hex) | [optional]
 **deprecated** | **bool** | Whether this carrier integration is deprecated (still works, but discouraged) | [optional]
 **deprecation_message** | **string** | Guidance shown alongside the deprecated tag (e.g. what to migrate to) | [optional]
+**generates_customs_documents** | **bool** | Whether the carrier produces the customs declaration (CN22/CN23) itself and returns it with the label. | [optional]
+**generates_commercial_invoice** | **bool** | Whether the carrier produces the commercial invoice itself and returns it with the label, e.g. via electronic trade documents. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

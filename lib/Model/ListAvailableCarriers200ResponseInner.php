@@ -68,7 +68,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'required_fields' => '\Zippendo\Sdk\Model\ListAvailableCarriers200ResponseInnerRequiredFieldsInner[]',
         'optional_fields' => '\Zippendo\Sdk\Model\ListAvailableCarriers200ResponseInnerRequiredFieldsInner[]',
         'deprecated' => 'bool',
-        'deprecation_message' => 'string'
+        'deprecation_message' => 'string',
+        'generates_customs_documents' => 'bool',
+        'generates_commercial_invoice' => 'bool'
     ];
 
     /**
@@ -89,7 +91,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'required_fields' => null,
         'optional_fields' => null,
         'deprecated' => null,
-        'deprecation_message' => null
+        'deprecation_message' => null,
+        'generates_customs_documents' => null,
+        'generates_commercial_invoice' => null
     ];
 
     /**
@@ -108,7 +112,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'required_fields' => false,
         'optional_fields' => false,
         'deprecated' => false,
-        'deprecation_message' => false
+        'deprecation_message' => false,
+        'generates_customs_documents' => false,
+        'generates_commercial_invoice' => false
     ];
 
     /**
@@ -207,7 +213,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'required_fields' => 'requiredFields',
         'optional_fields' => 'optionalFields',
         'deprecated' => 'deprecated',
-        'deprecation_message' => 'deprecationMessage'
+        'deprecation_message' => 'deprecationMessage',
+        'generates_customs_documents' => 'generatesCustomsDocuments',
+        'generates_commercial_invoice' => 'generatesCommercialInvoice'
     ];
 
     /**
@@ -226,7 +234,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'required_fields' => 'setRequiredFields',
         'optional_fields' => 'setOptionalFields',
         'deprecated' => 'setDeprecated',
-        'deprecation_message' => 'setDeprecationMessage'
+        'deprecation_message' => 'setDeprecationMessage',
+        'generates_customs_documents' => 'setGeneratesCustomsDocuments',
+        'generates_commercial_invoice' => 'setGeneratesCommercialInvoice'
     ];
 
     /**
@@ -245,7 +255,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'required_fields' => 'getRequiredFields',
         'optional_fields' => 'getOptionalFields',
         'deprecated' => 'getDeprecated',
-        'deprecation_message' => 'getDeprecationMessage'
+        'deprecation_message' => 'getDeprecationMessage',
+        'generates_customs_documents' => 'getGeneratesCustomsDocuments',
+        'generates_commercial_invoice' => 'getGeneratesCommercialInvoice'
     ];
 
     /**
@@ -316,6 +328,8 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         $this->setIfExists('optional_fields', $data ?? [], null);
         $this->setIfExists('deprecated', $data ?? [], null);
         $this->setIfExists('deprecation_message', $data ?? [], null);
+        $this->setIfExists('generates_customs_documents', $data ?? [], null);
+        $this->setIfExists('generates_commercial_invoice', $data ?? [], null);
     }
 
     /**
@@ -659,6 +673,60 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable deprecation_message cannot be null');
         }
         $this->container['deprecation_message'] = $deprecation_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets generates_customs_documents
+     *
+     * @return bool|null
+     */
+    public function getGeneratesCustomsDocuments()
+    {
+        return $this->container['generates_customs_documents'];
+    }
+
+    /**
+     * Sets generates_customs_documents
+     *
+     * @param bool|null $generates_customs_documents Whether the carrier produces the customs declaration (CN22/CN23) itself and returns it with the label.
+     *
+     * @return self
+     */
+    public function setGeneratesCustomsDocuments($generates_customs_documents)
+    {
+        if (is_null($generates_customs_documents)) {
+            throw new \InvalidArgumentException('non-nullable generates_customs_documents cannot be null');
+        }
+        $this->container['generates_customs_documents'] = $generates_customs_documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets generates_commercial_invoice
+     *
+     * @return bool|null
+     */
+    public function getGeneratesCommercialInvoice()
+    {
+        return $this->container['generates_commercial_invoice'];
+    }
+
+    /**
+     * Sets generates_commercial_invoice
+     *
+     * @param bool|null $generates_commercial_invoice Whether the carrier produces the commercial invoice itself and returns it with the label, e.g. via electronic trade documents.
+     *
+     * @return self
+     */
+    public function setGeneratesCommercialInvoice($generates_commercial_invoice)
+    {
+        if (is_null($generates_commercial_invoice)) {
+            throw new \InvalidArgumentException('non-nullable generates_commercial_invoice cannot be null');
+        }
+        $this->container['generates_commercial_invoice'] = $generates_commercial_invoice;
 
         return $this;
     }

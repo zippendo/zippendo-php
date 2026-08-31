@@ -187,4 +187,22 @@ class ListCarriers200ResponseDataInnerTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "generates_customs_documents"
+     */
+    public function testPropertyGeneratesCustomsDocuments()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "generates_commercial_invoice"
+     */
+    public function testPropertyGeneratesCommercialInvoice()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
