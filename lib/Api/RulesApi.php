@@ -1121,15 +1121,17 @@ class RulesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
+     * @param  string|null $carrier_id Filter by carrier. (optional)
+     * @param  string|null $search Search by rule name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShippingRules'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zippendo\Sdk\Model\ListShippingRules200Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
-    public function listShippingRules($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listShippingRules'][0])
+    public function listShippingRules($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $carrier_id = null, $search = null, string $contentType = self::contentTypes['listShippingRules'][0])
     {
-        list($response) = $this->listShippingRulesWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $contentType);
+        list($response) = $this->listShippingRulesWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $carrier_id, $search, $contentType);
         return $response;
     }
 
@@ -1143,15 +1145,17 @@ class RulesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
+     * @param  string|null $carrier_id Filter by carrier. (optional)
+     * @param  string|null $search Search by rule name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShippingRules'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zippendo\Sdk\Model\ListShippingRules200Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listShippingRulesWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listShippingRules'][0])
+    public function listShippingRulesWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $carrier_id = null, $search = null, string $contentType = self::contentTypes['listShippingRules'][0])
     {
-        $request = $this->listShippingRulesRequest($org_id, $page, $limit, $brand_id, $brand_scope, $contentType);
+        $request = $this->listShippingRulesRequest($org_id, $page, $limit, $brand_id, $brand_scope, $carrier_id, $search, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1246,14 +1250,16 @@ class RulesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
+     * @param  string|null $carrier_id Filter by carrier. (optional)
+     * @param  string|null $search Search by rule name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShippingRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listShippingRulesAsync($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listShippingRules'][0])
+    public function listShippingRulesAsync($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $carrier_id = null, $search = null, string $contentType = self::contentTypes['listShippingRules'][0])
     {
-        return $this->listShippingRulesAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $contentType)
+        return $this->listShippingRulesAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $carrier_id, $search, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1271,15 +1277,17 @@ class RulesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
+     * @param  string|null $carrier_id Filter by carrier. (optional)
+     * @param  string|null $search Search by rule name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShippingRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listShippingRulesAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listShippingRules'][0])
+    public function listShippingRulesAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $carrier_id = null, $search = null, string $contentType = self::contentTypes['listShippingRules'][0])
     {
         $returnType = '\Zippendo\Sdk\Model\ListShippingRules200Response';
-        $request = $this->listShippingRulesRequest($org_id, $page, $limit, $brand_id, $brand_scope, $contentType);
+        $request = $this->listShippingRulesRequest($org_id, $page, $limit, $brand_id, $brand_scope, $carrier_id, $search, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1325,12 +1333,14 @@ class RulesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
+     * @param  string|null $carrier_id Filter by carrier. (optional)
+     * @param  string|null $search Search by rule name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShippingRules'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listShippingRulesRequest($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listShippingRules'][0])
+    public function listShippingRulesRequest($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $carrier_id = null, $search = null, string $contentType = self::contentTypes['listShippingRules'][0])
     {
 
         // verify the required parameter 'org_id' is set
@@ -1354,6 +1364,8 @@ class RulesApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling RulesApi.listShippingRules, must be bigger than or equal to 1.');
         }
         
+
+
 
 
 
@@ -1395,6 +1407,24 @@ class RulesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $brand_scope,
             'brandScope', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $carrier_id,
+            'carrierId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

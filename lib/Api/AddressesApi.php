@@ -1120,6 +1120,8 @@ class AddressesApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
+     * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
+     * @param  string|null $search Search by address name, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1128,9 +1130,9 @@ class AddressesApi
      * @throws \InvalidArgumentException
      * @return \Zippendo\Sdk\Model\ListAddresses200Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
-    public function listAddresses($org_id, $page = 1, $limit = 20, $type = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
+    public function listAddresses($org_id, $page = 1, $limit = 20, $type = null, $country_code = null, $search = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
     {
-        list($response) = $this->listAddressesWithHttpInfo($org_id, $page, $limit, $type, $brand_id, $brand_scope, $contentType);
+        list($response) = $this->listAddressesWithHttpInfo($org_id, $page, $limit, $type, $country_code, $search, $brand_id, $brand_scope, $contentType);
         return $response;
     }
 
@@ -1143,6 +1145,8 @@ class AddressesApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
+     * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
+     * @param  string|null $search Search by address name, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1151,9 +1155,9 @@ class AddressesApi
      * @throws \InvalidArgumentException
      * @return array of \Zippendo\Sdk\Model\ListAddresses200Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAddressesWithHttpInfo($org_id, $page = 1, $limit = 20, $type = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
+    public function listAddressesWithHttpInfo($org_id, $page = 1, $limit = 20, $type = null, $country_code = null, $search = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
     {
-        $request = $this->listAddressesRequest($org_id, $page, $limit, $type, $brand_id, $brand_scope, $contentType);
+        $request = $this->listAddressesRequest($org_id, $page, $limit, $type, $country_code, $search, $brand_id, $brand_scope, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1247,6 +1251,8 @@ class AddressesApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
+     * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
+     * @param  string|null $search Search by address name, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1254,9 +1260,9 @@ class AddressesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAddressesAsync($org_id, $page = 1, $limit = 20, $type = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
+    public function listAddressesAsync($org_id, $page = 1, $limit = 20, $type = null, $country_code = null, $search = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
     {
-        return $this->listAddressesAsyncWithHttpInfo($org_id, $page, $limit, $type, $brand_id, $brand_scope, $contentType)
+        return $this->listAddressesAsyncWithHttpInfo($org_id, $page, $limit, $type, $country_code, $search, $brand_id, $brand_scope, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1273,6 +1279,8 @@ class AddressesApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
+     * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
+     * @param  string|null $search Search by address name, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1280,10 +1288,10 @@ class AddressesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAddressesAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $type = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
+    public function listAddressesAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $type = null, $country_code = null, $search = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
     {
         $returnType = '\Zippendo\Sdk\Model\ListAddresses200Response';
-        $request = $this->listAddressesRequest($org_id, $page, $limit, $type, $brand_id, $brand_scope, $contentType);
+        $request = $this->listAddressesRequest($org_id, $page, $limit, $type, $country_code, $search, $brand_id, $brand_scope, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1328,6 +1336,8 @@ class AddressesApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
+     * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
+     * @param  string|null $search Search by address name, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1335,7 +1345,7 @@ class AddressesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAddressesRequest($org_id, $page = 1, $limit = 20, $type = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
+    public function listAddressesRequest($org_id, $page = 1, $limit = 20, $type = null, $country_code = null, $search = null, $brand_id = null, $brand_scope = null, string $contentType = self::contentTypes['listAddresses'][0])
     {
 
         // verify the required parameter 'org_id' is set
@@ -1357,6 +1367,14 @@ class AddressesApi
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AddressesApi.listAddresses, must be bigger than or equal to 1.');
+        }
+        
+
+        if ($country_code !== null && strlen($country_code) > 2) {
+            throw new \InvalidArgumentException('invalid length for "$country_code" when calling AddressesApi.listAddresses, must be smaller than or equal to 2.');
+        }
+        if ($country_code !== null && strlen($country_code) < 2) {
+            throw new \InvalidArgumentException('invalid length for "$country_code" when calling AddressesApi.listAddresses, must be bigger than or equal to 2.');
         }
         
 
@@ -1392,6 +1410,24 @@ class AddressesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $type,
             'type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $country_code,
+            'countryCode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
