@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOrderRequestTest
+ * ListOrderChannels200ResponseTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateOrderRequestTest Class Doc Comment
+ * ListOrderChannels200ResponseTest Class Doc Comment
  *
  * @category    Class
- * @description CreateOrderRequest
+ * @description ListOrderChannels200Response
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateOrderRequestTest extends TestCase
+class ListOrderChannels200ResponseTest extends TestCase
 {
 
     /**
@@ -72,135 +72,54 @@ class CreateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test "CreateOrderRequest"
+     * Test "ListOrderChannels200Response"
      */
-    public function testCreateOrderRequest()
+    public function testListOrderChannels200Response()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_number"
+     * Test attribute "data"
      */
-    public function testPropertyOrderNumber()
+    public function testPropertyData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "external_id"
+     * Test attribute "total"
      */
-    public function testPropertyExternalId()
+    public function testPropertyTotal()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_channel_id"
+     * Test attribute "page"
      */
-    public function testPropertyOrderChannelId()
+    public function testPropertyPage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_name"
+     * Test attribute "limit"
      */
-    public function testPropertyCustomerName()
+    public function testPropertyLimit()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_email"
+     * Test attribute "total_pages"
      */
-    public function testPropertyCustomerEmail()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_address"
-     */
-    public function testPropertyShippingAddress()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "order_lines"
-     */
-    public function testPropertyOrderLines()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subtotal_amount"
-     */
-    public function testPropertySubtotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "total_amount"
-     */
-    public function testPropertyTotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notes"
-     */
-    public function testPropertyNotes()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_rule_id"
-     */
-    public function testPropertyShippingRuleId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_method_title"
-     */
-    public function testPropertyShippingMethodTitle()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_data"
-     */
-    public function testPropertyExternalData()
+    public function testPropertyTotalPages()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

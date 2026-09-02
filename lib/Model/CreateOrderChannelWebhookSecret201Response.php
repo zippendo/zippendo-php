@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * CreateOrderChannelWebhookSecret201Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * CreateOrderChannelWebhookSecret201Response Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateOrderChannelWebhookSecret201Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'createOrderChannelWebhookSecret_201_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string'
+        'secret' => 'string',
+        'webhook_url' => 'string',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -72,9 +71,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null
+        'secret' => null,
+        'webhook_url' => null,
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -83,9 +82,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false
+        'secret' => false,
+        'webhook_url' => false,
+        'created_at' => false
     ];
 
     /**
@@ -174,9 +173,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type'
+        'secret' => 'secret',
+        'webhook_url' => 'webhookUrl',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -185,9 +184,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType'
+        'secret' => 'setSecret',
+        'webhook_url' => 'setWebhookUrl',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -196,9 +195,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType'
+        'secret' => 'getSecret',
+        'webhook_url' => 'getWebhookUrl',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -242,25 +241,6 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -277,9 +257,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('secret', $data ?? [], null);
+        $this->setIfExists('webhook_url', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
     }
 
     /**
@@ -309,22 +289,17 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['secret'] === null) {
+            $invalidProperties[] = "'secret' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['webhook_url'] === null) {
+            $invalidProperties[] = "'webhook_url' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if (!preg_match("/^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/", $this->container['created_at'])) {
+            $invalidProperties[] = "invalid value for 'created_at', must be conform to the pattern /^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/.";
         }
 
         return $invalidProperties;
@@ -343,92 +318,86 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
 
 
     /**
-     * Gets id
+     * Gets secret
      *
      * @return string
      */
-    public function getId()
+    public function getSecret()
     {
-        return $this->container['id'];
+        return $this->container['secret'];
     }
 
     /**
-     * Sets id
+     * Sets secret
      *
-     * @param string $id Order channel ID.
+     * @param string $secret The webhook signing secret. Returned only once — store it in your system; every push to the ingest URL must carry an HMAC-SHA256 hex signature of the raw body computed with it.
      *
      * @return self
      */
-    public function setId($id)
+    public function setSecret($secret)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($secret)) {
+            throw new \InvalidArgumentException('non-nullable secret cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['secret'] = $secret;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets webhook_url
      *
      * @return string
      */
-    public function getName()
+    public function getWebhookUrl()
     {
-        return $this->container['name'];
+        return $this->container['webhook_url'];
     }
 
     /**
-     * Sets name
+     * Sets webhook_url
      *
-     * @param string $name Order channel name.
+     * @param string $webhook_url The ingest URL your system pushes signed order events to.
      *
      * @return self
      */
-    public function setName($name)
+    public function setWebhookUrl($webhook_url)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($webhook_url)) {
+            throw new \InvalidArgumentException('non-nullable webhook_url cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['webhook_url'] = $webhook_url;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getType()
+    public function getCreatedAt()
     {
-        return $this->container['type'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets type
+     * Sets created_at
      *
-     * @param string $type Type of the order channel (sales platform).
+     * @param \DateTime $created_at When this secret was issued (ISO 8601).
      *
      * @return self
      */
-    public function setType($type)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((!preg_match("/^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/", ObjectSerializer::toString($created_at)))) {
+            throw new \InvalidArgumentException("invalid value for \$created_at when calling CreateOrderChannelWebhookSecret201Response., must conform to the pattern /^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/.");
         }
-        $this->container['type'] = $type;
+
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

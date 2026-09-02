@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOrderRequestTest
+ * RevokeOrderChannelWebhookSecret200ResponseTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateOrderRequestTest Class Doc Comment
+ * RevokeOrderChannelWebhookSecret200ResponseTest Class Doc Comment
  *
  * @category    Class
- * @description CreateOrderRequest
+ * @description RevokeOrderChannelWebhookSecret200Response
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateOrderRequestTest extends TestCase
+class RevokeOrderChannelWebhookSecret200ResponseTest extends TestCase
 {
 
     /**
@@ -72,135 +72,18 @@ class CreateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test "CreateOrderRequest"
+     * Test "RevokeOrderChannelWebhookSecret200Response"
      */
-    public function testCreateOrderRequest()
+    public function testRevokeOrderChannelWebhookSecret200Response()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_number"
+     * Test attribute "revoked"
      */
-    public function testPropertyOrderNumber()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_id"
-     */
-    public function testPropertyExternalId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "order_channel_id"
-     */
-    public function testPropertyOrderChannelId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "customer_name"
-     */
-    public function testPropertyCustomerName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "customer_email"
-     */
-    public function testPropertyCustomerEmail()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_address"
-     */
-    public function testPropertyShippingAddress()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "order_lines"
-     */
-    public function testPropertyOrderLines()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subtotal_amount"
-     */
-    public function testPropertySubtotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "total_amount"
-     */
-    public function testPropertyTotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notes"
-     */
-    public function testPropertyNotes()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_rule_id"
-     */
-    public function testPropertyShippingRuleId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_method_title"
-     */
-    public function testPropertyShippingMethodTitle()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_data"
-     */
-    public function testPropertyExternalData()
+    public function testPropertyRevoked()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

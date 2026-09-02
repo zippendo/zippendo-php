@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'listOrderChannels_200_response_data_inner_settings_shippingMethodMappings_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string'
+        'match' => 'string',
+        'shipping_rule_id' => 'string',
+        'service_point_selection' => 'string'
     ];
 
     /**
@@ -72,9 +71,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null
+        'match' => null,
+        'shipping_rule_id' => null,
+        'service_point_selection' => null
     ];
 
     /**
@@ -83,9 +82,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false
+        'match' => false,
+        'shipping_rule_id' => false,
+        'service_point_selection' => false
     ];
 
     /**
@@ -174,9 +173,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type'
+        'match' => 'match',
+        'shipping_rule_id' => 'shippingRuleId',
+        'service_point_selection' => 'servicePointSelection'
     ];
 
     /**
@@ -185,9 +184,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType'
+        'match' => 'setMatch',
+        'shipping_rule_id' => 'setShippingRuleId',
+        'service_point_selection' => 'setServicePointSelection'
     ];
 
     /**
@@ -196,9 +195,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType'
+        'match' => 'getMatch',
+        'shipping_rule_id' => 'getShippingRuleId',
+        'service_point_selection' => 'getServicePointSelection'
     ];
 
     /**
@@ -242,23 +241,19 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
+    public const SERVICE_POINT_SELECTION_NEAREST = 'nearest';
+    public const SERVICE_POINT_SELECTION_MANUAL = 'manual';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getServicePointSelectionAllowableValues()
     {
         return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
+            self::SERVICE_POINT_SELECTION_NEAREST,
+            self::SERVICE_POINT_SELECTION_MANUAL,
         ];
     }
 
@@ -277,9 +272,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('match', $data ?? [], null);
+        $this->setIfExists('shipping_rule_id', $data ?? [], null);
+        $this->setIfExists('service_point_selection', $data ?? [], null);
     }
 
     /**
@@ -309,20 +304,25 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['match'] === null) {
+            $invalidProperties[] = "'match' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ((mb_strlen($this->container['match']) < 1)) {
+            $invalidProperties[] = "invalid value for 'match', the character length must be bigger than or equal to 1.";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+
+        if ($this->container['shipping_rule_id'] === null) {
+            $invalidProperties[] = "'shipping_rule_id' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((mb_strlen($this->container['shipping_rule_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'shipping_rule_id', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getServicePointSelectionAllowableValues();
+        if (!is_null($this->container['service_point_selection']) && !in_array($this->container['service_point_selection'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'service_point_selection', must be one of '%s'",
+                $this->container['service_point_selection'],
                 implode("', '", $allowedValues)
             );
         }
@@ -343,92 +343,102 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
 
 
     /**
-     * Gets id
+     * Gets match
      *
      * @return string
      */
-    public function getId()
+    public function getMatch()
     {
-        return $this->container['id'];
+        return $this->container['match'];
     }
 
     /**
-     * Sets id
+     * Sets match
      *
-     * @param string $id Order channel ID.
+     * @param string $match Shipping-method title to match against imported orders (trimmed, case-insensitive, exact).
      *
      * @return self
      */
-    public function setId($id)
+    public function setMatch($match)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($match)) {
+            throw new \InvalidArgumentException('non-nullable match cannot be null');
         }
-        $this->container['id'] = $id;
+
+        if ((mb_strlen($match) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $match when calling ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['match'] = $match;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets shipping_rule_id
      *
      * @return string
      */
-    public function getName()
+    public function getShippingRuleId()
     {
-        return $this->container['name'];
+        return $this->container['shipping_rule_id'];
     }
 
     /**
-     * Sets name
+     * Sets shipping_rule_id
      *
-     * @param string $name Order channel name.
+     * @param string $shipping_rule_id Shipping rule applied to orders whose shipping-method title matches.
      *
      * @return self
      */
-    public function setName($name)
+    public function setShippingRuleId($shipping_rule_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($shipping_rule_id)) {
+            throw new \InvalidArgumentException('non-nullable shipping_rule_id cannot be null');
         }
-        $this->container['name'] = $name;
+
+        if ((mb_strlen($shipping_rule_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $shipping_rule_id when calling ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['shipping_rule_id'] = $shipping_rule_id;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets service_point_selection
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getServicePointSelection()
     {
-        return $this->container['type'];
+        return $this->container['service_point_selection'];
     }
 
     /**
-     * Sets type
+     * Sets service_point_selection
      *
-     * @param string $type Type of the order channel (sales platform).
+     * @param string|null $service_point_selection For rules whose product delivers to a service point: 'nearest' auto-selects the closest point to the recipient address; 'manual' keeps the shipment in draft for manual selection.
      *
      * @return self
      */
-    public function setType($type)
+    public function setServicePointSelection($service_point_selection)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($service_point_selection)) {
+            throw new \InvalidArgumentException('non-nullable service_point_selection cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $allowedValues = $this->getServicePointSelectionAllowableValues();
+        if (!in_array($service_point_selection, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'service_point_selection', must be one of '%s'",
+                    $service_point_selection,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['service_point_selection'] = $service_point_selection;
 
         return $this;
     }

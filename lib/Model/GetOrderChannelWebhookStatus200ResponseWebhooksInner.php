@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * GetOrderChannelWebhookStatus200ResponseWebhooksInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * GetOrderChannelWebhookStatus200ResponseWebhooksInner Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetOrderChannelWebhookStatus200ResponseWebhooksInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'getOrderChannelWebhookStatus_200_response_webhooks_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string'
+        'id' => 'float',
+        'topic' => 'string',
+        'address' => 'string',
+        'created_at' => 'string',
+        'delivery_url' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -73,8 +75,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     protected static $openAPIFormats = [
         'id' => null,
-        'name' => null,
-        'type' => null
+        'topic' => null,
+        'address' => null,
+        'created_at' => null,
+        'delivery_url' => null,
+        'status' => null
     ];
 
     /**
@@ -84,8 +89,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     protected static array $openAPINullables = [
         'id' => false,
-        'name' => false,
-        'type' => false
+        'topic' => false,
+        'address' => false,
+        'created_at' => false,
+        'delivery_url' => false,
+        'status' => false
     ];
 
     /**
@@ -175,8 +183,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name',
-        'type' => 'type'
+        'topic' => 'topic',
+        'address' => 'address',
+        'created_at' => 'createdAt',
+        'delivery_url' => 'deliveryUrl',
+        'status' => 'status'
     ];
 
     /**
@@ -186,8 +197,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType'
+        'topic' => 'setTopic',
+        'address' => 'setAddress',
+        'created_at' => 'setCreatedAt',
+        'delivery_url' => 'setDeliveryUrl',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -197,8 +211,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType'
+        'topic' => 'getTopic',
+        'address' => 'getAddress',
+        'created_at' => 'getCreatedAt',
+        'delivery_url' => 'getDeliveryUrl',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -242,25 +259,6 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,8 +276,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('topic', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('delivery_url', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -312,21 +313,15 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['topic'] === null) {
+            $invalidProperties[] = "'topic' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-
         return $invalidProperties;
     }
 
@@ -345,7 +340,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     /**
      * Gets id
      *
-     * @return string
+     * @return float
      */
     public function getId()
     {
@@ -355,7 +350,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     /**
      * Sets id
      *
-     * @param string $id Order channel ID.
+     * @param float $id Platform webhook ID.
      *
      * @return self
      */
@@ -370,65 +365,136 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     }
 
     /**
-     * Gets name
+     * Gets topic
      *
      * @return string
      */
-    public function getName()
+    public function getTopic()
     {
-        return $this->container['name'];
+        return $this->container['topic'];
     }
 
     /**
-     * Sets name
+     * Sets topic
      *
-     * @param string $name Order channel name.
+     * @param string $topic Webhook event topic.
      *
      * @return self
      */
-    public function setName($name)
+    public function setTopic($topic)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($topic)) {
+            throw new \InvalidArgumentException('non-nullable topic cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['topic'] = $topic;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets address
      *
      * @return string
      */
-    public function getType()
+    public function getAddress()
     {
-        return $this->container['type'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets type
+     * Sets address
      *
-     * @param string $type Type of the order channel (sales platform).
+     * @param string $address Registered callback address.
      *
      * @return self
      */
-    public function setType($type)
+    public function setAddress($address)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at Webhook creation timestamp.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_url
+     *
+     * @return string|null
+     */
+    public function getDeliveryUrl()
+    {
+        return $this->container['delivery_url'];
+    }
+
+    /**
+     * Sets delivery_url
+     *
+     * @param string|null $delivery_url WooCommerce delivery URL (same as `address`; present for WooCommerce channels).
+     *
+     * @return self
+     */
+    public function setDeliveryUrl($delivery_url)
+    {
+        if (is_null($delivery_url)) {
+            throw new \InvalidArgumentException('non-nullable delivery_url cannot be null');
+        }
+        $this->container['delivery_url'] = $delivery_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status WooCommerce webhook status. A value other than `active` means WooCommerce disabled the webhook (e.g. after repeated delivery failures).
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

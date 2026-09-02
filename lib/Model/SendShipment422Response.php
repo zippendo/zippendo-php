@@ -342,6 +342,7 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
     public const CODE_SHIPPING_RULE_INVALID = 'SHIPPING_RULE_INVALID';
     public const CODE_ADDRESS_NOT_FOUND = 'ADDRESS_NOT_FOUND';
     public const CODE_ORDER_NOT_FOUND = 'ORDER_NOT_FOUND';
+    public const CODE_ORDER_EXISTS = 'ORDER_EXISTS';
     public const CODE_ORDER_CHANNEL_NOT_FOUND = 'ORDER_CHANNEL_NOT_FOUND';
     public const CODE_ORDER_CHANNEL_CONFIG_INVALID = 'ORDER_CHANNEL_CONFIG_INVALID';
     public const CODE_INTEGRATION_NOT_CONFIGURED = 'INTEGRATION_NOT_CONFIGURED';
@@ -490,6 +491,7 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
             self::CODE_SHIPPING_RULE_INVALID,
             self::CODE_ADDRESS_NOT_FOUND,
             self::CODE_ORDER_NOT_FOUND,
+            self::CODE_ORDER_EXISTS,
             self::CODE_ORDER_CHANNEL_NOT_FOUND,
             self::CODE_ORDER_CHANNEL_CONFIG_INVALID,
             self::CODE_INTEGRATION_NOT_CONFIGURED,

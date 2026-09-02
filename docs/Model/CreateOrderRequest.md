@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **total_amount** | **float** | Order grand total. | [optional]
 **currency** | **string** | ISO 4217 currency code. | [optional]
 **notes** | **string** | Free-form internal notes. | [optional]
+**shipping_rule_id** | **string** | Shipping rule to ship this order with. When set, a shipment is created immediately (and dispatched if the channel has autoShipOnCreate enabled). | [optional]
+**shipping_method_title** | **string** | Shipping-method title from the source checkout; matched against the order channel&#39;s shipping-method mappings to pick a shipping rule. | [optional]
 **external_data** | **array<string,mixed>** | Raw platform-specific payload for reference. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

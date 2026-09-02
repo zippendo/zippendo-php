@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * RevokeOrderChannelWebhookSecret200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * RevokeOrderChannelWebhookSecret200Response Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class RevokeOrderChannelWebhookSecret200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'revokeOrderChannelWebhookSecret_200_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string'
+        'revoked' => 'bool'
     ];
 
     /**
@@ -72,9 +69,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null
+        'revoked' => null
     ];
 
     /**
@@ -83,9 +78,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false
+        'revoked' => false
     ];
 
     /**
@@ -174,9 +167,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type'
+        'revoked' => 'revoked'
     ];
 
     /**
@@ -185,9 +176,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType'
+        'revoked' => 'setRevoked'
     ];
 
     /**
@@ -196,9 +185,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType'
+        'revoked' => 'getRevoked'
     ];
 
     /**
@@ -242,25 +229,6 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -277,9 +245,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('revoked', $data ?? [], null);
     }
 
     /**
@@ -309,24 +275,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['revoked'] === null) {
+            $invalidProperties[] = "'revoked' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,92 +294,28 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
 
 
     /**
-     * Gets id
+     * Gets revoked
      *
-     * @return string
+     * @return bool
      */
-    public function getId()
+    public function getRevoked()
     {
-        return $this->container['id'];
+        return $this->container['revoked'];
     }
 
     /**
-     * Sets id
+     * Sets revoked
      *
-     * @param string $id Order channel ID.
+     * @param bool $revoked Whether the signing secret was revoked.
      *
      * @return self
      */
-    public function setId($id)
+    public function setRevoked($revoked)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($revoked)) {
+            throw new \InvalidArgumentException('non-nullable revoked cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Order channel name.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Type of the order channel (sales platform).
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['revoked'] = $revoked;
 
         return $this;
     }

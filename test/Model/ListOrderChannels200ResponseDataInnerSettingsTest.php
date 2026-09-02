@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOrderRequestTest
+ * ListOrderChannels200ResponseDataInnerSettingsTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateOrderRequestTest Class Doc Comment
+ * ListOrderChannels200ResponseDataInnerSettingsTest Class Doc Comment
  *
  * @category    Class
- * @description CreateOrderRequest
+ * @description Channel settings (webhook secret and checkout token hash omitted).
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateOrderRequestTest extends TestCase
+class ListOrderChannels200ResponseDataInnerSettingsTest extends TestCase
 {
 
     /**
@@ -72,135 +72,162 @@ class CreateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test "CreateOrderRequest"
+     * Test "ListOrderChannels200ResponseDataInnerSettings"
      */
-    public function testCreateOrderRequest()
+    public function testListOrderChannels200ResponseDataInnerSettings()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_number"
+     * Test attribute "use_webhooks"
      */
-    public function testPropertyOrderNumber()
+    public function testPropertyUseWebhooks()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "external_id"
+     * Test attribute "webhook_id"
      */
-    public function testPropertyExternalId()
+    public function testPropertyWebhookId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_channel_id"
+     * Test attribute "webhook_ids"
      */
-    public function testPropertyOrderChannelId()
+    public function testPropertyWebhookIds()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_name"
+     * Test attribute "webhook_secret_created_at"
      */
-    public function testPropertyCustomerName()
+    public function testPropertyWebhookSecretCreatedAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_email"
+     * Test attribute "site_url"
      */
-    public function testPropertyCustomerEmail()
+    public function testPropertySiteUrl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shipping_address"
+     * Test attribute "auto_fulfill"
      */
-    public function testPropertyShippingAddress()
+    public function testPropertyAutoFulfill()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_lines"
+     * Test attribute "checkout_token_created_at"
      */
-    public function testPropertyOrderLines()
+    public function testPropertyCheckoutTokenCreatedAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "subtotal_amount"
+     * Test attribute "auto_sync"
      */
-    public function testPropertySubtotalAmount()
+    public function testPropertyAutoSync()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "total_amount"
+     * Test attribute "sync_interval_minutes"
      */
-    public function testPropertyTotalAmount()
+    public function testPropertySyncIntervalMinutes()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "currency"
+     * Test attribute "auto_ship_on_create"
      */
-    public function testPropertyCurrency()
+    public function testPropertyAutoShipOnCreate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notes"
+     * Test attribute "default_carrier_id"
      */
-    public function testPropertyNotes()
+    public function testPropertyDefaultCarrierId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shipping_rule_id"
+     * Test attribute "default_product_id"
      */
-    public function testPropertyShippingRuleId()
+    public function testPropertyDefaultProductId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shipping_method_title"
+     * Test attribute "default_address_id"
      */
-    public function testPropertyShippingMethodTitle()
+    public function testPropertyDefaultAddressId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "external_data"
+     * Test attribute "shipping_method_mappings"
      */
-    public function testPropertyExternalData()
+    public function testPropertyShippingMethodMappings()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sync_only_unfulfilled"
+     */
+    public function testPropertySyncOnlyUnfulfilled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sync_orders_since"
+     */
+    public function testPropertySyncOrdersSince()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "service_point_count"
+     */
+    public function testPropertyServicePointCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * ListOrderChannels200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * ListOrderChannels200Response Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListOrderChannels200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'listOrderChannels_200_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string'
+        'data' => '\Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInner[]',
+        'total' => 'float',
+        'page' => 'float',
+        'limit' => 'float',
+        'total_pages' => 'float'
     ];
 
     /**
@@ -72,9 +73,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null
+        'data' => null,
+        'total' => null,
+        'page' => null,
+        'limit' => null,
+        'total_pages' => null
     ];
 
     /**
@@ -83,9 +86,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false
+        'data' => false,
+        'total' => false,
+        'page' => false,
+        'limit' => false,
+        'total_pages' => false
     ];
 
     /**
@@ -174,9 +179,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type'
+        'data' => 'data',
+        'total' => 'total',
+        'page' => 'page',
+        'limit' => 'limit',
+        'total_pages' => 'totalPages'
     ];
 
     /**
@@ -185,9 +192,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType'
+        'data' => 'setData',
+        'total' => 'setTotal',
+        'page' => 'setPage',
+        'limit' => 'setLimit',
+        'total_pages' => 'setTotalPages'
     ];
 
     /**
@@ -196,9 +205,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType'
+        'data' => 'getData',
+        'total' => 'getTotal',
+        'page' => 'getPage',
+        'limit' => 'getLimit',
+        'total_pages' => 'getTotalPages'
     ];
 
     /**
@@ -242,25 +253,6 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -277,9 +269,11 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('page', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('total_pages', $data ?? [], null);
     }
 
     /**
@@ -309,24 +303,21 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['limit'] === null) {
+            $invalidProperties[] = "'limit' can't be null";
         }
-
+        if ($this->container['total_pages'] === null) {
+            $invalidProperties[] = "'total_pages' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -343,92 +334,136 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
 
 
     /**
-     * Gets id
+     * Gets data
      *
-     * @return string
+     * @return \Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInner[]
      */
-    public function getId()
+    public function getData()
     {
-        return $this->container['id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets id
+     * Sets data
      *
-     * @param string $id Order channel ID.
+     * @param \Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInner[] $data Page of results
      *
      * @return self
      */
-    public function setId($id)
+    public function setData($data)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets total
      *
-     * @return string
+     * @return float
      */
-    public function getName()
+    public function getTotal()
     {
-        return $this->container['name'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets name
+     * Sets total
      *
-     * @param string $name Order channel name.
+     * @param float $total Total matching items across all pages
      *
      * @return self
      */
-    public function setName($name)
+    public function setTotal($total)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets page
      *
-     * @return string
+     * @return float
      */
-    public function getType()
+    public function getPage()
     {
-        return $this->container['type'];
+        return $this->container['page'];
     }
 
     /**
-     * Sets type
+     * Sets page
      *
-     * @param string $type Type of the order channel (sales platform).
+     * @param float $page Current page number (1-based)
      *
      * @return self
      */
-    public function setType($type)
+    public function setPage($page)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($page)) {
+            throw new \InvalidArgumentException('non-nullable page cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return float
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param float $limit Items per page
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_pages
+     *
+     * @return float
+     */
+    public function getTotalPages()
+    {
+        return $this->container['total_pages'];
+    }
+
+    /**
+     * Sets total_pages
+     *
+     * @param float $total_pages Total number of pages
+     *
+     * @return self
+     */
+    public function setTotalPages($total_pages)
+    {
+        if (is_null($total_pages)) {
+            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
+        }
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOrderRequestTest
+ * ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInnerTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateOrderRequestTest Class Doc Comment
+ * ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInnerTest Class Doc Comment
  *
  * @category    Class
- * @description CreateOrderRequest
+ * @description ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateOrderRequestTest extends TestCase
+class ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInnerTest extends TestCase
 {
 
     /**
@@ -72,108 +72,18 @@ class CreateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test "CreateOrderRequest"
+     * Test "ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner"
      */
-    public function testCreateOrderRequest()
+    public function testListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_number"
+     * Test attribute "match"
      */
-    public function testPropertyOrderNumber()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_id"
-     */
-    public function testPropertyExternalId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "order_channel_id"
-     */
-    public function testPropertyOrderChannelId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "customer_name"
-     */
-    public function testPropertyCustomerName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "customer_email"
-     */
-    public function testPropertyCustomerEmail()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_address"
-     */
-    public function testPropertyShippingAddress()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "order_lines"
-     */
-    public function testPropertyOrderLines()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subtotal_amount"
-     */
-    public function testPropertySubtotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "total_amount"
-     */
-    public function testPropertyTotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notes"
-     */
-    public function testPropertyNotes()
+    public function testPropertyMatch()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -189,18 +99,9 @@ class CreateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "shipping_method_title"
+     * Test attribute "service_point_selection"
      */
-    public function testPropertyShippingMethodTitle()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "external_data"
-     */
-    public function testPropertyExternalData()
+    public function testPropertyServicePointSelection()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

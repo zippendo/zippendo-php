@@ -69,6 +69,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'total_amount' => 'float',
         'currency' => 'string',
         'notes' => 'string',
+        'shipping_rule_id' => 'string',
+        'shipping_method_title' => 'string',
         'external_data' => 'array<string,mixed>'
     ];
 
@@ -91,6 +93,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'total_amount' => null,
         'currency' => null,
         'notes' => null,
+        'shipping_rule_id' => null,
+        'shipping_method_title' => null,
         'external_data' => null
     ];
 
@@ -111,6 +115,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'total_amount' => true,
         'currency' => true,
         'notes' => true,
+        'shipping_rule_id' => true,
+        'shipping_method_title' => true,
         'external_data' => true
     ];
 
@@ -211,6 +217,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'total_amount' => 'totalAmount',
         'currency' => 'currency',
         'notes' => 'notes',
+        'shipping_rule_id' => 'shippingRuleId',
+        'shipping_method_title' => 'shippingMethodTitle',
         'external_data' => 'externalData'
     ];
 
@@ -231,6 +239,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'total_amount' => 'setTotalAmount',
         'currency' => 'setCurrency',
         'notes' => 'setNotes',
+        'shipping_rule_id' => 'setShippingRuleId',
+        'shipping_method_title' => 'setShippingMethodTitle',
         'external_data' => 'setExternalData'
     ];
 
@@ -251,6 +261,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'total_amount' => 'getTotalAmount',
         'currency' => 'getCurrency',
         'notes' => 'getNotes',
+        'shipping_rule_id' => 'getShippingRuleId',
+        'shipping_method_title' => 'getShippingMethodTitle',
         'external_data' => 'getExternalData'
     ];
 
@@ -322,6 +334,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('total_amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('notes', $data ?? [], null);
+        $this->setIfExists('shipping_rule_id', $data ?? [], null);
+        $this->setIfExists('shipping_method_title', $data ?? [], null);
         $this->setIfExists('external_data', $data ?? [], null);
     }
 
@@ -782,6 +796,74 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_rule_id
+     *
+     * @return string|null
+     */
+    public function getShippingRuleId()
+    {
+        return $this->container['shipping_rule_id'];
+    }
+
+    /**
+     * Sets shipping_rule_id
+     *
+     * @param string|null $shipping_rule_id Shipping rule to ship this order with. When set, a shipment is created immediately (and dispatched if the channel has autoShipOnCreate enabled).
+     *
+     * @return self
+     */
+    public function setShippingRuleId($shipping_rule_id)
+    {
+        if (is_null($shipping_rule_id)) {
+            array_push($this->openAPINullablesSetToNull, 'shipping_rule_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_rule_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['shipping_rule_id'] = $shipping_rule_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_method_title
+     *
+     * @return string|null
+     */
+    public function getShippingMethodTitle()
+    {
+        return $this->container['shipping_method_title'];
+    }
+
+    /**
+     * Sets shipping_method_title
+     *
+     * @param string|null $shipping_method_title Shipping-method title from the source checkout; matched against the order channel's shipping-method mappings to pick a shipping rule.
+     *
+     * @return self
+     */
+    public function setShippingMethodTitle($shipping_method_title)
+    {
+        if (is_null($shipping_method_title)) {
+            array_push($this->openAPINullablesSetToNull, 'shipping_method_title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('shipping_method_title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['shipping_method_title'] = $shipping_method_title;
 
         return $this;
     }

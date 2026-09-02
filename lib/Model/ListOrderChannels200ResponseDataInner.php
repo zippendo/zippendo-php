@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * ListOrderChannels200ResponseDataInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * ListOrderChannels200ResponseDataInner Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'listOrderChannels_200_response_data_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +60,18 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'type' => 'string'
+        'type' => 'string',
+        'enabled' => 'bool',
+        'brand_id' => 'string',
+        'has_credentials' => 'bool',
+        'settings' => '\Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInnerSettings',
+        'webhooks_enabled' => 'bool',
+        'last_sync_at' => '\DateTime',
+        'last_sync_error' => 'string',
+        'shipping_rule_ids' => 'string[]',
+        'org_id' => 'string',
+        'created_at' => 'string',
+        'updated_at' => 'string'
     ];
 
     /**
@@ -74,7 +84,18 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'type' => null
+        'type' => null,
+        'enabled' => null,
+        'brand_id' => null,
+        'has_credentials' => null,
+        'settings' => null,
+        'webhooks_enabled' => null,
+        'last_sync_at' => 'date-time',
+        'last_sync_error' => null,
+        'shipping_rule_ids' => null,
+        'org_id' => null,
+        'created_at' => null,
+        'updated_at' => null
     ];
 
     /**
@@ -85,7 +106,18 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
-        'type' => false
+        'type' => false,
+        'enabled' => false,
+        'brand_id' => true,
+        'has_credentials' => false,
+        'settings' => false,
+        'webhooks_enabled' => false,
+        'last_sync_at' => true,
+        'last_sync_error' => true,
+        'shipping_rule_ids' => false,
+        'org_id' => false,
+        'created_at' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -176,7 +208,18 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'type' => 'type'
+        'type' => 'type',
+        'enabled' => 'enabled',
+        'brand_id' => 'brandId',
+        'has_credentials' => 'hasCredentials',
+        'settings' => 'settings',
+        'webhooks_enabled' => 'webhooksEnabled',
+        'last_sync_at' => 'lastSyncAt',
+        'last_sync_error' => 'lastSyncError',
+        'shipping_rule_ids' => 'shippingRuleIds',
+        'org_id' => 'orgId',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -187,7 +230,18 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'type' => 'setType'
+        'type' => 'setType',
+        'enabled' => 'setEnabled',
+        'brand_id' => 'setBrandId',
+        'has_credentials' => 'setHasCredentials',
+        'settings' => 'setSettings',
+        'webhooks_enabled' => 'setWebhooksEnabled',
+        'last_sync_at' => 'setLastSyncAt',
+        'last_sync_error' => 'setLastSyncError',
+        'shipping_rule_ids' => 'setShippingRuleIds',
+        'org_id' => 'setOrgId',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -198,7 +252,18 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'type' => 'getType'
+        'type' => 'getType',
+        'enabled' => 'getEnabled',
+        'brand_id' => 'getBrandId',
+        'has_credentials' => 'getHasCredentials',
+        'settings' => 'getSettings',
+        'webhooks_enabled' => 'getWebhooksEnabled',
+        'last_sync_at' => 'getLastSyncAt',
+        'last_sync_error' => 'getLastSyncError',
+        'shipping_rule_ids' => 'getShippingRuleIds',
+        'org_id' => 'getOrgId',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -280,6 +345,17 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('has_credentials', $data ?? [], null);
+        $this->setIfExists('settings', $data ?? [], null);
+        $this->setIfExists('webhooks_enabled', $data ?? [], null);
+        $this->setIfExists('last_sync_at', $data ?? [], null);
+        $this->setIfExists('last_sync_error', $data ?? [], null);
+        $this->setIfExists('shipping_rule_ids', $data ?? [], null);
+        $this->setIfExists('org_id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -327,6 +403,31 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
             );
         }
 
+        if ($this->container['enabled'] === null) {
+            $invalidProperties[] = "'enabled' can't be null";
+        }
+        if ($this->container['brand_id'] === null && !$this->isNullableSetToNull('brand_id')) {
+            $invalidProperties[] = "'brand_id' is required";
+        }
+        if ($this->container['has_credentials'] === null) {
+            $invalidProperties[] = "'has_credentials' can't be null";
+        }
+        if ($this->container['settings'] === null) {
+            $invalidProperties[] = "'settings' can't be null";
+        }
+        if (!is_null($this->container['last_sync_at']) && !preg_match("/^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/", $this->container['last_sync_at'])) {
+            $invalidProperties[] = "invalid value for 'last_sync_at', must be conform to the pattern /^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/.";
+        }
+
+        if ($this->container['org_id'] === null) {
+            $invalidProperties[] = "'org_id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -355,7 +456,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     /**
      * Sets id
      *
-     * @param string $id Order channel ID.
+     * @param string $id Unique order channel ID.
      *
      * @return self
      */
@@ -382,7 +483,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     /**
      * Sets name
      *
-     * @param string $name Order channel name.
+     * @param string $name Display name of the channel.
      *
      * @return self
      */
@@ -429,6 +530,328 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets enabled
+     *
+     * @return bool
+     */
+    public function getEnabled()
+    {
+        return $this->container['enabled'];
+    }
+
+    /**
+     * Sets enabled
+     *
+     * @param bool $enabled Whether the channel is active.
+     *
+     * @return self
+     */
+    public function setEnabled($enabled)
+    {
+        if (is_null($enabled)) {
+            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
+        }
+        $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_id
+     *
+     * @return string|null
+     */
+    public function getBrandId()
+    {
+        return $this->container['brand_id'];
+    }
+
+    /**
+     * Sets brand_id
+     *
+     * @param string|null $brand_id Brand this channel belongs to, or null for organization-wide. Orders synced from this channel inherit it, and so do the shipments and documents made from them.
+     *
+     * @return self
+     */
+    public function setBrandId($brand_id)
+    {
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_id'] = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_credentials
+     *
+     * @return bool
+     */
+    public function getHasCredentials()
+    {
+        return $this->container['has_credentials'];
+    }
+
+    /**
+     * Sets has_credentials
+     *
+     * @param bool $has_credentials Whether credentials are configured (values are never exposed).
+     *
+     * @return self
+     */
+    public function setHasCredentials($has_credentials)
+    {
+        if (is_null($has_credentials)) {
+            throw new \InvalidArgumentException('non-nullable has_credentials cannot be null');
+        }
+        $this->container['has_credentials'] = $has_credentials;
+
+        return $this;
+    }
+
+    /**
+     * Gets settings
+     *
+     * @return \Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInnerSettings
+     */
+    public function getSettings()
+    {
+        return $this->container['settings'];
+    }
+
+    /**
+     * Sets settings
+     *
+     * @param \Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInnerSettings $settings settings
+     *
+     * @return self
+     */
+    public function setSettings($settings)
+    {
+        if (is_null($settings)) {
+            throw new \InvalidArgumentException('non-nullable settings cannot be null');
+        }
+        $this->container['settings'] = $settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhooks_enabled
+     *
+     * @return bool|null
+     */
+    public function getWebhooksEnabled()
+    {
+        return $this->container['webhooks_enabled'];
+    }
+
+    /**
+     * Sets webhooks_enabled
+     *
+     * @param bool|null $webhooks_enabled Whether real-time webhooks are enabled.
+     *
+     * @return self
+     */
+    public function setWebhooksEnabled($webhooks_enabled)
+    {
+        if (is_null($webhooks_enabled)) {
+            throw new \InvalidArgumentException('non-nullable webhooks_enabled cannot be null');
+        }
+        $this->container['webhooks_enabled'] = $webhooks_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_sync_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastSyncAt()
+    {
+        return $this->container['last_sync_at'];
+    }
+
+    /**
+     * Sets last_sync_at
+     *
+     * @param \DateTime|null $last_sync_at Timestamp of the last successful sync.
+     *
+     * @return self
+     */
+    public function setLastSyncAt($last_sync_at)
+    {
+        if (is_null($last_sync_at)) {
+            array_push($this->openAPINullablesSetToNull, 'last_sync_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_sync_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($last_sync_at) && (!preg_match("/^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/", ObjectSerializer::toString($last_sync_at)))) {
+            throw new \InvalidArgumentException("invalid value for \$last_sync_at when calling ListOrderChannels200ResponseDataInner., must conform to the pattern /^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$/.");
+        }
+
+        $this->container['last_sync_at'] = $last_sync_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_sync_error
+     *
+     * @return string|null
+     */
+    public function getLastSyncError()
+    {
+        return $this->container['last_sync_error'];
+    }
+
+    /**
+     * Sets last_sync_error
+     *
+     * @param string|null $last_sync_error Error message from the last failed sync.
+     *
+     * @return self
+     */
+    public function setLastSyncError($last_sync_error)
+    {
+        if (is_null($last_sync_error)) {
+            array_push($this->openAPINullablesSetToNull, 'last_sync_error');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_sync_error', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['last_sync_error'] = $last_sync_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_rule_ids
+     *
+     * @return string[]|null
+     */
+    public function getShippingRuleIds()
+    {
+        return $this->container['shipping_rule_ids'];
+    }
+
+    /**
+     * Sets shipping_rule_ids
+     *
+     * @param string[]|null $shipping_rule_ids IDs of shipping rules linked to this channel.
+     *
+     * @return self
+     */
+    public function setShippingRuleIds($shipping_rule_ids)
+    {
+        if (is_null($shipping_rule_ids)) {
+            throw new \InvalidArgumentException('non-nullable shipping_rule_ids cannot be null');
+        }
+        $this->container['shipping_rule_ids'] = $shipping_rule_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets org_id
+     *
+     * @return string
+     */
+    public function getOrgId()
+    {
+        return $this->container['org_id'];
+    }
+
+    /**
+     * Sets org_id
+     *
+     * @param string $org_id Owning organization ID.
+     *
+     * @return self
+     */
+    public function setOrgId($org_id)
+    {
+        if (is_null($org_id)) {
+            throw new \InvalidArgumentException('non-nullable org_id cannot be null');
+        }
+        $this->container['org_id'] = $org_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at Creation timestamp (ISO 8601).
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string $updated_at Last update timestamp (ISO 8601).
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

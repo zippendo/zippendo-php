@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * GetOrderChannelWebhookStatus200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * GetOrderChannelWebhookStatus200Response Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetOrderChannelWebhookStatus200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'getOrderChannelWebhookStatus_200_response';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string'
+        'enabled' => 'bool',
+        'webhook_url' => 'string',
+        'webhooks' => '\Zippendo\Sdk\Model\GetOrderChannelWebhookStatus200ResponseWebhooksInner[]'
     ];
 
     /**
@@ -72,9 +71,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null
+        'enabled' => null,
+        'webhook_url' => null,
+        'webhooks' => null
     ];
 
     /**
@@ -83,9 +82,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false
+        'enabled' => false,
+        'webhook_url' => false,
+        'webhooks' => false
     ];
 
     /**
@@ -174,9 +173,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type'
+        'enabled' => 'enabled',
+        'webhook_url' => 'webhookUrl',
+        'webhooks' => 'webhooks'
     ];
 
     /**
@@ -185,9 +184,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType'
+        'enabled' => 'setEnabled',
+        'webhook_url' => 'setWebhookUrl',
+        'webhooks' => 'setWebhooks'
     ];
 
     /**
@@ -196,9 +195,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType'
+        'enabled' => 'getEnabled',
+        'webhook_url' => 'getWebhookUrl',
+        'webhooks' => 'getWebhooks'
     ];
 
     /**
@@ -242,25 +241,6 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -277,9 +257,9 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('webhook_url', $data ?? [], null);
+        $this->setIfExists('webhooks', $data ?? [], null);
     }
 
     /**
@@ -309,24 +289,15 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['enabled'] === null) {
+            $invalidProperties[] = "'enabled' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['webhook_url'] === null) {
+            $invalidProperties[] = "'webhook_url' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['webhooks'] === null) {
+            $invalidProperties[] = "'webhooks' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,92 +314,82 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
 
 
     /**
-     * Gets id
+     * Gets enabled
      *
-     * @return string
+     * @return bool
      */
-    public function getId()
+    public function getEnabled()
     {
-        return $this->container['id'];
+        return $this->container['enabled'];
     }
 
     /**
-     * Sets id
+     * Sets enabled
      *
-     * @param string $id Order channel ID.
+     * @param bool $enabled Whether webhooks are enabled for the channel.
      *
      * @return self
      */
-    public function setId($id)
+    public function setEnabled($enabled)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($enabled)) {
+            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['enabled'] = $enabled;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets webhook_url
      *
      * @return string
      */
-    public function getName()
+    public function getWebhookUrl()
     {
-        return $this->container['name'];
+        return $this->container['webhook_url'];
     }
 
     /**
-     * Sets name
+     * Sets webhook_url
      *
-     * @param string $name Order channel name.
+     * @param string $webhook_url Expected callback URL for this channel.
      *
      * @return self
      */
-    public function setName($name)
+    public function setWebhookUrl($webhook_url)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($webhook_url)) {
+            throw new \InvalidArgumentException('non-nullable webhook_url cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['webhook_url'] = $webhook_url;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets webhooks
      *
-     * @return string
+     * @return \Zippendo\Sdk\Model\GetOrderChannelWebhookStatus200ResponseWebhooksInner[]
      */
-    public function getType()
+    public function getWebhooks()
     {
-        return $this->container['type'];
+        return $this->container['webhooks'];
     }
 
     /**
-     * Sets type
+     * Sets webhooks
      *
-     * @param string $type Type of the order channel (sales platform).
+     * @param \Zippendo\Sdk\Model\GetOrderChannelWebhookStatus200ResponseWebhooksInner[] $webhooks Webhooks registered for this channel's callback URL.
      *
      * @return self
      */
-    public function setType($type)
+    public function setWebhooks($webhooks)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($webhooks)) {
+            throw new \InvalidArgumentException('non-nullable webhooks cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['webhooks'] = $webhooks;
 
         return $this;
     }

@@ -149,7 +149,7 @@ class OrdersApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zippendo\Sdk\Model\CreateOrder201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
+     * @return \Zippendo\Sdk\Model\CreateOrder201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
     public function createOrder($org_id, $create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
@@ -168,7 +168,7 @@ class OrdersApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zippendo\Sdk\Model\CreateOrder201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zippendo\Sdk\Model\CreateOrder201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOrderWithHttpInfo($org_id, $create_order_request, string $contentType = self::contentTypes['createOrder'][0])
     {
@@ -217,6 +217,12 @@ class OrdersApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 409:
                     return $this->handleResponseWithDataType(
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $request,
@@ -271,6 +277,14 @@ class OrdersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',

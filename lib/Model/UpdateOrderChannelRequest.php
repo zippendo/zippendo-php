@@ -1,6 +1,6 @@
 <?php
 /**
- * ListOrders200ResponseDataInnerOrderChannel
+ * UpdateOrderChannelRequest
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * ListOrders200ResponseDataInnerOrderChannel Class Doc Comment
+ * UpdateOrderChannelRequest Class Doc Comment
  *
  * @category Class
- * @description Summary of the order&#39;s source channel.
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      *
      * @var string
      */
-    protected static $openAPIModelName = 'listOrders_200_response_data_inner_orderChannel';
+    protected static $openAPIModelName = 'updateOrderChannel_request';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'brand_id' => 'string',
         'name' => 'string',
-        'type' => 'string'
+        'enabled' => 'bool',
+        'credentials' => 'array<string,mixed>',
+        'settings' => '\Zippendo\Sdk\Model\UpdateOrderChannelRequestSettings',
+        'shipping_rule_ids' => 'string[]'
     ];
 
     /**
@@ -72,9 +74,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'id' => null,
+        'brand_id' => null,
         'name' => null,
-        'type' => null
+        'enabled' => null,
+        'credentials' => null,
+        'settings' => null,
+        'shipping_rule_ids' => null
     ];
 
     /**
@@ -83,9 +88,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'id' => false,
+        'brand_id' => true,
         'name' => false,
-        'type' => false
+        'enabled' => false,
+        'credentials' => true,
+        'settings' => false,
+        'shipping_rule_ids' => false
     ];
 
     /**
@@ -174,9 +182,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'brand_id' => 'brandId',
         'name' => 'name',
-        'type' => 'type'
+        'enabled' => 'enabled',
+        'credentials' => 'credentials',
+        'settings' => 'settings',
+        'shipping_rule_ids' => 'shippingRuleIds'
     ];
 
     /**
@@ -185,9 +196,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'brand_id' => 'setBrandId',
         'name' => 'setName',
-        'type' => 'setType'
+        'enabled' => 'setEnabled',
+        'credentials' => 'setCredentials',
+        'settings' => 'setSettings',
+        'shipping_rule_ids' => 'setShippingRuleIds'
     ];
 
     /**
@@ -196,9 +210,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'brand_id' => 'getBrandId',
         'name' => 'getName',
-        'type' => 'getType'
+        'enabled' => 'getEnabled',
+        'credentials' => 'getCredentials',
+        'settings' => 'getSettings',
+        'shipping_rule_ids' => 'getShippingRuleIds'
     ];
 
     /**
@@ -242,25 +259,6 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    public const TYPE_SHOPIFY = 'shopify';
-    public const TYPE_WOOCOMMERCE = 'woocommerce';
-    public const TYPE_MANUAL = 'manual';
-    public const TYPE_CUSTOM = 'custom';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_SHOPIFY,
-            self::TYPE_WOOCOMMERCE,
-            self::TYPE_MANUAL,
-            self::TYPE_CUSTOM,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -277,9 +275,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('credentials', $data ?? [], null);
+        $this->setIfExists('settings', $data ?? [], null);
+        $this->setIfExists('shipping_rule_ids', $data ?? [], null);
     }
 
     /**
@@ -309,22 +310,12 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -343,28 +334,35 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
 
 
     /**
-     * Gets id
+     * Gets brand_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getId()
+    public function getBrandId()
     {
-        return $this->container['id'];
+        return $this->container['brand_id'];
     }
 
     /**
-     * Sets id
+     * Sets brand_id
      *
-     * @param string $id Order channel ID.
+     * @param string|null $brand_id Brand this channel belongs to; null for organization-wide
      *
      * @return self
      */
-    public function setId($id)
+    public function setBrandId($brand_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }
@@ -372,7 +370,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -382,7 +380,7 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
     /**
      * Sets name
      *
-     * @param string $name Order channel name.
+     * @param string|null $name Display name for the channel.
      *
      * @return self
      */
@@ -391,44 +389,129 @@ class ListOrders200ResponseDataInnerOrderChannel implements ModelInterface, Arra
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateOrderChannelRequest., must be smaller than or equal to 100.');
+        }
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateOrderChannelRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets enabled
      *
-     * @return string
+     * @return bool|null
      */
-    public function getType()
+    public function getEnabled()
     {
-        return $this->container['type'];
+        return $this->container['enabled'];
     }
 
     /**
-     * Sets type
+     * Sets enabled
      *
-     * @param string $type Type of the order channel (sales platform).
+     * @param bool|null $enabled Whether the channel is active.
      *
      * @return self
      */
-    public function setType($type)
+    public function setEnabled($enabled)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($enabled)) {
+            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets credentials
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getCredentials()
+    {
+        return $this->container['credentials'];
+    }
+
+    /**
+     * Sets credentials
+     *
+     * @param array<string,mixed>|null $credentials Type-specific platform credentials.
+     *
+     * @return self
+     */
+    public function setCredentials($credentials)
+    {
+        if (is_null($credentials)) {
+            array_push($this->openAPINullablesSetToNull, 'credentials');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('credentials', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['credentials'] = $credentials;
+
+        return $this;
+    }
+
+    /**
+     * Gets settings
+     *
+     * @return \Zippendo\Sdk\Model\UpdateOrderChannelRequestSettings|null
+     */
+    public function getSettings()
+    {
+        return $this->container['settings'];
+    }
+
+    /**
+     * Sets settings
+     *
+     * @param \Zippendo\Sdk\Model\UpdateOrderChannelRequestSettings|null $settings settings
+     *
+     * @return self
+     */
+    public function setSettings($settings)
+    {
+        if (is_null($settings)) {
+            throw new \InvalidArgumentException('non-nullable settings cannot be null');
+        }
+        $this->container['settings'] = $settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_rule_ids
+     *
+     * @return string[]|null
+     */
+    public function getShippingRuleIds()
+    {
+        return $this->container['shipping_rule_ids'];
+    }
+
+    /**
+     * Sets shipping_rule_ids
+     *
+     * @param string[]|null $shipping_rule_ids IDs of shipping rules linked to this channel.
+     *
+     * @return self
+     */
+    public function setShippingRuleIds($shipping_rule_ids)
+    {
+        if (is_null($shipping_rule_ids)) {
+            throw new \InvalidArgumentException('non-nullable shipping_rule_ids cannot be null');
+        }
+        $this->container['shipping_rule_ids'] = $shipping_rule_ids;
 
         return $this;
     }
