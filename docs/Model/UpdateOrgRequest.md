@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **description** | **string** | Organization description | [optional]
 **currency** | **string** | Billing currency (ISO 4217 code) | [optional]
 **vat_number** | **string** | Company VAT/tax ID for invoices | [optional]
-**overage_enabled** | **bool** | Allow shipments beyond plan limit (overage charges apply) | [optional]
 **phone** | **string** | Billing/contact phone number | [optional]
 **billing_email** | **string** | Billing email for invoices | [optional]
 **company_name** | **string** | Legal company name | [optional]

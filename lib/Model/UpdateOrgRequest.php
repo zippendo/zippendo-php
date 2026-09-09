@@ -63,7 +63,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'currency' => 'string',
         'vat_number' => 'string',
-        'overage_enabled' => 'bool',
         'phone' => 'string',
         'billing_email' => 'string',
         'company_name' => 'string',
@@ -88,7 +87,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'currency' => null,
         'vat_number' => null,
-        'overage_enabled' => null,
         'phone' => null,
         'billing_email' => 'email',
         'company_name' => null,
@@ -111,7 +109,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => false,
         'currency' => false,
         'vat_number' => true,
-        'overage_enabled' => false,
         'phone' => true,
         'billing_email' => true,
         'company_name' => true,
@@ -214,7 +211,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'currency' => 'currency',
         'vat_number' => 'vatNumber',
-        'overage_enabled' => 'overageEnabled',
         'phone' => 'phone',
         'billing_email' => 'billingEmail',
         'company_name' => 'companyName',
@@ -237,7 +233,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'currency' => 'setCurrency',
         'vat_number' => 'setVatNumber',
-        'overage_enabled' => 'setOverageEnabled',
         'phone' => 'setPhone',
         'billing_email' => 'setBillingEmail',
         'company_name' => 'setCompanyName',
@@ -260,7 +255,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'currency' => 'getCurrency',
         'vat_number' => 'getVatNumber',
-        'overage_enabled' => 'getOverageEnabled',
         'phone' => 'getPhone',
         'billing_email' => 'getBillingEmail',
         'company_name' => 'getCompanyName',
@@ -357,7 +351,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('vat_number', $data ?? [], null);
-        $this->setIfExists('overage_enabled', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('billing_email', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
@@ -605,33 +598,6 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['vat_number'] = $vat_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets overage_enabled
-     *
-     * @return bool|null
-     */
-    public function getOverageEnabled()
-    {
-        return $this->container['overage_enabled'];
-    }
-
-    /**
-     * Sets overage_enabled
-     *
-     * @param bool|null $overage_enabled Allow shipments beyond plan limit (overage charges apply)
-     *
-     * @return self
-     */
-    public function setOverageEnabled($overage_enabled)
-    {
-        if (is_null($overage_enabled)) {
-            throw new \InvalidArgumentException('non-nullable overage_enabled cannot be null');
-        }
-        $this->container['overage_enabled'] = $overage_enabled;
 
         return $this;
     }

@@ -126,15 +126,6 @@ class UpdateOrgRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "overage_enabled"
-     */
-    public function testPropertyOverageEnabled()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "phone"
      */
     public function testPropertyPhone()

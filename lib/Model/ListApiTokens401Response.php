@@ -264,6 +264,9 @@ class ListApiTokens401Response implements ModelInterface, ArrayAccess, \JsonSeri
     public const CODE_AUTH_MFA_REQUIRED = 'AUTH_MFA_REQUIRED';
     public const CODE_AUTH_MFA_INVALID_CODE = 'AUTH_MFA_INVALID_CODE';
     public const CODE_AUTH_MFA_ALREADY_ENABLED = 'AUTH_MFA_ALREADY_ENABLED';
+    public const CODE_CAPTCHA_FAILED = 'CAPTCHA_FAILED';
+    public const CODE_EMAIL_DOMAIN_BLOCKED = 'EMAIL_DOMAIN_BLOCKED';
+    public const CODE_VAT_INVALID = 'VAT_INVALID';
     public const CODE_AUTH_MFA_NOT_ENABLED = 'AUTH_MFA_NOT_ENABLED';
     public const CODE_SESSION_REQUIRED = 'SESSION_REQUIRED';
     public const CODE_ORG_NOT_FOUND = 'ORG_NOT_FOUND';
@@ -413,6 +416,9 @@ class ListApiTokens401Response implements ModelInterface, ArrayAccess, \JsonSeri
             self::CODE_AUTH_MFA_REQUIRED,
             self::CODE_AUTH_MFA_INVALID_CODE,
             self::CODE_AUTH_MFA_ALREADY_ENABLED,
+            self::CODE_CAPTCHA_FAILED,
+            self::CODE_EMAIL_DOMAIN_BLOCKED,
+            self::CODE_VAT_INVALID,
             self::CODE_AUTH_MFA_NOT_ENABLED,
             self::CODE_SESSION_REQUIRED,
             self::CODE_ORG_NOT_FOUND,
