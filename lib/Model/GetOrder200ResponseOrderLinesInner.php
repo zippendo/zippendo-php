@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOrder201ResponseOrderLinesInner
+ * GetOrder200ResponseOrderLinesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zippendo\Sdk\ObjectSerializer;
 
 /**
- * CreateOrder201ResponseOrderLinesInner Class Doc Comment
+ * GetOrder200ResponseOrderLinesInner Class Doc Comment
  *
  * @category Class
  * @package  Zippendo\Sdk
@@ -41,7 +41,7 @@ use \Zippendo\Sdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetOrder200ResponseOrderLinesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
      *
      * @var string
      */
-    protected static $openAPIModelName = 'createOrder_201_response_orderLines_inner';
+    protected static $openAPIModelName = 'getOrder_200_response_orderLines_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -76,7 +76,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'bool',
         'taxable' => 'bool',
         'gift_card' => 'bool',
-        'vendor' => 'string'
+        'vendor' => 'string',
+        'packed_quantity' => 'int'
     ];
 
     /**
@@ -105,7 +106,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => null,
         'taxable' => null,
         'gift_card' => null,
-        'vendor' => null
+        'vendor' => null,
+        'packed_quantity' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => true,
         'taxable' => true,
         'gift_card' => true,
-        'vendor' => true
+        'vendor' => true,
+        'packed_quantity' => false
     ];
 
     /**
@@ -239,7 +242,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'requiresShipping',
         'taxable' => 'taxable',
         'gift_card' => 'giftCard',
-        'vendor' => 'vendor'
+        'vendor' => 'vendor',
+        'packed_quantity' => 'packedQuantity'
     ];
 
     /**
@@ -266,7 +270,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'setRequiresShipping',
         'taxable' => 'setTaxable',
         'gift_card' => 'setGiftCard',
-        'vendor' => 'setVendor'
+        'vendor' => 'setVendor',
+        'packed_quantity' => 'setPackedQuantity'
     ];
 
     /**
@@ -293,7 +298,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'getRequiresShipping',
         'taxable' => 'getTaxable',
         'gift_card' => 'getGiftCard',
-        'vendor' => 'getVendor'
+        'vendor' => 'getVendor',
+        'packed_quantity' => 'getPackedQuantity'
     ];
 
     /**
@@ -391,6 +397,7 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         $this->setIfExists('taxable', $data ?? [], null);
         $this->setIfExists('gift_card', $data ?? [], null);
         $this->setIfExists('vendor', $data ?? [], null);
+        $this->setIfExists('packed_quantity', $data ?? [], null);
     }
 
     /**
@@ -469,6 +476,17 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
 
         if (!is_null($this->container['country_of_origin']) && (mb_strlen($this->container['country_of_origin']) < 2)) {
             $invalidProperties[] = "invalid value for 'country_of_origin', the character length must be bigger than or equal to 2.";
+        }
+
+        if ($this->container['packed_quantity'] === null) {
+            $invalidProperties[] = "'packed_quantity' can't be null";
+        }
+        if (($this->container['packed_quantity'] > 9007199254740991)) {
+            $invalidProperties[] = "invalid value for 'packed_quantity', must be smaller than or equal to 9007199254740991.";
+        }
+
+        if (($this->container['packed_quantity'] < 0)) {
+            $invalidProperties[] = "invalid value for 'packed_quantity', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -570,10 +588,10 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
         if (($quantity > 9007199254740991)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling CreateOrder201ResponseOrderLinesInner., must be smaller than or equal to 9007199254740991.');
+            throw new \InvalidArgumentException('invalid value for $quantity when calling GetOrder200ResponseOrderLinesInner., must be smaller than or equal to 9007199254740991.');
         }
         if (($quantity < 0)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling CreateOrder201ResponseOrderLinesInner., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $quantity when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 0.');
         }
 
         $this->container['quantity'] = $quantity;
@@ -611,7 +629,7 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         if (!is_null($unit_price) && ($unit_price < 0)) {
-            throw new \InvalidArgumentException('invalid value for $unit_price when calling CreateOrder201ResponseOrderLinesInner., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $unit_price when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 0.');
         }
 
         $this->container['unit_price'] = $unit_price;
@@ -649,7 +667,7 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         if (!is_null($total_price) && ($total_price < 0)) {
-            throw new \InvalidArgumentException('invalid value for $total_price when calling CreateOrder201ResponseOrderLinesInner., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $total_price when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 0.');
         }
 
         $this->container['total_price'] = $total_price;
@@ -687,10 +705,10 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         if (!is_null($currency) && (mb_strlen($currency) > 3)) {
-            throw new \InvalidArgumentException('invalid length for $currency when calling CreateOrder201ResponseOrderLinesInner., must be smaller than or equal to 3.');
+            throw new \InvalidArgumentException('invalid length for $currency when calling GetOrder200ResponseOrderLinesInner., must be smaller than or equal to 3.');
         }
         if (!is_null($currency) && (mb_strlen($currency) < 3)) {
-            throw new \InvalidArgumentException('invalid length for $currency when calling CreateOrder201ResponseOrderLinesInner., must be bigger than or equal to 3.');
+            throw new \InvalidArgumentException('invalid length for $currency when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 3.');
         }
 
         $this->container['currency'] = $currency;
@@ -728,7 +746,7 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         if (!is_null($weight) && ($weight < 0)) {
-            throw new \InvalidArgumentException('invalid value for $weight when calling CreateOrder201ResponseOrderLinesInner., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $weight when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 0.');
         }
 
         $this->container['weight'] = $weight;
@@ -946,10 +964,10 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         if (!is_null($country_of_origin) && (mb_strlen($country_of_origin) > 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_of_origin when calling CreateOrder201ResponseOrderLinesInner., must be smaller than or equal to 2.');
+            throw new \InvalidArgumentException('invalid length for $country_of_origin when calling GetOrder200ResponseOrderLinesInner., must be smaller than or equal to 2.');
         }
         if (!is_null($country_of_origin) && (mb_strlen($country_of_origin) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_of_origin when calling CreateOrder201ResponseOrderLinesInner., must be bigger than or equal to 2.');
+            throw new \InvalidArgumentException('invalid length for $country_of_origin when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 2.');
         }
 
         $this->container['country_of_origin'] = $country_of_origin;
@@ -1157,6 +1175,40 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         $this->container['vendor'] = $vendor;
+
+        return $this;
+    }
+
+    /**
+     * Gets packed_quantity
+     *
+     * @return int
+     */
+    public function getPackedQuantity()
+    {
+        return $this->container['packed_quantity'];
+    }
+
+    /**
+     * Sets packed_quantity
+     *
+     * @param int $packed_quantity Quantity already allocated to outbound shipments.
+     *
+     * @return self
+     */
+    public function setPackedQuantity($packed_quantity)
+    {
+        if (is_null($packed_quantity)) {
+            throw new \InvalidArgumentException('non-nullable packed_quantity cannot be null');
+        }
+        if (($packed_quantity > 9007199254740991)) {
+            throw new \InvalidArgumentException('invalid value for $packed_quantity when calling GetOrder200ResponseOrderLinesInner., must be smaller than or equal to 9007199254740991.');
+        }
+        if (($packed_quantity < 0)) {
+            throw new \InvalidArgumentException('invalid value for $packed_quantity when calling GetOrder200ResponseOrderLinesInner., must be bigger than or equal to 0.');
+        }
+
+        $this->container['packed_quantity'] = $packed_quantity;
 
         return $this;
     }

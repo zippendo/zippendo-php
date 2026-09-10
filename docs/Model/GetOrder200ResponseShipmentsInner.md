@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **updated_at** | **string** | Timestamp when the shipment was last updated. |
 **shipping_rule_id** | **string** | ID of the shipping rule used for this shipment. | [optional]
 **documents** | [**\Zippendo\Sdk\Model\CreateShipment201ResponseDocumentsInner[]**](CreateShipment201ResponseDocumentsInner.md) | Documents (labels, customs forms) for this shipment. | [optional]
+**parcels** | [**\Zippendo\Sdk\Model\GetOrder200ResponseShipmentsInnerParcelsInner[]**](GetOrder200ResponseShipmentsInnerParcelsInner.md) | Compact parcels for the order fulfillment workspace (no QR/label payloads). |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

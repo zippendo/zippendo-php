@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateOrderRequestTest
+ * GetOrder200ResponseShipmentsInnerParcelsInnerTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UpdateOrderRequestTest Class Doc Comment
+ * GetOrder200ResponseShipmentsInnerParcelsInnerTest Class Doc Comment
  *
  * @category    Class
- * @description UpdateOrderRequest
+ * @description GetOrder200ResponseShipmentsInnerParcelsInner
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UpdateOrderRequestTest extends TestCase
+class GetOrder200ResponseShipmentsInnerParcelsInnerTest extends TestCase
 {
 
     /**
@@ -72,45 +72,45 @@ class UpdateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test "UpdateOrderRequest"
+     * Test "GetOrder200ResponseShipmentsInnerParcelsInner"
      */
-    public function testUpdateOrderRequest()
+    public function testGetOrder200ResponseShipmentsInnerParcelsInner()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_number"
+     * Test attribute "id"
      */
-    public function testPropertyOrderNumber()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_name"
+     * Test attribute "weight"
      */
-    public function testPropertyCustomerName()
+    public function testPropertyWeight()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_email"
+     * Test attribute "weight_unit"
      */
-    public function testPropertyCustomerEmail()
+    public function testPropertyWeightUnit()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shipping_address"
+     * Test attribute "dimensions"
      */
-    public function testPropertyShippingAddress()
+    public function testPropertyDimensions()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -120,69 +120,6 @@ class UpdateOrderRequestTest extends TestCase
      * Test attribute "order_lines"
      */
     public function testPropertyOrderLines()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subtotal_amount"
-     */
-    public function testPropertySubtotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "total_amount"
-     */
-    public function testPropertyTotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notes"
-     */
-    public function testPropertyNotes()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "status"
-     */
-    public function testPropertyStatus()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "shipping_rule_id"
-     */
-    public function testPropertyShippingRuleId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "service_point_id"
-     */
-    public function testPropertyServicePointId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

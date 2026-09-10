@@ -363,42 +363,18 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
         if ($this->container['address1'] === null) {
             $invalidProperties[] = "'address1' can't be null";
         }
-        if ((mb_strlen($this->container['address1']) < 1)) {
-            $invalidProperties[] = "invalid value for 'address1', the character length must be bigger than or equal to 1.";
-        }
-
         if ($this->container['city'] === null) {
             $invalidProperties[] = "'city' can't be null";
         }
-        if ((mb_strlen($this->container['city']) < 1)) {
-            $invalidProperties[] = "invalid value for 'city', the character length must be bigger than or equal to 1.";
-        }
-
         if ($this->container['postal_code'] === null) {
             $invalidProperties[] = "'postal_code' can't be null";
         }
-        if ((mb_strlen($this->container['postal_code']) < 1)) {
-            $invalidProperties[] = "invalid value for 'postal_code', the character length must be bigger than or equal to 1.";
-        }
-
         if ($this->container['country_code'] === null) {
             $invalidProperties[] = "'country_code' can't be null";
         }
-        if ((mb_strlen($this->container['country_code']) > 2)) {
-            $invalidProperties[] = "invalid value for 'country_code', the character length must be smaller than or equal to 2.";
-        }
-
-        if ((mb_strlen($this->container['country_code']) < 2)) {
-            $invalidProperties[] = "invalid value for 'country_code', the character length must be bigger than or equal to 2.";
-        }
-
         if (!is_null($this->container['email']) && !preg_match("/^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/", $this->container['email'])) {
             $invalidProperties[] = "invalid value for 'email', must be conform to the pattern /^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/.";
         }
@@ -440,11 +416,6 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateOrder201ResponseShippingAddress., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
@@ -540,11 +511,6 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
         if (is_null($address1)) {
             throw new \InvalidArgumentException('non-nullable address1 cannot be null');
         }
-
-        if ((mb_strlen($address1) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $address1 when calling CreateOrder201ResponseShippingAddress., must be bigger than or equal to 1.');
-        }
-
         $this->container['address1'] = $address1;
 
         return $this;
@@ -606,11 +572,6 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
         if (is_null($city)) {
             throw new \InvalidArgumentException('non-nullable city cannot be null');
         }
-
-        if ((mb_strlen($city) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $city when calling CreateOrder201ResponseShippingAddress., must be bigger than or equal to 1.');
-        }
-
         $this->container['city'] = $city;
 
         return $this;
@@ -706,11 +667,6 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
         if (is_null($postal_code)) {
             throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
         }
-
-        if ((mb_strlen($postal_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $postal_code when calling CreateOrder201ResponseShippingAddress., must be bigger than or equal to 1.');
-        }
-
         $this->container['postal_code'] = $postal_code;
 
         return $this;
@@ -772,13 +728,6 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
         }
-        if ((mb_strlen($country_code) > 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling CreateOrder201ResponseShippingAddress., must be smaller than or equal to 2.');
-        }
-        if ((mb_strlen($country_code) < 2)) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling CreateOrder201ResponseShippingAddress., must be bigger than or equal to 2.');
-        }
-
         $this->container['country_code'] = $country_code;
 
         return $this;

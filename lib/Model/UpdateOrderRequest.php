@@ -68,7 +68,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'string',
         'notes' => 'string',
         'status' => 'string',
-        'shipping_rule_id' => 'string'
+        'shipping_rule_id' => 'string',
+        'service_point_id' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => null,
         'notes' => null,
         'status' => null,
-        'shipping_rule_id' => null
+        'shipping_rule_id' => null,
+        'service_point_id' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => true,
         'notes' => true,
         'status' => false,
-        'shipping_rule_id' => true
+        'shipping_rule_id' => true,
+        'service_point_id' => true
     ];
 
     /**
@@ -207,7 +210,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'currency',
         'notes' => 'notes',
         'status' => 'status',
-        'shipping_rule_id' => 'shippingRuleId'
+        'shipping_rule_id' => 'shippingRuleId',
+        'service_point_id' => 'servicePointId'
     ];
 
     /**
@@ -226,7 +230,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'setCurrency',
         'notes' => 'setNotes',
         'status' => 'setStatus',
-        'shipping_rule_id' => 'setShippingRuleId'
+        'shipping_rule_id' => 'setShippingRuleId',
+        'service_point_id' => 'setServicePointId'
     ];
 
     /**
@@ -245,7 +250,8 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'getCurrency',
         'notes' => 'getNotes',
         'status' => 'getStatus',
-        'shipping_rule_id' => 'getShippingRuleId'
+        'shipping_rule_id' => 'getShippingRuleId',
+        'service_point_id' => 'getServicePointId'
     ];
 
     /**
@@ -339,6 +345,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('notes', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('shipping_rule_id', $data ?? [], null);
+        $this->setIfExists('service_point_id', $data ?? [], null);
     }
 
     /**
@@ -808,6 +815,40 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['shipping_rule_id'] = $shipping_rule_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_point_id
+     *
+     * @return string|null
+     */
+    public function getServicePointId()
+    {
+        return $this->container['service_point_id'];
+    }
+
+    /**
+     * Sets service_point_id
+     *
+     * @param string|null $service_point_id Service point (parcel shop) ID to apply to unsent outbound shipments.
+     *
+     * @return self
+     */
+    public function setServicePointId($service_point_id)
+    {
+        if (is_null($service_point_id)) {
+            array_push($this->openAPINullablesSetToNull, 'service_point_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service_point_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['service_point_id'] = $service_point_id;
 
         return $this;
     }

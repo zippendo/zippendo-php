@@ -68,7 +68,8 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'created_at' => 'string',
         'updated_at' => 'string',
         'shipping_rule_id' => 'string',
-        'documents' => '\Zippendo\Sdk\Model\CreateShipment201ResponseDocumentsInner[]'
+        'documents' => '\Zippendo\Sdk\Model\CreateShipment201ResponseDocumentsInner[]',
+        'parcels' => '\Zippendo\Sdk\Model\GetOrder200ResponseShipmentsInnerParcelsInner[]'
     ];
 
     /**
@@ -89,7 +90,8 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'created_at' => null,
         'updated_at' => null,
         'shipping_rule_id' => null,
-        'documents' => null
+        'documents' => null,
+        'parcels' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'created_at' => false,
         'updated_at' => false,
         'shipping_rule_id' => true,
-        'documents' => false
+        'documents' => false,
+        'parcels' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'shipping_rule_id' => 'shippingRuleId',
-        'documents' => 'documents'
+        'documents' => 'documents',
+        'parcels' => 'parcels'
     ];
 
     /**
@@ -226,7 +230,8 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'shipping_rule_id' => 'setShippingRuleId',
-        'documents' => 'setDocuments'
+        'documents' => 'setDocuments',
+        'parcels' => 'setParcels'
     ];
 
     /**
@@ -245,7 +250,8 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'shipping_rule_id' => 'getShippingRuleId',
-        'documents' => 'getDocuments'
+        'documents' => 'getDocuments',
+        'parcels' => 'getParcels'
     ];
 
     /**
@@ -358,6 +364,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('shipping_rule_id', $data ?? [], null);
         $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('parcels', $data ?? [], null);
     }
 
     /**
@@ -425,6 +432,9 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['parcels'] === null) {
+            $invalidProperties[] = "'parcels' can't be null";
         }
         return $invalidProperties;
     }
@@ -775,6 +785,33 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable documents cannot be null');
         }
         $this->container['documents'] = $documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets parcels
+     *
+     * @return \Zippendo\Sdk\Model\GetOrder200ResponseShipmentsInnerParcelsInner[]
+     */
+    public function getParcels()
+    {
+        return $this->container['parcels'];
+    }
+
+    /**
+     * Sets parcels
+     *
+     * @param \Zippendo\Sdk\Model\GetOrder200ResponseShipmentsInnerParcelsInner[] $parcels Compact parcels for the order fulfillment workspace (no QR/label payloads).
+     *
+     * @return self
+     */
+    public function setParcels($parcels)
+    {
+        if (is_null($parcels)) {
+            throw new \InvalidArgumentException('non-nullable parcels cannot be null');
+        }
+        $this->container['parcels'] = $parcels;
 
         return $this;
     }

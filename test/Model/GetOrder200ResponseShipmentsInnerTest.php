@@ -178,4 +178,13 @@ class GetOrder200ResponseShipmentsInnerTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "parcels"
+     */
+    public function testPropertyParcels()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

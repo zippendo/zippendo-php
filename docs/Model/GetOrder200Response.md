@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **customer_name** | **string** | Customer full name. | [optional]
 **customer_email** | **string** | Customer email address. | [optional]
 **shipping_address** | [**\Zippendo\Sdk\Model\CreateOrder201ResponseShippingAddress**](CreateOrder201ResponseShippingAddress.md) |  | [optional]
-**order_lines** | [**\Zippendo\Sdk\Model\CreateOrder201ResponseOrderLinesInner[]**](CreateOrder201ResponseOrderLinesInner.md) | Line items in the order. |
+**order_lines** | [**\Zippendo\Sdk\Model\GetOrder200ResponseOrderLinesInner[]**](GetOrder200ResponseOrderLinesInner.md) | Sold line items with quantity already allocated to outbound shipments. |
 **subtotal_amount** | **float** | Order subtotal before shipping and tax. | [optional]
 **total_amount** | **float** | Order grand total. | [optional]
 **currency** | **string** | ISO 4217 currency code. | [optional]

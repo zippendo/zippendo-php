@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateOrderRequestTest
+ * GetOrder200ResponseOrderLinesInnerTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UpdateOrderRequestTest Class Doc Comment
+ * GetOrder200ResponseOrderLinesInnerTest Class Doc Comment
  *
  * @category    Class
- * @description UpdateOrderRequest
+ * @description GetOrder200ResponseOrderLinesInner
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class UpdateOrderRequestTest extends TestCase
+class GetOrder200ResponseOrderLinesInnerTest extends TestCase
 {
 
     /**
@@ -72,72 +72,54 @@ class UpdateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test "UpdateOrderRequest"
+     * Test "GetOrder200ResponseOrderLinesInner"
      */
-    public function testUpdateOrderRequest()
+    public function testGetOrder200ResponseOrderLinesInner()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_number"
+     * Test attribute "sku"
      */
-    public function testPropertyOrderNumber()
+    public function testPropertySku()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_name"
+     * Test attribute "name"
      */
-    public function testPropertyCustomerName()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "customer_email"
+     * Test attribute "quantity"
      */
-    public function testPropertyCustomerEmail()
+    public function testPropertyQuantity()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shipping_address"
+     * Test attribute "unit_price"
      */
-    public function testPropertyShippingAddress()
+    public function testPropertyUnitPrice()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "order_lines"
+     * Test attribute "total_price"
      */
-    public function testPropertyOrderLines()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "subtotal_amount"
-     */
-    public function testPropertySubtotalAmount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "total_amount"
-     */
-    public function testPropertyTotalAmount()
+    public function testPropertyTotalPrice()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -153,36 +135,126 @@ class UpdateOrderRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "notes"
+     * Test attribute "weight"
      */
-    public function testPropertyNotes()
+    public function testPropertyWeight()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "weight_unit"
      */
-    public function testPropertyStatus()
+    public function testPropertyWeightUnit()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "shipping_rule_id"
+     * Test attribute "variant_id"
      */
-    public function testPropertyShippingRuleId()
+    public function testPropertyVariantId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "service_point_id"
+     * Test attribute "product_id"
      */
-    public function testPropertyServicePointId()
+    public function testPropertyProductId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "image_url"
+     */
+    public function testPropertyImageUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "hs_code"
+     */
+    public function testPropertyHsCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "country_of_origin"
+     */
+    public function testPropertyCountryOfOrigin()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "province_of_origin"
+     */
+    public function testPropertyProvinceOfOrigin()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "barcode"
+     */
+    public function testPropertyBarcode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "requires_shipping"
+     */
+    public function testPropertyRequiresShipping()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "taxable"
+     */
+    public function testPropertyTaxable()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "gift_card"
+     */
+    public function testPropertyGiftCard()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "vendor"
+     */
+    public function testPropertyVendor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "packed_quantity"
+     */
+    public function testPropertyPackedQuantity()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

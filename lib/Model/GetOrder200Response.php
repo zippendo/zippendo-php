@@ -64,7 +64,7 @@ class GetOrder200Response implements ModelInterface, ArrayAccess, \JsonSerializa
         'customer_name' => 'string',
         'customer_email' => 'string',
         'shipping_address' => '\Zippendo\Sdk\Model\CreateOrder201ResponseShippingAddress',
-        'order_lines' => '\Zippendo\Sdk\Model\CreateOrder201ResponseOrderLinesInner[]',
+        'order_lines' => '\Zippendo\Sdk\Model\GetOrder200ResponseOrderLinesInner[]',
         'subtotal_amount' => 'float',
         'total_amount' => 'float',
         'currency' => 'string',
@@ -685,7 +685,7 @@ class GetOrder200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets order_lines
      *
-     * @return \Zippendo\Sdk\Model\CreateOrder201ResponseOrderLinesInner[]
+     * @return \Zippendo\Sdk\Model\GetOrder200ResponseOrderLinesInner[]
      */
     public function getOrderLines()
     {
@@ -695,7 +695,7 @@ class GetOrder200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets order_lines
      *
-     * @param \Zippendo\Sdk\Model\CreateOrder201ResponseOrderLinesInner[] $order_lines Line items in the order.
+     * @param \Zippendo\Sdk\Model\GetOrder200ResponseOrderLinesInner[] $order_lines Sold line items with quantity already allocated to outbound shipments.
      *
      * @return self
      */

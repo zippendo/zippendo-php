@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **notes** | **string** | Free-form internal notes. | [optional]
 **status** | **string** | Order fulfilment status derived from its shipments. | [optional]
 **shipping_rule_id** | **string** | ID of the shipping rule to apply. | [optional]
+**service_point_id** | **string** | Service point (parcel shop) ID to apply to unsent outbound shipments. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
