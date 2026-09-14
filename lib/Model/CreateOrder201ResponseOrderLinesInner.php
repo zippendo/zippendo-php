@@ -76,7 +76,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'bool',
         'taxable' => 'bool',
         'gift_card' => 'bool',
-        'vendor' => 'string'
+        'vendor' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -105,7 +106,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => null,
         'taxable' => null,
         'gift_card' => null,
-        'vendor' => null
+        'vendor' => null,
+        'id' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => true,
         'taxable' => true,
         'gift_card' => true,
-        'vendor' => true
+        'vendor' => true,
+        'id' => false
     ];
 
     /**
@@ -239,7 +242,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'requiresShipping',
         'taxable' => 'taxable',
         'gift_card' => 'giftCard',
-        'vendor' => 'vendor'
+        'vendor' => 'vendor',
+        'id' => 'id'
     ];
 
     /**
@@ -266,7 +270,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'setRequiresShipping',
         'taxable' => 'setTaxable',
         'gift_card' => 'setGiftCard',
-        'vendor' => 'setVendor'
+        'vendor' => 'setVendor',
+        'id' => 'setId'
     ];
 
     /**
@@ -293,7 +298,8 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         'requires_shipping' => 'getRequiresShipping',
         'taxable' => 'getTaxable',
         'gift_card' => 'getGiftCard',
-        'vendor' => 'getVendor'
+        'vendor' => 'getVendor',
+        'id' => 'getId'
     ];
 
     /**
@@ -391,6 +397,7 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
         $this->setIfExists('taxable', $data ?? [], null);
         $this->setIfExists('gift_card', $data ?? [], null);
         $this->setIfExists('vendor', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -1157,6 +1164,33 @@ class CreateOrder201ResponseOrderLinesInner implements ModelInterface, ArrayAcce
             }
         }
         $this->container['vendor'] = $vendor;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Order line ID. Present once the line is a row. Absent for jsonb-only lines during the dual-write window — do not synthesise one, or an edit would re-point packed lines.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

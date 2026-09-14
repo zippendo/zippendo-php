@@ -23,5 +23,6 @@ Name | Type | Description | Notes
 **taxable** | **bool** | Whether the item is taxable. | [optional]
 **gift_card** | **bool** | Whether the item is a gift card. | [optional]
 **vendor** | **string** | Vendor or brand name. | [optional]
+**id** | **string** | ID of the existing order line this entry edits. Omit to add a new line. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

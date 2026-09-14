@@ -76,7 +76,8 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         'requires_shipping' => 'bool',
         'taxable' => 'bool',
         'gift_card' => 'bool',
-        'vendor' => 'string'
+        'vendor' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -105,7 +106,8 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         'requires_shipping' => null,
         'taxable' => null,
         'gift_card' => null,
-        'vendor' => null
+        'vendor' => null,
+        'id' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         'requires_shipping' => true,
         'taxable' => true,
         'gift_card' => true,
-        'vendor' => true
+        'vendor' => true,
+        'id' => false
     ];
 
     /**
@@ -239,7 +242,8 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         'requires_shipping' => 'requiresShipping',
         'taxable' => 'taxable',
         'gift_card' => 'giftCard',
-        'vendor' => 'vendor'
+        'vendor' => 'vendor',
+        'id' => 'id'
     ];
 
     /**
@@ -266,7 +270,8 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         'requires_shipping' => 'setRequiresShipping',
         'taxable' => 'setTaxable',
         'gift_card' => 'setGiftCard',
-        'vendor' => 'setVendor'
+        'vendor' => 'setVendor',
+        'id' => 'setId'
     ];
 
     /**
@@ -293,7 +298,8 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         'requires_shipping' => 'getRequiresShipping',
         'taxable' => 'getTaxable',
         'gift_card' => 'getGiftCard',
-        'vendor' => 'getVendor'
+        'vendor' => 'getVendor',
+        'id' => 'getId'
     ];
 
     /**
@@ -391,6 +397,7 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
         $this->setIfExists('taxable', $data ?? [], null);
         $this->setIfExists('gift_card', $data ?? [], null);
         $this->setIfExists('vendor', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -1166,6 +1173,33 @@ class CreateOrderRequestOrderLinesInner implements ModelInterface, ArrayAccess, 
             }
         }
         $this->container['vendor'] = $vendor;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id ID of the existing order line this entry edits. Omit to add a new line.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

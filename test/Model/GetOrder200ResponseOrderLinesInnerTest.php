@@ -252,6 +252,15 @@ class GetOrder200ResponseOrderLinesInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "packed_quantity"
      */
     public function testPropertyPackedQuantity()

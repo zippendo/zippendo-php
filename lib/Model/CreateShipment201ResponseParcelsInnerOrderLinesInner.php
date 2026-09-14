@@ -59,6 +59,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
      */
     protected static $openAPITypes = [
         'id' => 'string',
+        'order_line_id' => 'string',
         'sku' => 'string',
         'quantity' => 'int',
         'description' => 'string',
@@ -67,6 +68,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         'vat_percent' => 'float',
         'location' => 'string',
         'country_of_origin' => 'string',
+        'hs_code' => 'string',
         'tarrif_number' => 'string'
     ];
 
@@ -79,6 +81,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
      */
     protected static $openAPIFormats = [
         'id' => null,
+        'order_line_id' => null,
         'sku' => null,
         'quantity' => null,
         'description' => null,
@@ -87,6 +90,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         'vat_percent' => null,
         'location' => null,
         'country_of_origin' => null,
+        'hs_code' => null,
         'tarrif_number' => null
     ];
 
@@ -97,6 +101,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
      */
     protected static array $openAPINullables = [
         'id' => false,
+        'order_line_id' => true,
         'sku' => true,
         'quantity' => false,
         'description' => true,
@@ -105,6 +110,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         'vat_percent' => true,
         'location' => true,
         'country_of_origin' => false,
+        'hs_code' => true,
         'tarrif_number' => true
     ];
 
@@ -195,6 +201,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'order_line_id' => 'orderLineId',
         'sku' => 'sku',
         'quantity' => 'quantity',
         'description' => 'description',
@@ -203,6 +210,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         'vat_percent' => 'vatPercent',
         'location' => 'location',
         'country_of_origin' => 'countryOfOrigin',
+        'hs_code' => 'hsCode',
         'tarrif_number' => 'tarrifNumber'
     ];
 
@@ -213,6 +221,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
      */
     protected static $setters = [
         'id' => 'setId',
+        'order_line_id' => 'setOrderLineId',
         'sku' => 'setSku',
         'quantity' => 'setQuantity',
         'description' => 'setDescription',
@@ -221,6 +230,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         'vat_percent' => 'setVatPercent',
         'location' => 'setLocation',
         'country_of_origin' => 'setCountryOfOrigin',
+        'hs_code' => 'setHsCode',
         'tarrif_number' => 'setTarrifNumber'
     ];
 
@@ -231,6 +241,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
      */
     protected static $getters = [
         'id' => 'getId',
+        'order_line_id' => 'getOrderLineId',
         'sku' => 'getSku',
         'quantity' => 'getQuantity',
         'description' => 'getDescription',
@@ -239,6 +250,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         'vat_percent' => 'getVatPercent',
         'location' => 'getLocation',
         'country_of_origin' => 'getCountryOfOrigin',
+        'hs_code' => 'getHsCode',
         'tarrif_number' => 'getTarrifNumber'
     ];
 
@@ -300,6 +312,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('order_line_id', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
@@ -308,6 +321,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
         $this->setIfExists('vat_percent', $data ?? [], null);
         $this->setIfExists('location', $data ?? [], null);
         $this->setIfExists('country_of_origin', $data ?? [], null);
+        $this->setIfExists('hs_code', $data ?? [], null);
         $this->setIfExists('tarrif_number', $data ?? [], null);
     }
 
@@ -419,6 +433,40 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_line_id
+     *
+     * @return string|null
+     */
+    public function getOrderLineId()
+    {
+        return $this->container['order_line_id'];
+    }
+
+    /**
+     * Sets order_line_id
+     *
+     * @param string|null $order_line_id ID of the order line this packed line came from. Null when the item did not originate from an order line, such as a free gift or a replacement part.
+     *
+     * @return self
+     */
+    public function setOrderLineId($order_line_id)
+    {
+        if (is_null($order_line_id)) {
+            array_push($this->openAPINullablesSetToNull, 'order_line_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order_line_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['order_line_id'] = $order_line_id;
 
         return $this;
     }
@@ -721,6 +769,40 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
     }
 
     /**
+     * Gets hs_code
+     *
+     * @return string|null
+     */
+    public function getHsCode()
+    {
+        return $this->container['hs_code'];
+    }
+
+    /**
+     * Sets hs_code
+     *
+     * @param string|null $hs_code Harmonized System customs code.
+     *
+     * @return self
+     */
+    public function setHsCode($hs_code)
+    {
+        if (is_null($hs_code)) {
+            array_push($this->openAPINullablesSetToNull, 'hs_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hs_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['hs_code'] = $hs_code;
+
+        return $this;
+    }
+
+    /**
      * Gets tarrif_number
      *
      * @return string|null
@@ -733,7 +815,7 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInner implements ModelInter
     /**
      * Sets tarrif_number
      *
-     * @param string|null $tarrif_number Customs tariff (HS) code.
+     * @param string|null $tarrif_number Deprecated misspelling of `hsCode`, kept for backwards compatibility.
      *
      * @return self
      */

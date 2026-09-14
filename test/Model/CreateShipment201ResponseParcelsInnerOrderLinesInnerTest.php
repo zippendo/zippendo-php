@@ -90,6 +90,15 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "order_line_id"
+     */
+    public function testPropertyOrderLineId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "sku"
      */
     public function testPropertySku()
@@ -156,6 +165,15 @@ class CreateShipment201ResponseParcelsInnerOrderLinesInnerTest extends TestCase
      * Test attribute "country_of_origin"
      */
     public function testPropertyCountryOfOrigin()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "hs_code"
+     */
+    public function testPropertyHsCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
