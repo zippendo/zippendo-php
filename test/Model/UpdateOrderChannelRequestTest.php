@@ -108,6 +108,15 @@ class UpdateOrderChannelRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "role"
+     */
+    public function testPropertyRole()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "credentials"
      */
     public function testPropertyCredentials()

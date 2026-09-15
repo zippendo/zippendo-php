@@ -117,6 +117,15 @@ class ListOrderChannels200ResponseDataInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "role"
+     */
+    public function testPropertyRole()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "brand_id"
      */
     public function testPropertyBrandId()

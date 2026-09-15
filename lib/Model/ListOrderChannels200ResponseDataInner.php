@@ -62,6 +62,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         'name' => 'string',
         'type' => 'string',
         'enabled' => 'bool',
+        'role' => 'string',
         'brand_id' => 'string',
         'has_credentials' => 'bool',
         'settings' => '\Zippendo\Sdk\Model\ListOrderChannels200ResponseDataInnerSettings',
@@ -86,6 +87,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         'name' => null,
         'type' => null,
         'enabled' => null,
+        'role' => null,
         'brand_id' => null,
         'has_credentials' => null,
         'settings' => null,
@@ -108,6 +110,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         'name' => false,
         'type' => false,
         'enabled' => false,
+        'role' => false,
         'brand_id' => true,
         'has_credentials' => false,
         'settings' => false,
@@ -210,6 +213,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         'name' => 'name',
         'type' => 'type',
         'enabled' => 'enabled',
+        'role' => 'role',
         'brand_id' => 'brandId',
         'has_credentials' => 'hasCredentials',
         'settings' => 'settings',
@@ -232,6 +236,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         'name' => 'setName',
         'type' => 'setType',
         'enabled' => 'setEnabled',
+        'role' => 'setRole',
         'brand_id' => 'setBrandId',
         'has_credentials' => 'setHasCredentials',
         'settings' => 'setSettings',
@@ -254,6 +259,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         'name' => 'getName',
         'type' => 'getType',
         'enabled' => 'getEnabled',
+        'role' => 'getRole',
         'brand_id' => 'getBrandId',
         'has_credentials' => 'getHasCredentials',
         'settings' => 'getSettings',
@@ -311,6 +317,8 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
     public const TYPE_WOOCOMMERCE = 'woocommerce';
     public const TYPE_MANUAL = 'manual';
     public const TYPE_CUSTOM = 'custom';
+    public const ROLE_ORDERS_AND_RATES = 'orders_and_rates';
+    public const ROLE_RATES_ONLY = 'rates_only';
 
     /**
      * Gets allowable values of the enum
@@ -324,6 +332,19 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
             self::TYPE_WOOCOMMERCE,
             self::TYPE_MANUAL,
             self::TYPE_CUSTOM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRoleAllowableValues()
+    {
+        return [
+            self::ROLE_ORDERS_AND_RATES,
+            self::ROLE_RATES_ONLY,
         ];
     }
 
@@ -346,6 +367,7 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('role', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('has_credentials', $data ?? [], null);
         $this->setIfExists('settings', $data ?? [], null);
@@ -406,6 +428,18 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
         if ($this->container['enabled'] === null) {
             $invalidProperties[] = "'enabled' can't be null";
         }
+        if ($this->container['role'] === null) {
+            $invalidProperties[] = "'role' can't be null";
+        }
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'role', must be one of '%s'",
+                $this->container['role'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['brand_id'] === null && !$this->isNullableSetToNull('brand_id')) {
             $invalidProperties[] = "'brand_id' is required";
         }
@@ -557,6 +591,43 @@ class ListOrderChannels200ResponseDataInner implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
         $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     *
+     * @param string $role What Zippendo is used for on this channel. `orders_and_rates` (default) imports orders and serves checkout rates. `rates_only` serves checkout rates and service-point selection ONLY — orders are owned by an external system such as a WMS, nothing is imported, and no fulfilment or tracking is pushed back to the platform.
+     *
+     * @return self
+     */
+    public function setRole($role)
+    {
+        if (is_null($role)) {
+            throw new \InvalidArgumentException('non-nullable role cannot be null');
+        }
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!in_array($role, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'role', must be one of '%s'",
+                    $role,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['role'] = $role;
 
         return $this;
     }

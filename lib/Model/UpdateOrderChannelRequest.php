@@ -61,6 +61,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_id' => 'string',
         'name' => 'string',
         'enabled' => 'bool',
+        'role' => 'string',
         'credentials' => 'array<string,mixed>',
         'settings' => '\Zippendo\Sdk\Model\UpdateOrderChannelRequestSettings',
         'shipping_rule_ids' => 'string[]'
@@ -77,6 +78,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_id' => null,
         'name' => null,
         'enabled' => null,
+        'role' => null,
         'credentials' => null,
         'settings' => null,
         'shipping_rule_ids' => null
@@ -91,6 +93,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_id' => true,
         'name' => false,
         'enabled' => false,
+        'role' => false,
         'credentials' => true,
         'settings' => false,
         'shipping_rule_ids' => false
@@ -185,6 +188,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_id' => 'brandId',
         'name' => 'name',
         'enabled' => 'enabled',
+        'role' => 'role',
         'credentials' => 'credentials',
         'settings' => 'settings',
         'shipping_rule_ids' => 'shippingRuleIds'
@@ -199,6 +203,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_id' => 'setBrandId',
         'name' => 'setName',
         'enabled' => 'setEnabled',
+        'role' => 'setRole',
         'credentials' => 'setCredentials',
         'settings' => 'setSettings',
         'shipping_rule_ids' => 'setShippingRuleIds'
@@ -213,6 +218,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         'brand_id' => 'getBrandId',
         'name' => 'getName',
         'enabled' => 'getEnabled',
+        'role' => 'getRole',
         'credentials' => 'getCredentials',
         'settings' => 'getSettings',
         'shipping_rule_ids' => 'getShippingRuleIds'
@@ -259,6 +265,21 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const ROLE_ORDERS_AND_RATES = 'orders_and_rates';
+    public const ROLE_RATES_ONLY = 'rates_only';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRoleAllowableValues()
+    {
+        return [
+            self::ROLE_ORDERS_AND_RATES,
+            self::ROLE_RATES_ONLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -278,6 +299,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('role', $data ?? [], null);
         $this->setIfExists('credentials', $data ?? [], null);
         $this->setIfExists('settings', $data ?? [], null);
         $this->setIfExists('shipping_rule_ids', $data ?? [], null);
@@ -316,6 +338,15 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'role', must be one of '%s'",
+                $this->container['role'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -424,6 +455,43 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
         $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets role
+     *
+     * @return string|null
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     *
+     * @param string|null $role What Zippendo is used for on this channel. `orders_and_rates` (default) imports orders and serves checkout rates. `rates_only` serves checkout rates and service-point selection ONLY — orders are owned by an external system such as a WMS, nothing is imported, and no fulfilment or tracking is pushed back to the platform.
+     *
+     * @return self
+     */
+    public function setRole($role)
+    {
+        if (is_null($role)) {
+            throw new \InvalidArgumentException('non-nullable role cannot be null');
+        }
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!in_array($role, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'role', must be one of '%s'",
+                    $role,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['role'] = $role;
 
         return $this;
     }
