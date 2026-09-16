@@ -372,6 +372,9 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
     public const CODE_AUTOMATION_INVALID = 'AUTOMATION_INVALID';
     public const CODE_ZIPPY_DISABLED = 'ZIPPY_DISABLED';
     public const CODE_CONVERSATION_NOT_FOUND = 'CONVERSATION_NOT_FOUND';
+    public const CODE_FILTER_INVALID = 'FILTER_INVALID';
+    public const CODE_SAVED_VIEW_NOT_FOUND = 'SAVED_VIEW_NOT_FOUND';
+    public const CODE_SAVED_VIEW_LIMIT_REACHED = 'SAVED_VIEW_LIMIT_REACHED';
     public const CODE_ADMIN_FORBIDDEN = 'ADMIN_FORBIDDEN';
     public const CODE_JOB_HANDLER_NOT_REGISTERED = 'JOB_HANDLER_NOT_REGISTERED';
     public const CODE_JOB_QUEUE_NOT_CONFIGURED = 'JOB_QUEUE_NOT_CONFIGURED';
@@ -536,6 +539,9 @@ class SendShipment422Response implements ModelInterface, ArrayAccess, \JsonSeria
             self::CODE_AUTOMATION_INVALID,
             self::CODE_ZIPPY_DISABLED,
             self::CODE_CONVERSATION_NOT_FOUND,
+            self::CODE_FILTER_INVALID,
+            self::CODE_SAVED_VIEW_NOT_FOUND,
+            self::CODE_SAVED_VIEW_LIMIT_REACHED,
             self::CODE_ADMIN_FORBIDDEN,
             self::CODE_JOB_HANDLER_NOT_REGISTERED,
             self::CODE_JOB_QUEUE_NOT_CONFIGURED,

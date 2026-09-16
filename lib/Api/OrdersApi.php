@@ -1152,15 +1152,16 @@ class OrdersApi
      * @param  string|null $status Order fulfilment status derived from its shipments. (optional)
      * @param  string|null $order_channel_id Filter by order channel ID. (optional)
      * @param  string|null $search Search by order number or customer name/email. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zippendo\Sdk\Model\ListOrders200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
-    public function listOrders($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, string $contentType = self::contentTypes['listOrders'][0])
+    public function listOrders($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, $filter = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        list($response) = $this->listOrdersWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $contentType);
+        list($response) = $this->listOrdersWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $filter, $contentType);
         return $response;
     }
 
@@ -1177,15 +1178,16 @@ class OrdersApi
      * @param  string|null $status Order fulfilment status derived from its shipments. (optional)
      * @param  string|null $order_channel_id Filter by order channel ID. (optional)
      * @param  string|null $search Search by order number or customer name/email. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zippendo\Sdk\Model\ListOrders200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listOrdersWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, string $contentType = self::contentTypes['listOrders'][0])
+    public function listOrdersWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, $filter = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        $request = $this->listOrdersRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $contentType);
+        $request = $this->listOrdersRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $filter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1297,14 +1299,15 @@ class OrdersApi
      * @param  string|null $status Order fulfilment status derived from its shipments. (optional)
      * @param  string|null $order_channel_id Filter by order channel ID. (optional)
      * @param  string|null $search Search by order number or customer name/email. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listOrdersAsync($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, string $contentType = self::contentTypes['listOrders'][0])
+    public function listOrdersAsync($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, $filter = null, string $contentType = self::contentTypes['listOrders'][0])
     {
-        return $this->listOrdersAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $contentType)
+        return $this->listOrdersAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $filter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1325,15 +1328,16 @@ class OrdersApi
      * @param  string|null $status Order fulfilment status derived from its shipments. (optional)
      * @param  string|null $order_channel_id Filter by order channel ID. (optional)
      * @param  string|null $search Search by order number or customer name/email. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listOrdersAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, string $contentType = self::contentTypes['listOrders'][0])
+    public function listOrdersAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, $filter = null, string $contentType = self::contentTypes['listOrders'][0])
     {
         $returnType = '\Zippendo\Sdk\Model\ListOrders200Response';
-        $request = $this->listOrdersRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $contentType);
+        $request = $this->listOrdersRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $filter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1382,12 +1386,13 @@ class OrdersApi
      * @param  string|null $status Order fulfilment status derived from its shipments. (optional)
      * @param  string|null $order_channel_id Filter by order channel ID. (optional)
      * @param  string|null $search Search by order number or customer name/email. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listOrdersRequest($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, string $contentType = self::contentTypes['listOrders'][0])
+    public function listOrdersRequest($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $order_channel_id = null, $search = null, $filter = null, string $contentType = self::contentTypes['listOrders'][0])
     {
 
         // verify the required parameter 'org_id' is set
@@ -1416,6 +1421,10 @@ class OrdersApi
 
 
 
+        if ($filter !== null && strlen($filter) > 8000) {
+            throw new \InvalidArgumentException('invalid length for "$filter" when calling OrdersApi.listOrders, must be smaller than or equal to 8000.');
+        }
+        
 
         $resourcePath = '/orgs/{orgId}/orders';
         $formParams = [];
@@ -1482,6 +1491,15 @@ class OrdersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $search,
             'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

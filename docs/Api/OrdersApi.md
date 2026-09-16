@@ -202,12 +202,12 @@ try {
 ## `listOrders()`
 
 ```php
-listOrders($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search): \Zippendo\Sdk\Model\ListOrders200Response
+listOrders($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $filter): \Zippendo\Sdk\Model\ListOrders200Response
 ```
 
 List orders
 
-Returns a paginated list of orders for an organization, filterable by status, channel, and search term.
+Returns a paginated list of orders for an organization, filterable by status, channel, search term and an advanced filter definition.
 
 ### Example
 
@@ -234,9 +234,10 @@ $brand_scope = own; // string | How the brand context narrows this list: \"own\"
 $status = processing; // string | Order fulfilment status derived from its shipments.
 $order_channel_id = clz9k2f0a0001abcd1234efgh; // string | Filter by order channel ID.
 $search = Anna; // string | Search by order number or customer name/email.
+$filter = {"conjunction":"and","conditions":[{"id":"c_1","field":"status","operator":"in","value":["pending","processing"]}]}; // string | Advanced filter as a JSON-encoded definition: a `conjunction` (`and`/`or`) over `conditions`, each `{ id, field, operator, value }` or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 `FILTER_INVALID`.
 
 try {
-    $result = $apiInstance->listOrders($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search);
+    $result = $apiInstance->listOrders($org_id, $page, $limit, $brand_id, $brand_scope, $status, $order_channel_id, $search, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->listOrders: ', $e->getMessage(), PHP_EOL;
@@ -255,6 +256,7 @@ try {
 | **status** | **string**| Order fulfilment status derived from its shipments. | [optional] |
 | **order_channel_id** | **string**| Filter by order channel ID. | [optional] |
 | **search** | **string**| Search by order number or customer name/email. | [optional] |
+| **filter** | **string**| Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. | [optional] |
 
 ### Return type
 

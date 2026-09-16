@@ -2460,15 +2460,16 @@ class ShipmentsApi
      * @param  string|null $status Filter by shipment status. (optional)
      * @param  string|null $type Filter by direction. (optional)
      * @param  string|null $search Search by shipment reference or parcel tracking number. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zippendo\Sdk\Model\ListShipments200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
-    public function listShipments($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipments($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, $filter = null, string $contentType = self::contentTypes['listShipments'][0])
     {
-        list($response) = $this->listShipmentsWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $contentType);
+        list($response) = $this->listShipmentsWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $filter, $contentType);
         return $response;
     }
 
@@ -2485,15 +2486,16 @@ class ShipmentsApi
      * @param  string|null $status Filter by shipment status. (optional)
      * @param  string|null $type Filter by direction. (optional)
      * @param  string|null $search Search by shipment reference or parcel tracking number. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zippendo\Sdk\Model\ListShipments200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listShipmentsWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, $filter = null, string $contentType = self::contentTypes['listShipments'][0])
     {
-        $request = $this->listShipmentsRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $contentType);
+        $request = $this->listShipmentsRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $filter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2605,14 +2607,15 @@ class ShipmentsApi
      * @param  string|null $status Filter by shipment status. (optional)
      * @param  string|null $type Filter by direction. (optional)
      * @param  string|null $search Search by shipment reference or parcel tracking number. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listShipmentsAsync($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsAsync($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, $filter = null, string $contentType = self::contentTypes['listShipments'][0])
     {
-        return $this->listShipmentsAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $contentType)
+        return $this->listShipmentsAsyncWithHttpInfo($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $filter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2633,15 +2636,16 @@ class ShipmentsApi
      * @param  string|null $status Filter by shipment status. (optional)
      * @param  string|null $type Filter by direction. (optional)
      * @param  string|null $search Search by shipment reference or parcel tracking number. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listShipmentsAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsAsyncWithHttpInfo($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, $filter = null, string $contentType = self::contentTypes['listShipments'][0])
     {
         $returnType = '\Zippendo\Sdk\Model\ListShipments200Response';
-        $request = $this->listShipmentsRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $contentType);
+        $request = $this->listShipmentsRequest($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $filter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2690,12 +2694,13 @@ class ShipmentsApi
      * @param  string|null $status Filter by shipment status. (optional)
      * @param  string|null $type Filter by direction. (optional)
      * @param  string|null $search Search by shipment reference or parcel tracking number. (optional)
+     * @param  string|null $filter Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listShipments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listShipmentsRequest($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, string $contentType = self::contentTypes['listShipments'][0])
+    public function listShipmentsRequest($org_id, $page = 1, $limit = 20, $brand_id = null, $brand_scope = null, $status = null, $type = null, $search = null, $filter = null, string $contentType = self::contentTypes['listShipments'][0])
     {
 
         // verify the required parameter 'org_id' is set
@@ -2724,6 +2729,10 @@ class ShipmentsApi
 
 
 
+        if ($filter !== null && strlen($filter) > 8000) {
+            throw new \InvalidArgumentException('invalid length for "$filter" when calling ShipmentsApi.listShipments, must be smaller than or equal to 8000.');
+        }
+        
 
         $resourcePath = '/orgs/{orgId}/shipments';
         $formParams = [];
@@ -2790,6 +2799,15 @@ class ShipmentsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $search,
             'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

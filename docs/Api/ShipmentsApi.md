@@ -465,12 +465,12 @@ void (empty response body)
 ## `listShipments()`
 
 ```php
-listShipments($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search): \Zippendo\Sdk\Model\ListShipments200Response
+listShipments($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $filter): \Zippendo\Sdk\Model\ListShipments200Response
 ```
 
 List shipments
 
-List all shipments for an organization, paginated and ordered by newest first.
+List all shipments for an organization, paginated and ordered by newest first. Accepts an advanced filter definition.
 
 ### Example
 
@@ -497,9 +497,10 @@ $brand_scope = own; // string | How the brand context narrows this list: \"own\"
 $status = dispatched; // string | Filter by shipment status.
 $type = outbound; // string | Filter by direction.
 $search = SHIP-1042; // string | Search by shipment reference or parcel tracking number.
+$filter = {"conjunction":"and","conditions":[{"id":"c_1","field":"status","operator":"in","value":["pending","processing"]}]}; // string | Advanced filter as a JSON-encoded definition: a `conjunction` (`and`/`or`) over `conditions`, each `{ id, field, operator, value }` or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 `FILTER_INVALID`.
 
 try {
-    $result = $apiInstance->listShipments($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search);
+    $result = $apiInstance->listShipments($org_id, $page, $limit, $brand_id, $brand_scope, $status, $type, $search, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShipmentsApi->listShipments: ', $e->getMessage(), PHP_EOL;
@@ -518,6 +519,7 @@ try {
 | **status** | **string**| Filter by shipment status. | [optional] |
 | **type** | **string**| Filter by direction. | [optional] |
 | **search** | **string**| Search by shipment reference or parcel tracking number. | [optional] |
+| **filter** | **string**| Advanced filter as a JSON-encoded definition: a &#x60;conjunction&#x60; (&#x60;and&#x60;/&#x60;or&#x60;) over &#x60;conditions&#x60;, each &#x60;{ id, field, operator, value }&#x60; or a nested group. Fields and operators per list are documented under Filtering lists in the API overview. An invalid filter returns 400 &#x60;FILTER_INVALID&#x60;. | [optional] |
 
 ### Return type
 
