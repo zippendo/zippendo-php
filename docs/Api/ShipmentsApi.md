@@ -11,6 +11,7 @@ All URIs are relative to https://api.zippendo.com, except if the operation defin
 | [**createReturnShipment()**](ShipmentsApi.md#createReturnShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/create-return | Create return shipment |
 | [**createShipment()**](ShipmentsApi.md#createShipment) | **POST** /orgs/{orgId}/shipments | Create shipment |
 | [**deleteShipment()**](ShipmentsApi.md#deleteShipment) | **DELETE** /orgs/{orgId}/shipments/{shipmentId} | Delete shipment |
+| [**fetchShipmentLabel()**](ShipmentsApi.md#fetchShipmentLabel) | **POST** /orgs/{orgId}/shipments/{shipmentId}/fetch-label | Fetch missing label |
 | [**getShipment()**](ShipmentsApi.md#getShipment) | **GET** /orgs/{orgId}/shipments/{shipmentId} | Get shipment |
 | [**getShipmentDocumentContent()**](ShipmentsApi.md#getShipmentDocumentContent) | **GET** /orgs/{orgId}/shipments/{shipmentId}/documents/{documentId}/content | Download shipment document |
 | [**listShipments()**](ShipmentsApi.md#listShipments) | **GET** /orgs/{orgId}/shipments | List shipments |
@@ -155,7 +156,7 @@ createReturnShipment($org_id, $shipment_id): \Zippendo\Sdk\Model\CreateShipment2
 
 Create return shipment
 
-Create and auto-send a return shipment from a dispatched outbound shipment with swapped sender/receiver. Requires a configured return shipping rule.
+Create and auto-send a return shipment from a dispatched outbound shipment with swapped sender/receiver. Requires a configured return shipping rule. The return is returned with its booking outcome: `dispatched`, or `error` with the carrier's reasons in `errors`.
 
 ### Example
 
@@ -319,6 +320,68 @@ try {
 ### Return type
 
 [**\Zippendo\Sdk\Model\RevokeApiToken200Response**](../Model/RevokeApiToken200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `fetchShipmentLabel()`
+
+```php
+fetchShipmentLabel($org_id, $shipment_id): \Zippendo\Sdk\Model\CreateShipment201Response
+```
+
+Fetch missing label
+
+Ask the carrier again for the label of a dispatched shipment whose label could not be downloaded when it was sent (it carries a LABEL_DOWNLOAD_FAILED error). Stores the label, clears the error and returns the shipment.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zippendo\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zippendo\Sdk\Api\ShipmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_id = org_1a2b3c4d; // string | Organization identifier.
+$shipment_id = shp_4d9e7a2f; // string | Shipment identifier.
+
+try {
+    $result = $apiInstance->fetchShipmentLabel($org_id, $shipment_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShipmentsApi->fetchShipmentLabel: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_id** | **string**| Organization identifier. | |
+| **shipment_id** | **string**| Shipment identifier. | |
+
+### Return type
+
+[**\Zippendo\Sdk\Model\CreateShipment201Response**](../Model/CreateShipment201Response.md)
 
 ### Authorization
 

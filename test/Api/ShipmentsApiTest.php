@@ -133,6 +133,18 @@ class ShipmentsApiTest extends TestCase
     }
 
     /**
+     * Test case for fetchShipmentLabel
+     *
+     * Fetch missing label.
+     *
+     */
+    public function testFetchShipmentLabel()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getShipment
      *
      * Get shipment.
