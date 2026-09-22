@@ -90,6 +90,15 @@ class UpdateAddressRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "description"
+     */
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "att_contact"
      */
     public function testPropertyAttContact()

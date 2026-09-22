@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique address identifier |
-**name** | **string** | Name of the address |
-**att_contact** | **string** | Attention contact person |
+**name** | **string** | Company or person the parcel is sent from, printed on labels |
+**description** | **string** | Internal label for this address; never printed or sent to a carrier |
+**att_contact** | **string** | Contact person at this address, printed as the att. line |
 **address1** | **string** | Address line 1 |
 **address2** | **string** | Address line 2 |
 **zipcode** | **string** | Postal/ZIP code |

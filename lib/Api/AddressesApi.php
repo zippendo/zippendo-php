@@ -1121,7 +1121,7 @@ class AddressesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
      * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
-     * @param  string|null $search Search by address name, contact or city. (optional)
+     * @param  string|null $search Search by company name, description, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1146,7 +1146,7 @@ class AddressesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
      * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
-     * @param  string|null $search Search by address name, contact or city. (optional)
+     * @param  string|null $search Search by company name, description, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1252,7 +1252,7 @@ class AddressesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
      * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
-     * @param  string|null $search Search by address name, contact or city. (optional)
+     * @param  string|null $search Search by company name, description, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1280,7 +1280,7 @@ class AddressesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
      * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
-     * @param  string|null $search Search by address name, contact or city. (optional)
+     * @param  string|null $search Search by company name, description, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation
@@ -1337,7 +1337,7 @@ class AddressesApi
      * @param  int|null $limit Items per page (max 100) (optional, default to 20)
      * @param  string|null $type Filter by address type (sender, pickup, return) (optional)
      * @param  string|null $country_code Filter by ISO 3166-1 alpha-2 country code. (optional)
-     * @param  string|null $search Search by address name, contact or city. (optional)
+     * @param  string|null $search Search by company name, description, contact or city. (optional)
      * @param  string|null $brand_id Filter by brand. Pass a brand ID, or \&quot;none\&quot; for records not assigned to any brand. (optional)
      * @param  string|null $brand_scope How the brand context narrows this list: \&quot;own\&quot; returns only rows assigned to the current brand (requires a brand session, a brand-bound token, or the X-Zippendo-Brand header), \&quot;shared\&quot; returns only unassigned organization-wide rows, \&quot;both\&quot; (default) returns both. The X-Zippendo-Brand-Scope header supplies a default when the parameter is omitted. For strictly brand-owned records (orders, shipments), a brand-scoped request combined with \&quot;shared\&quot; returns no rows, since those records are never visible organization-wide from within a brand context. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAddresses'] to see the possible values for this operation

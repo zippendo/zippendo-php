@@ -59,6 +59,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPITypes = [
         'name' => 'string',
+        'description' => 'string',
         'att_contact' => 'string',
         'address1' => 'string',
         'address2' => 'string',
@@ -82,6 +83,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPIFormats = [
         'name' => null,
+        'description' => null,
         'att_contact' => null,
         'address1' => null,
         'address2' => null,
@@ -103,14 +105,15 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static array $openAPINullables = [
         'name' => false,
-        'att_contact' => false,
+        'description' => true,
+        'att_contact' => true,
         'address1' => false,
-        'address2' => false,
+        'address2' => true,
         'zipcode' => false,
         'city' => false,
         'phone' => false,
         'country_code' => false,
-        'state' => false,
+        'state' => true,
         'email' => false,
         'customs' => false,
         'address_types' => false,
@@ -204,6 +207,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'description' => 'description',
         'att_contact' => 'attContact',
         'address1' => 'address1',
         'address2' => 'address2',
@@ -225,6 +229,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'name' => 'setName',
+        'description' => 'setDescription',
         'att_contact' => 'setAttContact',
         'address1' => 'setAddress1',
         'address2' => 'setAddress2',
@@ -246,6 +251,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'name' => 'getName',
+        'description' => 'getDescription',
         'att_contact' => 'getAttContact',
         'address1' => 'getAddress1',
         'address2' => 'getAddress2',
@@ -335,6 +341,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('att_contact', $data ?? [], null);
         $this->setIfExists('address1', $data ?? [], null);
         $this->setIfExists('address2', $data ?? [], null);
@@ -380,10 +387,6 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['att_contact']) && (mb_strlen($this->container['att_contact']) < 1)) {
-            $invalidProperties[] = "invalid value for 'att_contact', the character length must be bigger than or equal to 1.";
-        }
-
         if (!is_null($this->container['address1']) && (mb_strlen($this->container['address1']) < 1)) {
             $invalidProperties[] = "invalid value for 'address1', the character length must be bigger than or equal to 1.";
         }
@@ -406,10 +409,6 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
         if (!is_null($this->container['country_code']) && (mb_strlen($this->container['country_code']) < 2)) {
             $invalidProperties[] = "invalid value for 'country_code', the character length must be bigger than or equal to 2.";
-        }
-
-        if (!is_null($this->container['state']) && (mb_strlen($this->container['state']) < 1)) {
-            $invalidProperties[] = "invalid value for 'state', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['email']) && !preg_match("/^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/", $this->container['email'])) {
@@ -452,7 +451,7 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets name
      *
-     * @param string|null $name Name of the address
+     * @param string|null $name Company or person the parcel is sent from, printed on labels
      *
      * @return self
      */
@@ -472,6 +471,40 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Internal label for this address; send null or an empty string to clear it
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
      * Gets att_contact
      *
      * @return string|null
@@ -484,20 +517,22 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets att_contact
      *
-     * @param string|null $att_contact Attention contact person
+     * @param string|null $att_contact Contact person at this address; send null or an empty string to clear it
      *
      * @return self
      */
     public function setAttContact($att_contact)
     {
         if (is_null($att_contact)) {
-            throw new \InvalidArgumentException('non-nullable att_contact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'att_contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('att_contact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-
-        if ((mb_strlen($att_contact) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $att_contact when calling UpdateAddressRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['att_contact'] = $att_contact;
 
         return $this;
@@ -548,14 +583,21 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets address2
      *
-     * @param string|null $address2 Address line 2
+     * @param string|null $address2 Address line 2; send null or an empty string to clear it
      *
      * @return self
      */
     public function setAddress2($address2)
     {
         if (is_null($address2)) {
-            throw new \InvalidArgumentException('non-nullable address2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address2', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address2'] = $address2;
 
@@ -705,20 +747,22 @@ class UpdateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets state
      *
-     * @param string|null $state State/Province
+     * @param string|null $state State/Province; send null or an empty string to clear it
      *
      * @return self
      */
     public function setState($state)
     {
         if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'state');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('state', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-
-        if ((mb_strlen($state) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $state when calling UpdateAddressRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['state'] = $state;
 
         return $this;

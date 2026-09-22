@@ -60,6 +60,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
+        'description' => 'string',
         'att_contact' => 'string',
         'address1' => 'string',
         'address2' => 'string',
@@ -87,6 +88,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
+        'description' => null,
         'att_contact' => null,
         'address1' => null,
         'address2' => null,
@@ -112,7 +114,8 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
-        'att_contact' => false,
+        'description' => true,
+        'att_contact' => true,
         'address1' => false,
         'address2' => true,
         'zipcode' => false,
@@ -217,6 +220,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'description' => 'description',
         'att_contact' => 'attContact',
         'address1' => 'address1',
         'address2' => 'address2',
@@ -242,6 +246,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'description' => 'setDescription',
         'att_contact' => 'setAttContact',
         'address1' => 'setAddress1',
         'address2' => 'setAddress2',
@@ -267,6 +272,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'description' => 'getDescription',
         'att_contact' => 'getAttContact',
         'address1' => 'getAddress1',
         'address2' => 'getAddress2',
@@ -360,6 +366,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('att_contact', $data ?? [], null);
         $this->setIfExists('address1', $data ?? [], null);
         $this->setIfExists('address2', $data ?? [], null);
@@ -410,8 +417,11 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['att_contact'] === null) {
-            $invalidProperties[] = "'att_contact' can't be null";
+        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
+            $invalidProperties[] = "'description' is required";
+        }
+        if ($this->container['att_contact'] === null && !$this->isNullableSetToNull('att_contact')) {
+            $invalidProperties[] = "'att_contact' is required";
         }
         if ($this->container['address1'] === null) {
             $invalidProperties[] = "'address1' can't be null";
@@ -511,7 +521,7 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     /**
      * Sets name
      *
-     * @param string $name Name of the address
+     * @param string $name Company or person the parcel is sent from, printed on labels
      *
      * @return self
      */
@@ -526,9 +536,43 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     }
 
     /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Internal label for this address; never printed or sent to a carrier
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
      * Gets att_contact
      *
-     * @return string
+     * @return string|null
      */
     public function getAttContact()
     {
@@ -538,14 +582,21 @@ class ListShipments200ResponseDataInnerAddress implements ModelInterface, ArrayA
     /**
      * Sets att_contact
      *
-     * @param string $att_contact Attention contact person
+     * @param string|null $att_contact Contact person at this address, printed as the att. line
      *
      * @return self
      */
     public function setAttContact($att_contact)
     {
         if (is_null($att_contact)) {
-            throw new \InvalidArgumentException('non-nullable att_contact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'att_contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('att_contact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['att_contact'] = $att_contact;
 

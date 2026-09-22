@@ -59,6 +59,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPITypes = [
         'name' => 'string',
+        'description' => 'string',
         'att_contact' => 'string',
         'address1' => 'string',
         'address2' => 'string',
@@ -82,6 +83,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $openAPIFormats = [
         'name' => null,
+        'description' => null,
         'att_contact' => null,
         'address1' => null,
         'address2' => null,
@@ -103,14 +105,15 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static array $openAPINullables = [
         'name' => false,
-        'att_contact' => false,
+        'description' => true,
+        'att_contact' => true,
         'address1' => false,
-        'address2' => false,
+        'address2' => true,
         'zipcode' => false,
         'city' => false,
         'phone' => false,
         'country_code' => false,
-        'state' => false,
+        'state' => true,
         'email' => false,
         'customs' => false,
         'address_types' => false,
@@ -204,6 +207,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'description' => 'description',
         'att_contact' => 'attContact',
         'address1' => 'address1',
         'address2' => 'address2',
@@ -225,6 +229,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'name' => 'setName',
+        'description' => 'setDescription',
         'att_contact' => 'setAttContact',
         'address1' => 'setAddress1',
         'address2' => 'setAddress2',
@@ -246,6 +251,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'name' => 'getName',
+        'description' => 'getDescription',
         'att_contact' => 'getAttContact',
         'address1' => 'getAddress1',
         'address2' => 'getAddress2',
@@ -335,6 +341,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('att_contact', $data ?? [], null);
         $this->setIfExists('address1', $data ?? [], null);
         $this->setIfExists('address2', $data ?? [], null);
@@ -381,13 +388,6 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         }
         if ((mb_strlen($this->container['name']) < 1)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['att_contact'] === null) {
-            $invalidProperties[] = "'att_contact' can't be null";
-        }
-        if ((mb_strlen($this->container['att_contact']) < 1)) {
-            $invalidProperties[] = "invalid value for 'att_contact', the character length must be bigger than or equal to 1.";
         }
 
         if ($this->container['address1'] === null) {
@@ -472,7 +472,7 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets name
      *
-     * @param string $name Name of the address
+     * @param string $name Company or person the parcel is sent from, printed on labels
      *
      * @return self
      */
@@ -492,9 +492,43 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Internal label for this address; never printed or sent to a carrier
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
      * Gets att_contact
      *
-     * @return string
+     * @return string|null
      */
     public function getAttContact()
     {
@@ -504,20 +538,22 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets att_contact
      *
-     * @param string $att_contact Attention contact person
+     * @param string|null $att_contact Contact person at this address, printed as the att. line
      *
      * @return self
      */
     public function setAttContact($att_contact)
     {
         if (is_null($att_contact)) {
-            throw new \InvalidArgumentException('non-nullable att_contact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'att_contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('att_contact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-
-        if ((mb_strlen($att_contact) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $att_contact when calling CreateAddressRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['att_contact'] = $att_contact;
 
         return $this;
@@ -575,7 +611,14 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setAddress2($address2)
     {
         if (is_null($address2)) {
-            throw new \InvalidArgumentException('non-nullable address2 cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'address2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('address2', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['address2'] = $address2;
 
@@ -732,7 +775,14 @@ class CreateAddressRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setState($state)
     {
         if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'state');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('state', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['state'] = $state;
 
