@@ -62,7 +62,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'shipments' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseShipments',
         'limits' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseLimits',
         'add_ons' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseAddOnsInner[]',
-        'zippy_messages' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyMessages'
+        'zippy_credits' => '\Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyCredits'
     ];
 
     /**
@@ -77,7 +77,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'shipments' => null,
         'limits' => null,
         'add_ons' => null,
-        'zippy_messages' => null
+        'zippy_credits' => null
     ];
 
     /**
@@ -90,7 +90,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'shipments' => false,
         'limits' => false,
         'add_ons' => false,
-        'zippy_messages' => false
+        'zippy_credits' => false
     ];
 
     /**
@@ -183,7 +183,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'shipments' => 'shipments',
         'limits' => 'limits',
         'add_ons' => 'addOns',
-        'zippy_messages' => 'zippyMessages'
+        'zippy_credits' => 'zippyCredits'
     ];
 
     /**
@@ -196,7 +196,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'shipments' => 'setShipments',
         'limits' => 'setLimits',
         'add_ons' => 'setAddOns',
-        'zippy_messages' => 'setZippyMessages'
+        'zippy_credits' => 'setZippyCredits'
     ];
 
     /**
@@ -209,7 +209,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         'shipments' => 'getShipments',
         'limits' => 'getLimits',
         'add_ons' => 'getAddOns',
-        'zippy_messages' => 'getZippyMessages'
+        'zippy_credits' => 'getZippyCredits'
     ];
 
     /**
@@ -273,7 +273,7 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('shipments', $data ?? [], null);
         $this->setIfExists('limits', $data ?? [], null);
         $this->setIfExists('add_ons', $data ?? [], null);
-        $this->setIfExists('zippy_messages', $data ?? [], null);
+        $this->setIfExists('zippy_credits', $data ?? [], null);
     }
 
     /**
@@ -439,28 +439,28 @@ class GetBillingUsage200Response implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets zippy_messages
+     * Gets zippy_credits
      *
-     * @return \Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyMessages|null
+     * @return \Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyCredits|null
      */
-    public function getZippyMessages()
+    public function getZippyCredits()
     {
-        return $this->container['zippy_messages'];
+        return $this->container['zippy_credits'];
     }
 
     /**
-     * Sets zippy_messages
+     * Sets zippy_credits
      *
-     * @param \Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyMessages|null $zippy_messages zippy_messages
+     * @param \Zippendo\Sdk\Model\GetBillingUsage200ResponseZippyCredits|null $zippy_credits zippy_credits
      *
      * @return self
      */
-    public function setZippyMessages($zippy_messages)
+    public function setZippyCredits($zippy_credits)
     {
-        if (is_null($zippy_messages)) {
-            throw new \InvalidArgumentException('non-nullable zippy_messages cannot be null');
+        if (is_null($zippy_credits)) {
+            throw new \InvalidArgumentException('non-nullable zippy_credits cannot be null');
         }
-        $this->container['zippy_messages'] = $zippy_messages;
+        $this->container['zippy_credits'] = $zippy_credits;
 
         return $this;
     }

@@ -1299,7 +1299,7 @@ class OrgsApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zippendo\Sdk\Model\UpdateOrg200Response|\Zippendo\Sdk\Model\ListApiTokens401Response
+     * @return \Zippendo\Sdk\Model\UpdateOrg200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
     public function updateOrg($id, $update_org_request, string $contentType = self::contentTypes['updateOrg'][0])
     {
@@ -1318,7 +1318,7 @@ class OrgsApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zippendo\Sdk\Model\UpdateOrg200Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zippendo\Sdk\Model\UpdateOrg200Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOrgWithHttpInfo($id, $update_org_request, string $contentType = self::contentTypes['updateOrg'][0])
     {
@@ -1351,6 +1351,12 @@ class OrgsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Zippendo\Sdk\Model\UpdateOrg200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $request,
                         $response,
                     );
@@ -1388,6 +1394,14 @@ class OrgsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zippendo\Sdk\Model\UpdateOrg200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

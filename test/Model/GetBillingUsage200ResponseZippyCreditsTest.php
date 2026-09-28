@@ -1,6 +1,6 @@
 <?php
 /**
- * GetBillingUsage200ResponseZippyMessagesTest
+ * GetBillingUsage200ResponseZippyCreditsTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Zippendo\Sdk\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * GetBillingUsage200ResponseZippyMessagesTest Class Doc Comment
+ * GetBillingUsage200ResponseZippyCreditsTest Class Doc Comment
  *
  * @category    Class
- * @description Zippy AI message usage this period (present when Zippy access is enabled)
+ * @description Zippy AI credit usage this period (present when the Zippy add-on is enabled)
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class GetBillingUsage200ResponseZippyMessagesTest extends TestCase
+class GetBillingUsage200ResponseZippyCreditsTest extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class GetBillingUsage200ResponseZippyMessagesTest extends TestCase
     }
 
     /**
-     * Test "GetBillingUsage200ResponseZippyMessages"
+     * Test "GetBillingUsage200ResponseZippyCredits"
      */
-    public function testGetBillingUsage200ResponseZippyMessages()
+    public function testGetBillingUsage200ResponseZippyCredits()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -84,6 +84,24 @@ class GetBillingUsage200ResponseZippyMessagesTest extends TestCase
      * Test attribute "used"
      */
     public function testPropertyUsed()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "included"
+     */
+    public function testPropertyIncluded()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "billed"
+     */
+    public function testPropertyBilled()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

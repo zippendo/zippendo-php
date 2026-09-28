@@ -117,9 +117,9 @@ class GetBillingUsage200ResponseTest extends TestCase
     }
 
     /**
-     * Test attribute "zippy_messages"
+     * Test attribute "zippy_credits"
      */
-    public function testPropertyZippyMessages()
+    public function testPropertyZippyCredits()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
