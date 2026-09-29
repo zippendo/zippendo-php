@@ -1199,7 +1199,7 @@ class GetOrder200ResponseOrderLinesInner implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string|null $id Order line ID. Present once the line is a row. Absent for jsonb-only lines during the dual-write window — do not synthesise one, or an edit would re-point packed lines.
+     * @param string|null $id Order line ID. Send it back as `orderLines[].id` when updating the order to edit this line in place.
      *
      * @return self
      */

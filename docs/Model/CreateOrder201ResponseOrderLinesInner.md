@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **taxable** | **bool** | Whether the item is taxable. | [optional]
 **gift_card** | **bool** | Whether the item is a gift card. | [optional]
 **vendor** | **string** | Vendor or brand name. | [optional]
-**id** | **string** | Order line ID. Present once the line is a row. Absent for jsonb-only lines during the dual-write window — do not synthesise one, or an edit would re-point packed lines. | [optional]
+**id** | **string** | Order line ID. Send it back as &#x60;orderLines[].id&#x60; when updating the order to edit this line in place. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
