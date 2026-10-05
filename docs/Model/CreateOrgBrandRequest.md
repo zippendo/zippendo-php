@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **city** | **string** | City | [optional]
 **postal_code** | **string** | Postal code | [optional]
 **country** | **string** | Country (ISO 3166-1 alpha-2) | [optional]
-**primary_color** | **string** | Primary brand colour — document title and table headers | [optional]
-**secondary_color** | **string** | Secondary brand colour — subtitle, section headings, totals accent | [optional]
+**primary_color** | **string** | Primary brand color — document title and table headers | [optional]
+**secondary_color** | **string** | Secondary brand color — subtitle, section headings, totals accent | [optional]
 **name** | **string** | Brand display name |
 **slug** | **string** | URL-safe identifier, unique within the org. Derived from the name when omitted. | [optional]
 **use_org_customs** | **bool** | Whether this brand ships under the organization&#39;s fiscal identity. True (the default) declares the organization&#39;s VAT number and customs identifiers and ignores the brand&#39;s own. False makes the brand&#39;s own values the sole source — nothing falls back to the organization, so an identifier the brand has not set is not declared at all. | [optional]

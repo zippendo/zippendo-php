@@ -973,7 +973,7 @@ class ListShippingRules200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets email_notification
      *
-     * @param bool $email_notification Send email notification to recipient
+     * @param bool $email_notification Send an email notification to the receiver
      *
      * @return self
      */
@@ -1000,7 +1000,7 @@ class ListShippingRules200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets phone_notification
      *
-     * @param bool $phone_notification Send SMS notification to recipient
+     * @param bool $phone_notification Send an SMS notification to the receiver
      *
      * @return self
      */
@@ -1260,7 +1260,7 @@ class ListShippingRules200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets generate_packing_list
      *
-     * @param bool $generate_packing_list Generate packing slip with package and item details
+     * @param bool $generate_packing_list Generate a packing slip with parcel and item details
      *
      * @return self
      */

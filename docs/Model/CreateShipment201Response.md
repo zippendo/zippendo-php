@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** | Unique shipment identifier. |
 **reference** | **string** | Customer-facing shipment reference. |
 **address_id** | **string** | Sender address identifier. | [optional]
-**service_point_id** | **string** | Selected carrier service point identifier. | [optional]
+**service_point_id** | **string** | Selected service point ID. | [optional]
 **parties** | [**\Zippendo\Sdk\Model\CreateShipment201ResponsePartiesInner[]**](CreateShipment201ResponsePartiesInner.md) | Parties involved in the shipment (sender, receiver, etc.). |
 **type** | **string** | Direction of the shipment relative to the organization. |
 **carrier_settings** | [**\Zippendo\Sdk\Model\ListShipments200ResponseDataInnerCarrierSettings**](ListShipments200ResponseDataInnerCarrierSettings.md) |  |

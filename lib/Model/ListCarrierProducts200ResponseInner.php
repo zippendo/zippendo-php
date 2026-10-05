@@ -418,7 +418,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Display name of the shipping product
+     * @param string $name Display name of the carrier product
      *
      * @return self
      */
@@ -509,7 +509,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param string|null $description Description of the shipping product
+     * @param string|null $description Description of the carrier product
      *
      * @return self
      */
@@ -536,7 +536,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Sets available_countries
      *
-     * @param string[] $available_countries Recipient countries supported by this product
+     * @param string[] $available_countries Receiver countries this product delivers to
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
     /**
      * Sets is_service_point
      *
-     * @param bool $is_service_point Whether delivery is to a service point/pickup location
+     * @param bool $is_service_point Whether this product delivers to a service point
      *
      * @return self
      */

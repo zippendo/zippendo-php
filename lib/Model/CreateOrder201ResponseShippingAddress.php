@@ -407,7 +407,7 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
     /**
      * Sets name
      *
-     * @param string $name Recipient full name.
+     * @param string $name Receiver full name.
      *
      * @return self
      */
@@ -746,7 +746,7 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
     /**
      * Sets phone
      *
-     * @param string|null $phone Recipient phone number.
+     * @param string|null $phone Receiver phone number.
      *
      * @return self
      */
@@ -780,7 +780,7 @@ class CreateOrder201ResponseShippingAddress implements ModelInterface, ArrayAcce
     /**
      * Sets email
      *
-     * @param string|null $email Recipient email address.
+     * @param string|null $email Receiver email address.
      *
      * @return self
      */

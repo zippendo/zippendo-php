@@ -403,7 +403,7 @@ class BatchSendShipments200ResponseSummary implements ModelInterface, ArrayAcces
     /**
      * Sets sent
      *
-     * @param int $sent How many were successfully booked.
+     * @param int $sent How many were sent successfully.
      *
      * @return self
      */

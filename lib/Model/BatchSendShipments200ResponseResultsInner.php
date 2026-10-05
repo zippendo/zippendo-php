@@ -288,6 +288,8 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     public const CODE_ORG_ACCESS_DENIED = 'ORG_ACCESS_DENIED';
     public const CODE_ORG_DISABLED = 'ORG_DISABLED';
     public const CODE_ORG_SLUG_EXISTS = 'ORG_SLUG_EXISTS';
+    public const CODE_SETUP_NOT_FOUND = 'SETUP_NOT_FOUND';
+    public const CODE_SETUP_EXISTS = 'SETUP_EXISTS';
     public const CODE_BRAND_NOT_FOUND = 'BRAND_NOT_FOUND';
     public const CODE_BRAND_ACCESS_DENIED = 'BRAND_ACCESS_DENIED';
     public const CODE_BRAND_SLUG_EXISTS = 'BRAND_SLUG_EXISTS';
@@ -479,6 +481,8 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
             self::CODE_ORG_ACCESS_DENIED,
             self::CODE_ORG_DISABLED,
             self::CODE_ORG_SLUG_EXISTS,
+            self::CODE_SETUP_NOT_FOUND,
+            self::CODE_SETUP_EXISTS,
             self::CODE_BRAND_NOT_FOUND,
             self::CODE_BRAND_ACCESS_DENIED,
             self::CODE_BRAND_SLUG_EXISTS,
@@ -746,7 +750,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets status
      *
-     * @param string $status `sent` when the carrier booked it, `failed` when the carrier or Zippendo rejected it, and `skipped` when the batch ran out of time before reaching it. A `skipped` shipment was never sent to the carrier and is safe to submit again.
+     * @param string $status `sent` when the carrier accepted it, `failed` when the carrier or Zippendo rejected it, and `skipped` when the batch ran out of time before reaching it. A `skipped` shipment was never sent to the carrier and is safe to submit again.
      *
      * @return self
      */
@@ -847,7 +851,7 @@ class BatchSendShipments200ResponseResultsInner implements ModelInterface, Array
     /**
      * Sets errors
      *
-     * @param \Zippendo\Sdk\Model\SendShipment422ResponseErrorsInner[]|null $errors Carrier-specific errors, present when the carrier rejected the booking.
+     * @param \Zippendo\Sdk\Model\SendShipment422ResponseErrorsInner[]|null $errors Carrier-specific errors, present when the carrier rejected the shipment.
      *
      * @return self
      */

@@ -761,7 +761,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status
      *
-     * @param string|null $status Order fulfilment status derived from its shipments.
+     * @param string|null $status Order fulfillment status derived from its shipments.
      *
      * @return self
      */
@@ -832,7 +832,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets service_point_id
      *
-     * @param string|null $service_point_id Service point (parcel shop) ID to apply to unsent outbound shipments.
+     * @param string|null $service_point_id Service point ID to apply to unsent outbound shipments.
      *
      * @return self
      */

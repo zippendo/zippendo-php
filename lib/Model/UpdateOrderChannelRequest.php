@@ -472,7 +472,7 @@ class UpdateOrderChannelRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets role
      *
-     * @param string|null $role What Zippendo is used for on this channel. `orders_and_rates` (default) imports orders and serves checkout rates. `rates_only` serves checkout rates and service-point selection ONLY — orders are owned by an external system such as a WMS, nothing is imported, and no fulfilment or tracking is pushed back to the platform.
+     * @param string|null $role What Zippendo is used for on this channel. `orders_and_rates` (default) imports orders and serves checkout rates. `rates_only` serves checkout rates and service-point selection ONLY — orders are owned by an external system such as a WMS, nothing is imported, and no fulfillment or tracking is pushed back to the platform.
      *
      * @return self
      */

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reference** | **string** | Customer-facing shipment reference. | [optional]
 **address_id** | **string** | Sender address identifier. | [optional]
-**service_point_id** | **string** | Selected carrier service point identifier. | [optional]
+**service_point_id** | **string** | Selected service point ID. | [optional]
 **parties** | [**\Zippendo\Sdk\Model\CreateShipmentRequestPartiesInner[]**](CreateShipmentRequestPartiesInner.md) | Parties involved in the shipment. Optional when orderId is provided. | [optional]
 **type** | **string** | Direction of the shipment relative to the organization. |
 **carrier_settings** | [**\Zippendo\Sdk\Model\CreateShipmentRequestCarrierSettings**](CreateShipmentRequestCarrierSettings.md) |  | [optional]

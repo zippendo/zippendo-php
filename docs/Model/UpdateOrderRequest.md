@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **total_amount** | **float** | Order grand total. | [optional]
 **currency** | **string** | ISO 4217 currency code. | [optional]
 **notes** | **string** | Free-form internal notes. | [optional]
-**status** | **string** | Order fulfilment status derived from its shipments. | [optional]
+**status** | **string** | Order fulfillment status derived from its shipments. | [optional]
 **shipping_rule_id** | **string** | ID of the shipping rule to apply. | [optional]
-**service_point_id** | **string** | Service point (parcel shop) ID to apply to unsent outbound shipments. | [optional]
+**service_point_id** | **string** | Service point ID to apply to unsent outbound shipments. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

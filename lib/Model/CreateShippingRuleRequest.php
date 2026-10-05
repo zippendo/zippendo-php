@@ -805,7 +805,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets email_notification
      *
-     * @param bool|null $email_notification Send email notification to recipient
+     * @param bool|null $email_notification Send an email notification to the receiver
      *
      * @return self
      */
@@ -832,7 +832,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets phone_notification
      *
-     * @param bool|null $phone_notification Send SMS notification to recipient
+     * @param bool|null $phone_notification Send an SMS notification to the receiver
      *
      * @return self
      */
@@ -1092,7 +1092,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets generate_packing_list
      *
-     * @param bool|null $generate_packing_list Generate packing slip with package and item details
+     * @param bool|null $generate_packing_list Generate a packing slip with parcel and item details
      *
      * @return self
      */

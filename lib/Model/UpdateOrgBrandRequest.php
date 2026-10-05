@@ -750,7 +750,7 @@ class UpdateOrgBrandRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets primary_color
      *
-     * @param string|null $primary_color Primary brand colour — document title and table headers
+     * @param string|null $primary_color Primary brand color — document title and table headers
      *
      * @return self
      */
@@ -789,7 +789,7 @@ class UpdateOrgBrandRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets secondary_color
      *
-     * @param string|null $secondary_color Secondary brand colour — subtitle, section headings, totals accent
+     * @param string|null $secondary_color Secondary brand color — subtitle, section headings, totals accent
      *
      * @return self
      */

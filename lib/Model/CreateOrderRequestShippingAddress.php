@@ -431,7 +431,7 @@ class CreateOrderRequestShippingAddress implements ModelInterface, ArrayAccess, 
     /**
      * Sets name
      *
-     * @param string $name Recipient full name.
+     * @param string $name Receiver full name.
      *
      * @return self
      */
@@ -797,7 +797,7 @@ class CreateOrderRequestShippingAddress implements ModelInterface, ArrayAccess, 
     /**
      * Sets phone
      *
-     * @param string|null $phone Recipient phone number.
+     * @param string|null $phone Receiver phone number.
      *
      * @return self
      */
@@ -831,7 +831,7 @@ class CreateOrderRequestShippingAddress implements ModelInterface, ArrayAccess, 
     /**
      * Sets email
      *
-     * @param string|null $email Recipient email address.
+     * @param string|null $email Receiver email address.
      *
      * @return self
      */

@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **additional_parameters** | [**array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestAdditionalParametersValue>**](CreateShippingRuleRequestAdditionalParametersValue.md) | Carrier-specific extra parameters, keyed by the carrier parameter &#x60;key&#x60; from the product&#39;s &#x60;additionalParameters[].key&#x60; (e.g. &#x60;returnFunctionality&#x60;). | [optional]
 **address_id** | **string** | Sender address ID |
 **receiving_countries** | **string[]** | List of supported country codes |
-**email_notification** | **bool** | Send email notification to recipient | [optional] [default to false]
-**phone_notification** | **bool** | Send SMS notification to recipient | [optional] [default to false]
+**email_notification** | **bool** | Send an email notification to the receiver | [optional] [default to false]
+**phone_notification** | **bool** | Send an SMS notification to the receiver | [optional] [default to false]
 **min_weight** | **float** | Minimum required weight in kg | [optional]
 **max_weight** | **float** | Maximum allowed weight in kg | [optional]
 **min_order_value** | **float** | Minimum required order value in currency units | [optional]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **conditions** | [**\Zippendo\Sdk\Model\CreateShippingRuleRequestConditionsInner[]**](CreateShippingRuleRequestConditionsInner.md) | Rule conditions (weight/price/quantity) |
 **generate_proforma_invoice** | **bool** | Generate proforma invoice for shipments | [optional] [default to false]
 **generate_commercial_invoice** | **bool** | Generate commercial invoice for international shipments | [optional] [default to false]
-**generate_packing_list** | **bool** | Generate packing slip with package and item details | [optional] [default to false]
+**generate_packing_list** | **bool** | Generate a packing slip with parcel and item details | [optional] [default to false]
 **auto_print_labels** | **bool** | Automatically print labels when shipment is sent | [optional] [default to false]
 **auto_print_documents** | **bool** | Automatically print documents when shipment is sent | [optional] [default to false]
 **label_printer_id** | **string** | ID of the label printer | [optional]

@@ -573,7 +573,7 @@ class ListOrders200ResponseDataInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets status
      *
-     * @param string $status Order fulfilment status derived from its shipments.
+     * @param string $status Order fulfillment status derived from its shipments.
      *
      * @return self
      */

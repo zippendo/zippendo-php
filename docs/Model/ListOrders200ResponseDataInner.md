@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **order_number** | **string** | Human-readable order number. |
 **customer_name** | **string** | Customer full name. | [optional]
 **customer_email** | **string** | Customer email address. | [optional]
-**status** | **string** | Order fulfilment status derived from its shipments. |
+**status** | **string** | Order fulfillment status derived from its shipments. |
 **brand_id** | **string** | Brand this record belongs to, or null when it is organization-wide |
 **subtotal_amount** | **float** | Order subtotal before shipping and tax. | [optional]
 **total_amount** | **float** | Order grand total. | [optional]

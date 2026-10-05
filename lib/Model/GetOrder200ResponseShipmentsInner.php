@@ -653,7 +653,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
     /**
      * Sets service_point_id
      *
-     * @param string|null $service_point_id Selected carrier service point identifier.
+     * @param string|null $service_point_id Selected service point ID.
      *
      * @return self
      */
@@ -802,7 +802,7 @@ class GetOrder200ResponseShipmentsInner implements ModelInterface, ArrayAccess, 
     /**
      * Sets parcels
      *
-     * @param \Zippendo\Sdk\Model\GetOrder200ResponseShipmentsInnerParcelsInner[] $parcels Compact parcels for the order fulfillment workspace (no QR/label payloads).
+     * @param \Zippendo\Sdk\Model\GetOrder200ResponseShipmentsInnerParcelsInner[] $parcels Compact parcels for the order's fulfillment view (no QR/label payloads).
      *
      * @return self
      */

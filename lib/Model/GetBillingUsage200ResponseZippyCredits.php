@@ -36,7 +36,7 @@ use \Zippendo\Sdk\ObjectSerializer;
  * GetBillingUsage200ResponseZippyCredits Class Doc Comment
  *
  * @category Class
- * @description Zippy AI credit usage this period (present when the Zippy add-on is enabled)
+ * @description Zippy credit usage this period (present when the Zippy add-on is enabled)
  * @package  Zippendo\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

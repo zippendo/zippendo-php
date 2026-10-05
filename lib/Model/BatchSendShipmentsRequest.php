@@ -314,7 +314,7 @@ class BatchSendShipmentsRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets shipment_ids
      *
-     * @param string[] $shipment_ids IDs of the shipments to book. Each must be in `pending` or `error` status; duplicates are ignored. Max 100 per request.
+     * @param string[] $shipment_ids IDs of the shipments to send. Each must be in `pending` or `error` status; duplicates are ignored. Max 100 per request.
      *
      * @return self
      */

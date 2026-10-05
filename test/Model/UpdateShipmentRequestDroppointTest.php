@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  * UpdateShipmentRequestDroppointTest Class Doc Comment
  *
  * @category    Class
- * @description Display details of the selected service point, stored alongside &#x60;servicePointId&#x60;. Used when applying a service-point shipping rule (whose parameters otherwise replace the stored droppoint).
+ * @description Display details of the selected service point, stored alongside &#x60;servicePointId&#x60;. Used when applying a service-point shipping rule (whose parameters otherwise replace it).
  * @package     Zippendo\Sdk
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech

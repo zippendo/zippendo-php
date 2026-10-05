@@ -797,7 +797,7 @@ class CreateOrder201Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param string $status Order fulfilment status derived from its shipments.
+     * @param string $status Order fulfillment status derived from its shipments.
      *
      * @return self
      */

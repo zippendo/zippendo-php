@@ -654,7 +654,7 @@ class CreateShipment201Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets service_point_id
      *
-     * @param string|null $service_point_id Selected carrier service point identifier.
+     * @param string|null $service_point_id Selected service point ID.
      *
      * @return self
      */

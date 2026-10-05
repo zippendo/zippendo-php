@@ -419,7 +419,7 @@ class ListOrderChannels200ResponseDataInnerSettingsShippingMethodMappingsInner i
     /**
      * Sets service_point_selection
      *
-     * @param string|null $service_point_selection For rules whose product delivers to a service point: 'nearest' auto-selects the closest point to the recipient address; 'manual' keeps the shipment in draft for manual selection.
+     * @param string|null $service_point_selection For rules whose product delivers to a service point: 'nearest' auto-selects the closest point to the receiver's address; 'manual' keeps the shipment in draft for manual selection.
      *
      * @return self
      */

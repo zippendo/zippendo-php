@@ -273,6 +273,8 @@ class ListApiTokens401Response implements ModelInterface, ArrayAccess, \JsonSeri
     public const CODE_ORG_ACCESS_DENIED = 'ORG_ACCESS_DENIED';
     public const CODE_ORG_DISABLED = 'ORG_DISABLED';
     public const CODE_ORG_SLUG_EXISTS = 'ORG_SLUG_EXISTS';
+    public const CODE_SETUP_NOT_FOUND = 'SETUP_NOT_FOUND';
+    public const CODE_SETUP_EXISTS = 'SETUP_EXISTS';
     public const CODE_BRAND_NOT_FOUND = 'BRAND_NOT_FOUND';
     public const CODE_BRAND_ACCESS_DENIED = 'BRAND_ACCESS_DENIED';
     public const CODE_BRAND_SLUG_EXISTS = 'BRAND_SLUG_EXISTS';
@@ -450,6 +452,8 @@ class ListApiTokens401Response implements ModelInterface, ArrayAccess, \JsonSeri
             self::CODE_ORG_ACCESS_DENIED,
             self::CODE_ORG_DISABLED,
             self::CODE_ORG_SLUG_EXISTS,
+            self::CODE_SETUP_NOT_FOUND,
+            self::CODE_SETUP_EXISTS,
             self::CODE_BRAND_NOT_FOUND,
             self::CODE_BRAND_ACCESS_DENIED,
             self::CODE_BRAND_SLUG_EXISTS,

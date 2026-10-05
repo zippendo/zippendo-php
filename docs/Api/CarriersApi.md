@@ -275,7 +275,7 @@ listCarrierProducts($org_id, $carrier_id): \Zippendo\Sdk\Model\ListCarrierProduc
 
 List carrier products
 
-Returns the shipping products available for a connected carrier.
+Returns the carrier products available for a connected carrier.
 
 ### Example
 
