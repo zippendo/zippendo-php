@@ -70,6 +70,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'brand_color' => 'string',
         'deprecated' => 'bool',
         'deprecation_message' => 'string',
+        'beta' => 'bool',
         'generates_customs_documents' => 'bool',
         'generates_commercial_invoice' => 'bool'
     ];
@@ -94,6 +95,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'brand_color' => null,
         'deprecated' => null,
         'deprecation_message' => null,
+        'beta' => null,
         'generates_customs_documents' => null,
         'generates_commercial_invoice' => null
     ];
@@ -116,6 +118,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'brand_color' => false,
         'deprecated' => false,
         'deprecation_message' => false,
+        'beta' => false,
         'generates_customs_documents' => false,
         'generates_commercial_invoice' => false
     ];
@@ -218,6 +221,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'brand_color' => 'brandColor',
         'deprecated' => 'deprecated',
         'deprecation_message' => 'deprecationMessage',
+        'beta' => 'beta',
         'generates_customs_documents' => 'generatesCustomsDocuments',
         'generates_commercial_invoice' => 'generatesCommercialInvoice'
     ];
@@ -240,6 +244,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'brand_color' => 'setBrandColor',
         'deprecated' => 'setDeprecated',
         'deprecation_message' => 'setDeprecationMessage',
+        'beta' => 'setBeta',
         'generates_customs_documents' => 'setGeneratesCustomsDocuments',
         'generates_commercial_invoice' => 'setGeneratesCommercialInvoice'
     ];
@@ -262,6 +267,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         'brand_color' => 'getBrandColor',
         'deprecated' => 'getDeprecated',
         'deprecation_message' => 'getDeprecationMessage',
+        'beta' => 'getBeta',
         'generates_customs_documents' => 'getGeneratesCustomsDocuments',
         'generates_commercial_invoice' => 'getGeneratesCommercialInvoice'
     ];
@@ -335,6 +341,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
         $this->setIfExists('brand_color', $data ?? [], null);
         $this->setIfExists('deprecated', $data ?? [], null);
         $this->setIfExists('deprecation_message', $data ?? [], null);
+        $this->setIfExists('beta', $data ?? [], null);
         $this->setIfExists('generates_customs_documents', $data ?? [], null);
         $this->setIfExists('generates_commercial_invoice', $data ?? [], null);
     }
@@ -695,7 +702,7 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
     /**
      * Sets deprecated
      *
-     * @param bool|null $deprecated Whether this carrier integration is deprecated (still works, but discouraged)
+     * @param bool|null $deprecated Whether this integration is deprecated (still works, but discouraged)
      *
      * @return self
      */
@@ -732,6 +739,33 @@ class ListCarriers200ResponseDataInner implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable deprecation_message cannot be null');
         }
         $this->container['deprecation_message'] = $deprecation_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets beta
+     *
+     * @return bool|null
+     */
+    public function getBeta()
+    {
+        return $this->container['beta'];
+    }
+
+    /**
+     * Sets beta
+     *
+     * @param bool|null $beta Whether this integration is newly launched and still being verified in production
+     *
+     * @return self
+     */
+    public function setBeta($beta)
+    {
+        if (is_null($beta)) {
+            throw new \InvalidArgumentException('non-nullable beta cannot be null');
+        }
+        $this->container['beta'] = $beta;
 
         return $this;
     }

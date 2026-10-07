@@ -426,7 +426,7 @@ class GetBillingUsage200ResponseAddOnsInner implements ModelInterface, ArrayAcce
     /**
      * Sets unit_price
      *
-     * @param float $unit_price Price per unit per month, in øre
+     * @param float $unit_price Price per unit per month, in minor units of the billing currency
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class GetBillingUsage200ResponseAddOnsInner implements ModelInterface, ArrayAcce
     /**
      * Sets total_price
      *
-     * @param float $total_price Total price per month, in øre
+     * @param float $total_price Total price per month, in minor units of the billing currency
      *
      * @return self
      */

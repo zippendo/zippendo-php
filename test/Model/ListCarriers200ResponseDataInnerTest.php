@@ -189,6 +189,15 @@ class ListCarriers200ResponseDataInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "beta"
+     */
+    public function testPropertyBeta()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "generates_customs_documents"
      */
     public function testPropertyGeneratesCustomsDocuments()

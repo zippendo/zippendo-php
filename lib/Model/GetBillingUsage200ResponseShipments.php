@@ -417,7 +417,7 @@ class GetBillingUsage200ResponseShipments implements ModelInterface, ArrayAccess
     /**
      * Sets overage_charges
      *
-     * @param float $overage_charges Overage charges so far, in øre
+     * @param float $overage_charges Overage charges so far, in minor units of the billing currency
      *
      * @return self
      */

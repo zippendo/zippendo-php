@@ -428,7 +428,7 @@ class GetBillingUsage200ResponseZippyCredits implements ModelInterface, ArrayAcc
     /**
      * Sets charges
      *
-     * @param float $charges Metered credit charges so far, in øre (whole packs)
+     * @param float $charges Metered credit charges so far, in minor units of the billing currency (whole packs)
      *
      * @return self
      */
