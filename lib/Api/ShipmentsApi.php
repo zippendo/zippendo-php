@@ -848,7 +848,7 @@ class ShipmentsApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
+     * @return \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
     public function createReturnShipment($org_id, $shipment_id, string $contentType = self::contentTypes['createReturnShipment'][0])
     {
@@ -867,7 +867,7 @@ class ShipmentsApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createReturnShipmentWithHttpInfo($org_id, $shipment_id, string $contentType = self::contentTypes['createReturnShipment'][0])
     {
@@ -916,6 +916,12 @@ class ShipmentsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 409:
                     return $this->handleResponseWithDataType(
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $request,
@@ -970,6 +976,14 @@ class ShipmentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
@@ -3244,7 +3258,7 @@ class ShipmentsApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\SendShipment422Response
+     * @return \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\SendShipment422Response
      */
     public function sendShipment($org_id, $shipment_id, string $contentType = self::contentTypes['sendShipment'][0])
     {
@@ -3263,7 +3277,7 @@ class ShipmentsApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\SendShipment422Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\SendShipment422Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendShipmentWithHttpInfo($org_id, $shipment_id, string $contentType = self::contentTypes['sendShipment'][0])
     {
@@ -3312,6 +3326,12 @@ class ShipmentsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 409:
                     return $this->handleResponseWithDataType(
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $request,
@@ -3372,6 +3392,14 @@ class ShipmentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
