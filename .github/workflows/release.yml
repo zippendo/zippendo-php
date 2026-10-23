@@ -1,0 +1,25 @@
+name: Release
+
+# Zippendo's release pipeline generates this SDK and pushes a version tag; Packagist reads that tag
+# through its GitHub hook, so there is nothing to upload. This only records the release on GitHub.
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the GitHub release
+    steps:
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" > /dev/null 2>&1 && exit 0
+          gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --verify-tag --title "$GITHUB_REF_NAME" --notes \
+            "Install with \`composer require zippendo/zippendo-php:${GITHUB_REF_NAME#v}\`. Guide: https://www.zippendo.com/docs/sdks/overview"
