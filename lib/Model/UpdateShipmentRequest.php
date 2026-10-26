@@ -379,8 +379,8 @@ class UpdateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('carrier_settings', $data ?? [], null);
         $this->setIfExists('parcels', $data ?? [], null);
         $this->setIfExists('pickup_details', $data ?? [], null);
-        $this->setIfExists('term_of_trade', $data ?? [], 'DAP');
-        $this->setIfExists('status', $data ?? [], 'pending');
+        $this->setIfExists('term_of_trade', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('order_id', $data ?? [], null);
         $this->setIfExists('label_printer_id', $data ?? [], null);
         $this->setIfExists('document_printer_id', $data ?? [], null);

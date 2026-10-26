@@ -61,6 +61,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'id' => 'string',
         'name' => 'string',
         'description' => 'string',
+        'translations' => 'array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerTranslationsValue>',
         'direction' => 'string',
         'carrier_id' => 'string',
         'product_id' => 'string',
@@ -101,6 +102,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'id' => null,
         'name' => null,
         'description' => null,
+        'translations' => null,
         'direction' => null,
         'carrier_id' => null,
         'product_id' => null,
@@ -139,6 +141,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'id' => false,
         'name' => false,
         'description' => true,
+        'translations' => false,
         'direction' => false,
         'carrier_id' => false,
         'product_id' => false,
@@ -257,6 +260,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'id' => 'id',
         'name' => 'name',
         'description' => 'description',
+        'translations' => 'translations',
         'direction' => 'direction',
         'carrier_id' => 'carrierId',
         'product_id' => 'productId',
@@ -295,6 +299,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'id' => 'setId',
         'name' => 'setName',
         'description' => 'setDescription',
+        'translations' => 'setTranslations',
         'direction' => 'setDirection',
         'carrier_id' => 'setCarrierId',
         'product_id' => 'setProductId',
@@ -333,6 +338,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         'id' => 'getId',
         'name' => 'getName',
         'description' => 'getDescription',
+        'translations' => 'getTranslations',
         'direction' => 'getDirection',
         'carrier_id' => 'getCarrierId',
         'product_id' => 'getProductId',
@@ -437,6 +443,7 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('translations', $data ?? [], null);
         $this->setIfExists('direction', $data ?? [], 'outbound');
         $this->setIfExists('carrier_id', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
@@ -505,6 +512,9 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
 
         if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
             $invalidProperties[] = "'description' is required";
+        }
+        if ($this->container['translations'] === null) {
+            $invalidProperties[] = "'translations' can't be null";
         }
         if ($this->container['direction'] === null) {
             $invalidProperties[] = "'direction' can't be null";
@@ -716,6 +726,33 @@ class CreateShippingRule201Response implements ModelInterface, ArrayAccess, \Jso
             }
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets translations
+     *
+     * @return array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerTranslationsValue>
+     */
+    public function getTranslations()
+    {
+        return $this->container['translations'];
+    }
+
+    /**
+     * Sets translations
+     *
+     * @param array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerTranslationsValue> $translations Checkout name and description per language
+     *
+     * @return self
+     */
+    public function setTranslations($translations)
+    {
+        if (is_null($translations)) {
+            throw new \InvalidArgumentException('non-nullable translations cannot be null');
+        }
+        $this->container['translations'] = $translations;
 
         return $this;
     }

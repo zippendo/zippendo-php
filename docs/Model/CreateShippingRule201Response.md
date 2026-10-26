@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** | Unique shipping rule identifier |
 **name** | **string** | Shipping rule name |
 **description** | **string** | Optional description |
+**translations** | [**array<string,\Zippendo\Sdk\Model\ListShippingRules200ResponseDataInnerTranslationsValue>**](ListShippingRules200ResponseDataInnerTranslationsValue.md) | Checkout name and description per language |
 **direction** | **string** | Whether this rule is for outbound or inbound (return) shipments | [default to 'outbound']
 **carrier_id** | **string** | Carrier ID |
 **product_id** | **string** | Product ID from carrier |

@@ -318,19 +318,19 @@ class UpdateOrderChannelRequestSettings implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('use_webhooks', $data ?? [], true);
+        $this->setIfExists('use_webhooks', $data ?? [], null);
         $this->setIfExists('site_url', $data ?? [], null);
         $this->setIfExists('auto_fulfill', $data ?? [], null);
-        $this->setIfExists('auto_sync', $data ?? [], false);
-        $this->setIfExists('sync_interval_minutes', $data ?? [], 15);
-        $this->setIfExists('auto_ship_on_create', $data ?? [], false);
+        $this->setIfExists('auto_sync', $data ?? [], null);
+        $this->setIfExists('sync_interval_minutes', $data ?? [], null);
+        $this->setIfExists('auto_ship_on_create', $data ?? [], null);
         $this->setIfExists('default_carrier_id', $data ?? [], null);
         $this->setIfExists('default_product_id', $data ?? [], null);
         $this->setIfExists('default_address_id', $data ?? [], null);
         $this->setIfExists('shipping_method_mappings', $data ?? [], null);
-        $this->setIfExists('sync_only_unfulfilled', $data ?? [], true);
+        $this->setIfExists('sync_only_unfulfilled', $data ?? [], null);
         $this->setIfExists('sync_orders_since', $data ?? [], null);
-        $this->setIfExists('service_point_count', $data ?? [], 6);
+        $this->setIfExists('service_point_count', $data ?? [], null);
     }
 
     /**

@@ -108,6 +108,15 @@ class CreateShippingRule201ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "translations"
+     */
+    public function testPropertyTranslations()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "direction"
      */
     public function testPropertyDirection()

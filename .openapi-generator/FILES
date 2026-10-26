@@ -83,6 +83,7 @@ docs/Model/CreateShippingRuleRequestConditionsInnerOneOf1.md
 docs/Model/CreateShippingRuleRequestConditionsInnerOneOf2.md
 docs/Model/CreateShippingRuleRequestConditionsInnerOneOf3.md
 docs/Model/CreateShippingRuleRequestConditionsInnerOneOf4.md
+docs/Model/CreateShippingRuleRequestTranslationsValue.md
 docs/Model/DeleteOrgWebhook200Response.md
 docs/Model/DeleteShippingRule200Response.md
 docs/Model/GetBillingUsage200Response.md
@@ -154,6 +155,7 @@ docs/Model/ListShippingRules200ResponseDataInnerConditionsInnerOneOf3.md
 docs/Model/ListShippingRules200ResponseDataInnerConditionsInnerOneOf4.md
 docs/Model/ListShippingRules200ResponseDataInnerLabelPrinter.md
 docs/Model/ListShippingRules200ResponseDataInnerReturnShippingRule.md
+docs/Model/ListShippingRules200ResponseDataInnerTranslationsValue.md
 docs/Model/RevokeApiToken200Response.md
 docs/Model/RevokeOrderChannelWebhookSecret200Response.md
 docs/Model/SendShipment422Response.md
@@ -267,6 +269,7 @@ lib/Model/CreateShippingRuleRequestConditionsInnerOneOf1.php
 lib/Model/CreateShippingRuleRequestConditionsInnerOneOf2.php
 lib/Model/CreateShippingRuleRequestConditionsInnerOneOf3.php
 lib/Model/CreateShippingRuleRequestConditionsInnerOneOf4.php
+lib/Model/CreateShippingRuleRequestTranslationsValue.php
 lib/Model/DeleteOrgWebhook200Response.php
 lib/Model/DeleteShippingRule200Response.php
 lib/Model/GetBillingUsage200Response.php
@@ -338,6 +341,7 @@ lib/Model/ListShippingRules200ResponseDataInnerConditionsInnerOneOf3.php
 lib/Model/ListShippingRules200ResponseDataInnerConditionsInnerOneOf4.php
 lib/Model/ListShippingRules200ResponseDataInnerLabelPrinter.php
 lib/Model/ListShippingRules200ResponseDataInnerReturnShippingRule.php
+lib/Model/ListShippingRules200ResponseDataInnerTranslationsValue.php
 lib/Model/ModelInterface.php
 lib/Model/RevokeApiToken200Response.php
 lib/Model/RevokeOrderChannelWebhookSecret200Response.php
@@ -449,6 +453,7 @@ test/Model/CreateShippingRuleRequestConditionsInnerOneOf4Test.php
 test/Model/CreateShippingRuleRequestConditionsInnerOneOfTest.php
 test/Model/CreateShippingRuleRequestConditionsInnerTest.php
 test/Model/CreateShippingRuleRequestTest.php
+test/Model/CreateShippingRuleRequestTranslationsValueTest.php
 test/Model/DeleteOrgWebhook200ResponseTest.php
 test/Model/DeleteShippingRule200ResponseTest.php
 test/Model/GetBillingUsage200ResponseAddOnsInnerTest.php
@@ -519,6 +524,7 @@ test/Model/ListShippingRules200ResponseDataInnerConditionsInnerTest.php
 test/Model/ListShippingRules200ResponseDataInnerLabelPrinterTest.php
 test/Model/ListShippingRules200ResponseDataInnerReturnShippingRuleTest.php
 test/Model/ListShippingRules200ResponseDataInnerTest.php
+test/Model/ListShippingRules200ResponseDataInnerTranslationsValueTest.php
 test/Model/ListShippingRules200ResponseTest.php
 test/Model/RevokeApiToken200ResponseTest.php
 test/Model/RevokeOrderChannelWebhookSecret200ResponseTest.php

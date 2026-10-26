@@ -60,6 +60,7 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'name' => 'string',
         'description' => 'string',
+        'translations' => 'array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestTranslationsValue>',
         'direction' => 'string',
         'carrier_id' => 'string',
         'product_id' => 'string',
@@ -96,6 +97,7 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'name' => null,
         'description' => null,
+        'translations' => null,
         'direction' => null,
         'carrier_id' => null,
         'product_id' => null,
@@ -130,6 +132,7 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'name' => false,
         'description' => false,
+        'translations' => false,
         'direction' => false,
         'carrier_id' => false,
         'product_id' => false,
@@ -244,6 +247,7 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'name' => 'name',
         'description' => 'description',
+        'translations' => 'translations',
         'direction' => 'direction',
         'carrier_id' => 'carrierId',
         'product_id' => 'productId',
@@ -278,6 +282,7 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'name' => 'setName',
         'description' => 'setDescription',
+        'translations' => 'setTranslations',
         'direction' => 'setDirection',
         'carrier_id' => 'setCarrierId',
         'product_id' => 'setProductId',
@@ -312,6 +317,7 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'name' => 'getName',
         'description' => 'getDescription',
+        'translations' => 'getTranslations',
         'direction' => 'getDirection',
         'carrier_id' => 'getCarrierId',
         'product_id' => 'getProductId',
@@ -412,29 +418,30 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('direction', $data ?? [], 'outbound');
+        $this->setIfExists('translations', $data ?? [], null);
+        $this->setIfExists('direction', $data ?? [], null);
         $this->setIfExists('carrier_id', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('services', $data ?? [], null);
         $this->setIfExists('additional_parameters', $data ?? [], null);
         $this->setIfExists('address_id', $data ?? [], null);
         $this->setIfExists('receiving_countries', $data ?? [], null);
-        $this->setIfExists('email_notification', $data ?? [], false);
-        $this->setIfExists('phone_notification', $data ?? [], false);
+        $this->setIfExists('email_notification', $data ?? [], null);
+        $this->setIfExists('phone_notification', $data ?? [], null);
         $this->setIfExists('min_weight', $data ?? [], null);
         $this->setIfExists('max_weight', $data ?? [], null);
         $this->setIfExists('min_order_value', $data ?? [], null);
         $this->setIfExists('max_order_value', $data ?? [], null);
         $this->setIfExists('conditions', $data ?? [], null);
-        $this->setIfExists('generate_proforma_invoice', $data ?? [], false);
-        $this->setIfExists('generate_commercial_invoice', $data ?? [], false);
-        $this->setIfExists('generate_packing_list', $data ?? [], false);
-        $this->setIfExists('auto_print_labels', $data ?? [], false);
-        $this->setIfExists('auto_print_documents', $data ?? [], false);
+        $this->setIfExists('generate_proforma_invoice', $data ?? [], null);
+        $this->setIfExists('generate_commercial_invoice', $data ?? [], null);
+        $this->setIfExists('generate_packing_list', $data ?? [], null);
+        $this->setIfExists('auto_print_labels', $data ?? [], null);
+        $this->setIfExists('auto_print_documents', $data ?? [], null);
         $this->setIfExists('label_printer_id', $data ?? [], null);
         $this->setIfExists('document_printer_id', $data ?? [], null);
         $this->setIfExists('return_shipping_rule_id', $data ?? [], null);
-        $this->setIfExists('auto_create_return_shipment', $data ?? [], false);
+        $this->setIfExists('auto_create_return_shipment', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
     }
 
@@ -568,6 +575,33 @@ class UpdateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets translations
+     *
+     * @return array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestTranslationsValue>|null
+     */
+    public function getTranslations()
+    {
+        return $this->container['translations'];
+    }
+
+    /**
+     * Sets translations
+     *
+     * @param array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestTranslationsValue>|null $translations Checkout name and description per language; a blank field falls back to the rule's own text
+     *
+     * @return self
+     */
+    public function setTranslations($translations)
+    {
+        if (is_null($translations)) {
+            throw new \InvalidArgumentException('non-nullable translations cannot be null');
+        }
+        $this->container['translations'] = $translations;
 
         return $this;
     }

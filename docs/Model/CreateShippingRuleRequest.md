@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Shipping rule name |
 **description** | **string** | Optional description | [optional]
+**translations** | [**array<string,\Zippendo\Sdk\Model\CreateShippingRuleRequestTranslationsValue>**](CreateShippingRuleRequestTranslationsValue.md) | Checkout name and description per language; a blank field falls back to the rule&#39;s own text | [optional]
 **direction** | **string** | Whether this rule is for outbound or inbound (return) shipments | [optional] [default to 'outbound']
 **carrier_id** | **string** | Carrier ID |
 **product_id** | **string** | Product ID from carrier |
