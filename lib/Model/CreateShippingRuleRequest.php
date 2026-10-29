@@ -80,6 +80,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         'generate_packing_list' => 'bool',
         'auto_print_labels' => 'bool',
         'auto_print_documents' => 'bool',
+        'auto_print_trigger' => 'string',
         'label_printer_id' => 'string',
         'document_printer_id' => 'string',
         'return_shipping_rule_id' => 'string',
@@ -117,6 +118,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         'generate_packing_list' => null,
         'auto_print_labels' => null,
         'auto_print_documents' => null,
+        'auto_print_trigger' => null,
         'label_printer_id' => null,
         'document_printer_id' => null,
         'return_shipping_rule_id' => null,
@@ -152,6 +154,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         'generate_packing_list' => false,
         'auto_print_labels' => false,
         'auto_print_documents' => false,
+        'auto_print_trigger' => false,
         'label_printer_id' => true,
         'document_printer_id' => true,
         'return_shipping_rule_id' => true,
@@ -267,6 +270,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         'generate_packing_list' => 'generatePackingList',
         'auto_print_labels' => 'autoPrintLabels',
         'auto_print_documents' => 'autoPrintDocuments',
+        'auto_print_trigger' => 'autoPrintTrigger',
         'label_printer_id' => 'labelPrinterId',
         'document_printer_id' => 'documentPrinterId',
         'return_shipping_rule_id' => 'returnShippingRuleId',
@@ -302,6 +306,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         'generate_packing_list' => 'setGeneratePackingList',
         'auto_print_labels' => 'setAutoPrintLabels',
         'auto_print_documents' => 'setAutoPrintDocuments',
+        'auto_print_trigger' => 'setAutoPrintTrigger',
         'label_printer_id' => 'setLabelPrinterId',
         'document_printer_id' => 'setDocumentPrinterId',
         'return_shipping_rule_id' => 'setReturnShippingRuleId',
@@ -337,6 +342,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         'generate_packing_list' => 'getGeneratePackingList',
         'auto_print_labels' => 'getAutoPrintLabels',
         'auto_print_documents' => 'getAutoPrintDocuments',
+        'auto_print_trigger' => 'getAutoPrintTrigger',
         'label_printer_id' => 'getLabelPrinterId',
         'document_printer_id' => 'getDocumentPrinterId',
         'return_shipping_rule_id' => 'getReturnShippingRuleId',
@@ -387,6 +393,8 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
 
     public const DIRECTION_OUTBOUND = 'outbound';
     public const DIRECTION_INBOUND = 'inbound';
+    public const AUTO_PRINT_TRIGGER_ON_BOOKING = 'ON_BOOKING';
+    public const AUTO_PRINT_TRIGGER_ON_SCAN = 'ON_SCAN';
 
     /**
      * Gets allowable values of the enum
@@ -398,6 +406,19 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::DIRECTION_OUTBOUND,
             self::DIRECTION_INBOUND,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAutoPrintTriggerAllowableValues()
+    {
+        return [
+            self::AUTO_PRINT_TRIGGER_ON_BOOKING,
+            self::AUTO_PRINT_TRIGGER_ON_SCAN,
         ];
     }
 
@@ -438,6 +459,7 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('generate_packing_list', $data ?? [], false);
         $this->setIfExists('auto_print_labels', $data ?? [], false);
         $this->setIfExists('auto_print_documents', $data ?? [], false);
+        $this->setIfExists('auto_print_trigger', $data ?? [], 'ON_BOOKING');
         $this->setIfExists('label_printer_id', $data ?? [], null);
         $this->setIfExists('document_printer_id', $data ?? [], null);
         $this->setIfExists('return_shipping_rule_id', $data ?? [], null);
@@ -522,6 +544,15 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['conditions'] === null) {
             $invalidProperties[] = "'conditions' can't be null";
         }
+        $allowedValues = $this->getAutoPrintTriggerAllowableValues();
+        if (!is_null($this->container['auto_print_trigger']) && !in_array($this->container['auto_print_trigger'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'auto_print_trigger', must be one of '%s'",
+                $this->container['auto_print_trigger'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['brand_id']) && (mb_strlen($this->container['brand_id']) < 1)) {
             $invalidProperties[] = "invalid value for 'brand_id', the character length must be bigger than or equal to 1.";
         }
@@ -1190,6 +1221,43 @@ class CreateShippingRuleRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable auto_print_documents cannot be null');
         }
         $this->container['auto_print_documents'] = $auto_print_documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_print_trigger
+     *
+     * @return string|null
+     */
+    public function getAutoPrintTrigger()
+    {
+        return $this->container['auto_print_trigger'];
+    }
+
+    /**
+     * Sets auto_print_trigger
+     *
+     * @param string|null $auto_print_trigger When automatic printing starts: `ON_BOOKING` prints as soon as the shipment is sent, `ON_SCAN` waits until the packing slip is scanned.
+     *
+     * @return self
+     */
+    public function setAutoPrintTrigger($auto_print_trigger)
+    {
+        if (is_null($auto_print_trigger)) {
+            throw new \InvalidArgumentException('non-nullable auto_print_trigger cannot be null');
+        }
+        $allowedValues = $this->getAutoPrintTriggerAllowableValues();
+        if (!in_array($auto_print_trigger, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'auto_print_trigger', must be one of '%s'",
+                    $auto_print_trigger,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['auto_print_trigger'] = $auto_print_trigger;
 
         return $this;
     }

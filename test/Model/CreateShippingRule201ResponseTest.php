@@ -288,6 +288,15 @@ class CreateShippingRule201ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "auto_print_trigger"
+     */
+    public function testPropertyAutoPrintTrigger()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "label_printer_id"
      */
     public function testPropertyLabelPrinterId()

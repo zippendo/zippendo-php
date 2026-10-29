@@ -207,6 +207,15 @@ class GetOrg200ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "packing_slip_scan_code"
+     */
+    public function testPropertyPackingSlipScanCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "created_at"
      */
     public function testPropertyCreatedAt()

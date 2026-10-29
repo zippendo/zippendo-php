@@ -71,7 +71,8 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'string',
         'postal_code' => 'string',
         'country' => 'string',
-        'customs' => 'array<string,string>'
+        'customs' => 'array<string,string>',
+        'packing_slip_scan_code' => 'string'
     ];
 
     /**
@@ -95,7 +96,8 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => null,
         'postal_code' => null,
         'country' => null,
-        'customs' => null
+        'customs' => null,
+        'packing_slip_scan_code' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => true,
         'postal_code' => true,
         'country' => true,
-        'customs' => true
+        'customs' => true,
+        'packing_slip_scan_code' => false
     ];
 
     /**
@@ -219,7 +222,8 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'city',
         'postal_code' => 'postalCode',
         'country' => 'country',
-        'customs' => 'customs'
+        'customs' => 'customs',
+        'packing_slip_scan_code' => 'packingSlipScanCode'
     ];
 
     /**
@@ -241,7 +245,8 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'setCity',
         'postal_code' => 'setPostalCode',
         'country' => 'setCountry',
-        'customs' => 'setCustoms'
+        'customs' => 'setCustoms',
+        'packing_slip_scan_code' => 'setPackingSlipScanCode'
     ];
 
     /**
@@ -263,7 +268,8 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'getCity',
         'postal_code' => 'getPostalCode',
         'country' => 'getCountry',
-        'customs' => 'getCustoms'
+        'customs' => 'getCustoms',
+        'packing_slip_scan_code' => 'getPackingSlipScanCode'
     ];
 
     /**
@@ -313,6 +319,9 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CURRENCY_GBP = 'GBP';
     public const CURRENCY_SEK = 'SEK';
     public const CURRENCY_NOK = 'NOK';
+    public const PACKING_SLIP_SCAN_CODE_NONE = 'NONE';
+    public const PACKING_SLIP_SCAN_CODE_QR = 'QR';
+    public const PACKING_SLIP_SCAN_CODE_BARCODE = 'BARCODE';
 
     /**
      * Gets allowable values of the enum
@@ -328,6 +337,20 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CURRENCY_GBP,
             self::CURRENCY_SEK,
             self::CURRENCY_NOK,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPackingSlipScanCodeAllowableValues()
+    {
+        return [
+            self::PACKING_SLIP_SCAN_CODE_NONE,
+            self::PACKING_SLIP_SCAN_CODE_QR,
+            self::PACKING_SLIP_SCAN_CODE_BARCODE,
         ];
     }
 
@@ -360,6 +383,7 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('postal_code', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('customs', $data ?? [], null);
+        $this->setIfExists('packing_slip_scan_code', $data ?? [], null);
     }
 
     /**
@@ -420,6 +444,15 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['billing_email']) && !preg_match("/^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/", $this->container['billing_email'])) {
             $invalidProperties[] = "invalid value for 'billing_email', must be conform to the pattern /^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$/.";
+        }
+
+        $allowedValues = $this->getPackingSlipScanCodeAllowableValues();
+        if (!is_null($this->container['packing_slip_scan_code']) && !in_array($this->container['packing_slip_scan_code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'packing_slip_scan_code', must be one of '%s'",
+                $this->container['packing_slip_scan_code'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -916,6 +949,43 @@ class UpdateOrgRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['customs'] = $customs;
+
+        return $this;
+    }
+
+    /**
+     * Gets packing_slip_scan_code
+     *
+     * @return string|null
+     */
+    public function getPackingSlipScanCode()
+    {
+        return $this->container['packing_slip_scan_code'];
+    }
+
+    /**
+     * Sets packing_slip_scan_code
+     *
+     * @param string|null $packing_slip_scan_code Code printed on packing slips that a scan turns into a print: `QR`, `BARCODE`, or `NONE` for no code.
+     *
+     * @return self
+     */
+    public function setPackingSlipScanCode($packing_slip_scan_code)
+    {
+        if (is_null($packing_slip_scan_code)) {
+            throw new \InvalidArgumentException('non-nullable packing_slip_scan_code cannot be null');
+        }
+        $allowedValues = $this->getPackingSlipScanCodeAllowableValues();
+        if (!in_array($packing_slip_scan_code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'packing_slip_scan_code', must be one of '%s'",
+                    $packing_slip_scan_code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['packing_slip_scan_code'] = $packing_slip_scan_code;
 
         return $this;
     }

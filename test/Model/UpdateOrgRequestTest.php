@@ -205,4 +205,13 @@ class UpdateOrgRequestTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "packing_slip_scan_code"
+     */
+    public function testPropertyPackingSlipScanCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
