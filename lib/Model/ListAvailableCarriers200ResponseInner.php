@@ -71,7 +71,10 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'deprecation_message' => 'string',
         'beta' => 'bool',
         'generates_customs_documents' => 'bool',
-        'generates_commercial_invoice' => 'bool'
+        'generates_commercial_invoice' => 'bool',
+        'cancels_shipments' => 'bool',
+        'uncancellable_product_ids' => 'string[]',
+        'verifies_credentials' => 'bool'
     ];
 
     /**
@@ -95,7 +98,10 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'deprecation_message' => null,
         'beta' => null,
         'generates_customs_documents' => null,
-        'generates_commercial_invoice' => null
+        'generates_commercial_invoice' => null,
+        'cancels_shipments' => null,
+        'uncancellable_product_ids' => null,
+        'verifies_credentials' => null
     ];
 
     /**
@@ -117,7 +123,10 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'deprecation_message' => false,
         'beta' => false,
         'generates_customs_documents' => false,
-        'generates_commercial_invoice' => false
+        'generates_commercial_invoice' => false,
+        'cancels_shipments' => false,
+        'uncancellable_product_ids' => false,
+        'verifies_credentials' => false
     ];
 
     /**
@@ -219,7 +228,10 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'deprecation_message' => 'deprecationMessage',
         'beta' => 'beta',
         'generates_customs_documents' => 'generatesCustomsDocuments',
-        'generates_commercial_invoice' => 'generatesCommercialInvoice'
+        'generates_commercial_invoice' => 'generatesCommercialInvoice',
+        'cancels_shipments' => 'cancelsShipments',
+        'uncancellable_product_ids' => 'uncancellableProductIds',
+        'verifies_credentials' => 'verifiesCredentials'
     ];
 
     /**
@@ -241,7 +253,10 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'deprecation_message' => 'setDeprecationMessage',
         'beta' => 'setBeta',
         'generates_customs_documents' => 'setGeneratesCustomsDocuments',
-        'generates_commercial_invoice' => 'setGeneratesCommercialInvoice'
+        'generates_commercial_invoice' => 'setGeneratesCommercialInvoice',
+        'cancels_shipments' => 'setCancelsShipments',
+        'uncancellable_product_ids' => 'setUncancellableProductIds',
+        'verifies_credentials' => 'setVerifiesCredentials'
     ];
 
     /**
@@ -263,7 +278,10 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         'deprecation_message' => 'getDeprecationMessage',
         'beta' => 'getBeta',
         'generates_customs_documents' => 'getGeneratesCustomsDocuments',
-        'generates_commercial_invoice' => 'getGeneratesCommercialInvoice'
+        'generates_commercial_invoice' => 'getGeneratesCommercialInvoice',
+        'cancels_shipments' => 'getCancelsShipments',
+        'uncancellable_product_ids' => 'getUncancellableProductIds',
+        'verifies_credentials' => 'getVerifiesCredentials'
     ];
 
     /**
@@ -337,6 +355,9 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
         $this->setIfExists('beta', $data ?? [], null);
         $this->setIfExists('generates_customs_documents', $data ?? [], null);
         $this->setIfExists('generates_commercial_invoice', $data ?? [], null);
+        $this->setIfExists('cancels_shipments', $data ?? [], null);
+        $this->setIfExists('uncancellable_product_ids', $data ?? [], null);
+        $this->setIfExists('verifies_credentials', $data ?? [], null);
     }
 
     /**
@@ -761,6 +782,87 @@ class ListAvailableCarriers200ResponseInner implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable generates_commercial_invoice cannot be null');
         }
         $this->container['generates_commercial_invoice'] = $generates_commercial_invoice;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancels_shipments
+     *
+     * @return bool|null
+     */
+    public function getCancelsShipments()
+    {
+        return $this->container['cancels_shipments'];
+    }
+
+    /**
+     * Sets cancels_shipments
+     *
+     * @param bool|null $cancels_shipments Whether a sent shipment of this carrier can be cancelled from Zippendo.
+     *
+     * @return self
+     */
+    public function setCancelsShipments($cancels_shipments)
+    {
+        if (is_null($cancels_shipments)) {
+            throw new \InvalidArgumentException('non-nullable cancels_shipments cannot be null');
+        }
+        $this->container['cancels_shipments'] = $cancels_shipments;
+
+        return $this;
+    }
+
+    /**
+     * Gets uncancellable_product_ids
+     *
+     * @return string[]|null
+     */
+    public function getUncancellableProductIds()
+    {
+        return $this->container['uncancellable_product_ids'];
+    }
+
+    /**
+     * Sets uncancellable_product_ids
+     *
+     * @param string[]|null $uncancellable_product_ids Products whose shipments this carrier cannot cancel, although it cancels its other products (for example locker deliveries).
+     *
+     * @return self
+     */
+    public function setUncancellableProductIds($uncancellable_product_ids)
+    {
+        if (is_null($uncancellable_product_ids)) {
+            throw new \InvalidArgumentException('non-nullable uncancellable_product_ids cannot be null');
+        }
+        $this->container['uncancellable_product_ids'] = $uncancellable_product_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets verifies_credentials
+     *
+     * @return bool|null
+     */
+    public function getVerifiesCredentials()
+    {
+        return $this->container['verifies_credentials'];
+    }
+
+    /**
+     * Sets verifies_credentials
+     *
+     * @param bool|null $verifies_credentials Whether Zippendo checks the credentials with the carrier when the carrier is connected or updated.
+     *
+     * @return self
+     */
+    public function setVerifiesCredentials($verifies_credentials)
+    {
+        if (is_null($verifies_credentials)) {
+            throw new \InvalidArgumentException('non-nullable verifies_credentials cannot be null');
+        }
+        $this->container['verifies_credentials'] = $verifies_credentials;
 
         return $this;
     }

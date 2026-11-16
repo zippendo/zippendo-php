@@ -61,6 +61,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         'url' => 'string',
         'number' => 'string',
         'label_free_code' => 'string',
+        'expected_pickup_date' => 'string',
+        'cancellation_requested_at' => 'string',
         'qr_code_link' => 'string',
         'qr_code_data_uri' => 'string',
         'qr_code_url' => 'string'
@@ -77,6 +79,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         'url' => null,
         'number' => null,
         'label_free_code' => null,
+        'expected_pickup_date' => null,
+        'cancellation_requested_at' => null,
         'qr_code_link' => null,
         'qr_code_data_uri' => null,
         'qr_code_url' => null
@@ -91,6 +95,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         'url' => true,
         'number' => true,
         'label_free_code' => true,
+        'expected_pickup_date' => true,
+        'cancellation_requested_at' => true,
         'qr_code_link' => true,
         'qr_code_data_uri' => true,
         'qr_code_url' => true
@@ -185,6 +191,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         'url' => 'url',
         'number' => 'number',
         'label_free_code' => 'labelFreeCode',
+        'expected_pickup_date' => 'expectedPickupDate',
+        'cancellation_requested_at' => 'cancellationRequestedAt',
         'qr_code_link' => 'qrCodeLink',
         'qr_code_data_uri' => 'qrCodeDataUri',
         'qr_code_url' => 'qrCodeUrl'
@@ -199,6 +207,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         'url' => 'setUrl',
         'number' => 'setNumber',
         'label_free_code' => 'setLabelFreeCode',
+        'expected_pickup_date' => 'setExpectedPickupDate',
+        'cancellation_requested_at' => 'setCancellationRequestedAt',
         'qr_code_link' => 'setQrCodeLink',
         'qr_code_data_uri' => 'setQrCodeDataUri',
         'qr_code_url' => 'setQrCodeUrl'
@@ -213,6 +223,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         'url' => 'getUrl',
         'number' => 'getNumber',
         'label_free_code' => 'getLabelFreeCode',
+        'expected_pickup_date' => 'getExpectedPickupDate',
+        'cancellation_requested_at' => 'getCancellationRequestedAt',
         'qr_code_link' => 'getQrCodeLink',
         'qr_code_data_uri' => 'getQrCodeDataUri',
         'qr_code_url' => 'getQrCodeUrl'
@@ -278,6 +290,8 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
         $this->setIfExists('label_free_code', $data ?? [], null);
+        $this->setIfExists('expected_pickup_date', $data ?? [], null);
+        $this->setIfExists('cancellation_requested_at', $data ?? [], null);
         $this->setIfExists('qr_code_link', $data ?? [], null);
         $this->setIfExists('qr_code_data_uri', $data ?? [], null);
         $this->setIfExists('qr_code_url', $data ?? [], null);
@@ -423,6 +437,74 @@ class CreateShipment201ResponseTracking implements ModelInterface, ArrayAccess, 
             }
         }
         $this->container['label_free_code'] = $label_free_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets expected_pickup_date
+     *
+     * @return string|null
+     */
+    public function getExpectedPickupDate()
+    {
+        return $this->container['expected_pickup_date'];
+    }
+
+    /**
+     * Sets expected_pickup_date
+     *
+     * @param string|null $expected_pickup_date The day the carrier plans to collect the parcel, for carriers that choose the pickup day at booking (WebrinQ return pickups).
+     *
+     * @return self
+     */
+    public function setExpectedPickupDate($expected_pickup_date)
+    {
+        if (is_null($expected_pickup_date)) {
+            array_push($this->openAPINullablesSetToNull, 'expected_pickup_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expected_pickup_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expected_pickup_date'] = $expected_pickup_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancellation_requested_at
+     *
+     * @return string|null
+     */
+    public function getCancellationRequestedAt()
+    {
+        return $this->container['cancellation_requested_at'];
+    }
+
+    /**
+     * Sets cancellation_requested_at
+     *
+     * @param string|null $cancellation_requested_at When a cancellation was sent to a carrier that confirms it later. The shipment stays dispatched until the carrier reports it cancelled.
+     *
+     * @return self
+     */
+    public function setCancellationRequestedAt($cancellation_requested_at)
+    {
+        if (is_null($cancellation_requested_at)) {
+            array_push($this->openAPINullablesSetToNull, 'cancellation_requested_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cancellation_requested_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cancellation_requested_at'] = $cancellation_requested_at;
 
         return $this;
     }

@@ -81,6 +81,9 @@ class ShipmentsApi
         'batchSplitShipment' => [
             'application/json',
         ],
+        'cancelShipment' => [
+            'application/json',
+        ],
         'createReturnShipment' => [
             'application/json',
         ],
@@ -788,6 +791,382 @@ class ShipmentsApi
                 $httpBody = $batch_split_shipment_request;
             }
         } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation cancelShipment
+     *
+     * Cancel sent shipment
+     *
+     * @param  string $org_id Organization identifier. (required)
+     * @param  string $shipment_id Shipment identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelShipment'] to see the possible values for this operation
+     *
+     * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
+     */
+    public function cancelShipment($org_id, $shipment_id, string $contentType = self::contentTypes['cancelShipment'][0])
+    {
+        list($response) = $this->cancelShipmentWithHttpInfo($org_id, $shipment_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation cancelShipmentWithHttpInfo
+     *
+     * Cancel sent shipment
+     *
+     * @param  string $org_id Organization identifier. (required)
+     * @param  string $shipment_id Shipment identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelShipment'] to see the possible values for this operation
+     *
+     * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zippendo\Sdk\Model\CreateShipment201Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelShipmentWithHttpInfo($org_id, $shipment_id, string $contentType = self::contentTypes['cancelShipment'][0])
+    {
+        $request = $this->cancelShipmentRequest($org_id, $shipment_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\CreateShipment201Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zippendo\Sdk\Model\CreateShipment201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\CreateShipment201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cancelShipmentAsync
+     *
+     * Cancel sent shipment
+     *
+     * @param  string $org_id Organization identifier. (required)
+     * @param  string $shipment_id Shipment identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelShipment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelShipmentAsync($org_id, $shipment_id, string $contentType = self::contentTypes['cancelShipment'][0])
+    {
+        return $this->cancelShipmentAsyncWithHttpInfo($org_id, $shipment_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelShipmentAsyncWithHttpInfo
+     *
+     * Cancel sent shipment
+     *
+     * @param  string $org_id Organization identifier. (required)
+     * @param  string $shipment_id Shipment identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelShipment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelShipmentAsyncWithHttpInfo($org_id, $shipment_id, string $contentType = self::contentTypes['cancelShipment'][0])
+    {
+        $returnType = '\Zippendo\Sdk\Model\CreateShipment201Response';
+        $request = $this->cancelShipmentRequest($org_id, $shipment_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelShipment'
+     *
+     * @param  string $org_id Organization identifier. (required)
+     * @param  string $shipment_id Shipment identifier. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelShipment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cancelShipmentRequest($org_id, $shipment_id, string $contentType = self::contentTypes['cancelShipment'][0])
+    {
+
+        // verify the required parameter 'org_id' is set
+        if ($org_id === null || (is_array($org_id) && count($org_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $org_id when calling cancelShipment'
+            );
+        }
+
+        // verify the required parameter 'shipment_id' is set
+        if ($shipment_id === null || (is_array($shipment_id) && count($shipment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $shipment_id when calling cancelShipment'
+            );
+        }
+
+
+        $resourcePath = '/orgs/{orgId}/shipments/{shipmentId}/cancel';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($org_id !== null) {
+            $resourcePath = str_replace(
+                '{orgId}',
+                ObjectSerializer::toPathValue($org_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($shipment_id !== null) {
+            $resourcePath = str_replace(
+                '{shipmentId}',
+                ObjectSerializer::toPathValue($shipment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

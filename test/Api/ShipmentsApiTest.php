@@ -97,6 +97,18 @@ class ShipmentsApiTest extends TestCase
     }
 
     /**
+     * Test case for cancelShipment
+     *
+     * Cancel sent shipment.
+     *
+     */
+    public function testCancelShipment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for createReturnShipment
      *
      * Create return shipment.

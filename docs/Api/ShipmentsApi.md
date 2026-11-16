@@ -8,6 +8,7 @@ All URIs are relative to https://api.zippendo.com, except if the operation defin
 | ------------- | ------------- | ------------- |
 | [**batchSendShipments()**](ShipmentsApi.md#batchSendShipments) | **POST** /orgs/{orgId}/shipments/batch-send | Batch send shipments |
 | [**batchSplitShipment()**](ShipmentsApi.md#batchSplitShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/batch-split-shipment | Batch split shipment |
+| [**cancelShipment()**](ShipmentsApi.md#cancelShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/cancel | Cancel sent shipment |
 | [**createReturnShipment()**](ShipmentsApi.md#createReturnShipment) | **POST** /orgs/{orgId}/shipments/{shipmentId}/create-return | Create return shipment |
 | [**createShipment()**](ShipmentsApi.md#createShipment) | **POST** /orgs/{orgId}/shipments | Create shipment |
 | [**deleteShipment()**](ShipmentsApi.md#deleteShipment) | **DELETE** /orgs/{orgId}/shipments/{shipmentId} | Delete shipment |
@@ -142,6 +143,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `cancelShipment()`
+
+```php
+cancelShipment($org_id, $shipment_id): \Zippendo\Sdk\Model\CreateShipment201Response
+```
+
+Cancel sent shipment
+
+Cancel a sent shipment with its carrier. The shipment becomes `cancelled` when the carrier confirms at once; a carrier that confirms later leaves it `dispatched` with the request in its activity, and its tracking shows the outcome; a carrier that withdrew only some parcels leaves it `dispatched` with each parcel's outcome in its activity. Only carriers whose `cancelsShipments` is true accept it, except products listed in `uncancellableProductIds`; others answer SHIPMENT_CANCEL_NOT_SUPPORTED, and a carrier that refuses (for example because the parcel was collected) answers CARRIER_CANCEL_REFUSED.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zippendo\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zippendo\Sdk\Api\ShipmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$org_id = org_1a2b3c4d; // string | Organization identifier.
+$shipment_id = shp_4d9e7a2f; // string | Shipment identifier.
+
+try {
+    $result = $apiInstance->cancelShipment($org_id, $shipment_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShipmentsApi->cancelShipment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **org_id** | **string**| Organization identifier. | |
+| **shipment_id** | **string**| Shipment identifier. | |
+
+### Return type
+
+[**\Zippendo\Sdk\Model\CreateShipment201Response**](../Model/CreateShipment201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

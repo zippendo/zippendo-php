@@ -108,6 +108,24 @@ class CreateShipment201ResponseTrackingTest extends TestCase
     }
 
     /**
+     * Test attribute "expected_pickup_date"
+     */
+    public function testPropertyExpectedPickupDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cancellation_requested_at"
+     */
+    public function testPropertyCancellationRequestedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "qr_code_link"
      */
     public function testPropertyQrCodeLink()

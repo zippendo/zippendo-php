@@ -155,7 +155,7 @@ class CarriersApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
+     * @return \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
     public function connectCarrier($org_id, $connect_carrier_request, string $contentType = self::contentTypes['connectCarrier'][0])
     {
@@ -174,7 +174,7 @@ class CarriersApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function connectCarrierWithHttpInfo($org_id, $connect_carrier_request, string $contentType = self::contentTypes['connectCarrier'][0])
     {
@@ -223,6 +223,12 @@ class CarriersApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
                     return $this->handleResponseWithDataType(
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $request,
@@ -277,6 +283,14 @@ class CarriersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
@@ -2196,7 +2210,7 @@ class CarriersApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
+     * @return \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response
      */
     public function updateCarrier($org_id, $carrier_id, $update_carrier_request, string $contentType = self::contentTypes['updateCarrier'][0])
     {
@@ -2216,7 +2230,7 @@ class CarriersApi
      *
      * @throws \Zippendo\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zippendo\Sdk\Model\ListCarriers200ResponseDataInner|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response|\Zippendo\Sdk\Model\ListApiTokens401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCarrierWithHttpInfo($org_id, $carrier_id, $update_carrier_request, string $contentType = self::contentTypes['updateCarrier'][0])
     {
@@ -2265,6 +2279,12 @@ class CarriersApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $request,
+                        $response,
+                    );
+                case 422:
                     return $this->handleResponseWithDataType(
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
                         $request,
@@ -2319,6 +2339,14 @@ class CarriersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zippendo\Sdk\Model\ListApiTokens401Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zippendo\Sdk\Model\ListApiTokens401Response',
