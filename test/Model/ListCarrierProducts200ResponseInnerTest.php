@@ -171,6 +171,15 @@ class ListCarrierProducts200ResponseInnerTest extends TestCase
     }
 
     /**
+     * Test attribute "dangerous_goods"
+     */
+    public function testPropertyDangerousGoods()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "weight_limits"
      */
     public function testPropertyWeightLimits()

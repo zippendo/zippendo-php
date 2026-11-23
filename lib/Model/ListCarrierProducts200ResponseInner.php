@@ -68,6 +68,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         'is_pickup_available' => 'bool',
         'services' => '\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerServicesInner[]',
         'additional_parameters' => '\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerAdditionalParametersInner[]',
+        'dangerous_goods' => '\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerDangerousGoodsInner[]',
         'weight_limits' => '\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerWeightLimits'
     ];
 
@@ -89,6 +90,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         'is_pickup_available' => null,
         'services' => null,
         'additional_parameters' => null,
+        'dangerous_goods' => null,
         'weight_limits' => null
     ];
 
@@ -108,6 +110,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         'is_pickup_available' => false,
         'services' => false,
         'additional_parameters' => false,
+        'dangerous_goods' => false,
         'weight_limits' => false
     ];
 
@@ -207,6 +210,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         'is_pickup_available' => 'isPickupAvailable',
         'services' => 'services',
         'additional_parameters' => 'additionalParameters',
+        'dangerous_goods' => 'dangerousGoods',
         'weight_limits' => 'weightLimits'
     ];
 
@@ -226,6 +230,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         'is_pickup_available' => 'setIsPickupAvailable',
         'services' => 'setServices',
         'additional_parameters' => 'setAdditionalParameters',
+        'dangerous_goods' => 'setDangerousGoods',
         'weight_limits' => 'setWeightLimits'
     ];
 
@@ -245,6 +250,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         'is_pickup_available' => 'getIsPickupAvailable',
         'services' => 'getServices',
         'additional_parameters' => 'getAdditionalParameters',
+        'dangerous_goods' => 'getDangerousGoods',
         'weight_limits' => 'getWeightLimits'
     ];
 
@@ -330,6 +336,7 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
         $this->setIfExists('is_pickup_available', $data ?? [], false);
         $this->setIfExists('services', $data ?? [], null);
         $this->setIfExists('additional_parameters', $data ?? [], null);
+        $this->setIfExists('dangerous_goods', $data ?? [], null);
         $this->setIfExists('weight_limits', $data ?? [], null);
     }
 
@@ -681,6 +688,33 @@ class ListCarrierProducts200ResponseInner implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable additional_parameters cannot be null');
         }
         $this->container['additional_parameters'] = $additional_parameters;
+
+        return $this;
+    }
+
+    /**
+     * Gets dangerous_goods
+     *
+     * @return \Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerDangerousGoodsInner[]|null
+     */
+    public function getDangerousGoods()
+    {
+        return $this->container['dangerous_goods'];
+    }
+
+    /**
+     * Sets dangerous_goods
+     *
+     * @param \Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerDangerousGoodsInner[]|null $dangerous_goods How this product declares dangerous goods: the service to request and the parameters that carry the details. Absent when the product cannot carry them.
+     *
+     * @return self
+     */
+    public function setDangerousGoods($dangerous_goods)
+    {
+        if (is_null($dangerous_goods)) {
+            throw new \InvalidArgumentException('non-nullable dangerous_goods cannot be null');
+        }
+        $this->container['dangerous_goods'] = $dangerous_goods;
 
         return $this;
     }

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **is_pickup_available** | **bool** | Whether carrier pickup is available for this product | [default to false]
 **services** | [**\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerServicesInner[]**](ListCarrierProducts200ResponseInnerServicesInner.md) | Additional services available for this product | [optional]
 **additional_parameters** | [**\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerAdditionalParametersInner[]**](ListCarrierProducts200ResponseInnerAdditionalParametersInner.md) | Extra parameters that can or must be supplied for this product | [optional]
+**dangerous_goods** | [**\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerDangerousGoodsInner[]**](ListCarrierProducts200ResponseInnerDangerousGoodsInner.md) | How this product declares dangerous goods: the service to request and the parameters that carry the details. Absent when the product cannot carry them. | [optional]
 **weight_limits** | [**\Zippendo\Sdk\Model\ListCarrierProducts200ResponseInnerWeightLimits**](ListCarrierProducts200ResponseInnerWeightLimits.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

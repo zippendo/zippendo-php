@@ -362,7 +362,7 @@ class GetBillingUsage200ResponseAddOnsInner implements ModelInterface, ArrayAcce
     /**
      * Sets type
      *
-     * @param string $type Type of billing add-on
+     * @param string $type Type of billing add-on. Only zippy can be purchased.
      *
      * @return self
      */
