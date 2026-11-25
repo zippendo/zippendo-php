@@ -85,7 +85,7 @@ disconnectCarrier($org_id, $carrier_id): string
 
 Disconnect carrier
 
-Disconnects a carrier from the organization.
+Disconnects a carrier from the organization. A carrier that has pickups cannot be disconnected.
 
 ### Example
 
